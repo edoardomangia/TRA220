@@ -1,0 +1,28 @@
+The package includes  the following Python scripts and data files:
+
+generate-channel-grid.py: it generates the grid (x2d.dat, y2d.dat)  
+
+x2d.dat, y2d.dat:  the x and y coordinates of the grid
+
+pl_iso.py: plots isocontours of u
+
+pyPoisson.py: the Poisson solver. Execution: python pyPoisson.py
+
+The pyPoisson consist of the following modules
+
+def setup_case():
+def modify_u(su2d,sp2d):
+def init():
+def print_indata():
+def coeff():
+def bc(su2d,sp2d,phi_bc_west,phi_bc_east,phi_bc_south,phi_bc_north\
+def solve_2d(phi2d,aw2d,ae2d,as2d,an2d,su2d,ap2d,tol_conv,nmax,solver_local):
+def calcu(su2d,sp2d):
+def save_data(u2d):
+
+They are all described in the pyCALC-RANS report, see
+
+
+https://www.tfd.chalmers.se/~lada/postscript_files/py-calc-rans.pdf
+
+
