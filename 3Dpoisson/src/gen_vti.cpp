@@ -1,0 +1,56 @@
+#include "gen_vti.hpp"
+#include <fstream>
+#include <iomanip>
+
+static inline int idx3D(int i, int j, int k, 
+                        int ni, int nj, int nk) {
+    return i + ni * (j + nj * k);
+}
+
+void gen_vti(const std::string& filename,
+             const Grid3D& g, 
+             const std::vector<double>& phi) {
+    int ni = g.ni, nj = g.nj, nk = g.nk;
+
+    std::ofstream out(filename);
+    if (!out) {
+        throw std::runtime_error("Could not open " + filename);
+    }
+
+    out << std::setprecision(16);
+
+    out << R"(<?xml version="1.0"?>)" << "\n";
+    out << R"(<VTKFile type="ImageData" version="0.1" byte_order="LittleEndian">)" << "\n";
+
+    out << "  <ImageData WholeExtent=\"0 " << (ni-1)
+        << " 0 " << (nj-1)
+        << " 0 " << (nk-1)
+        << "\" Origin=\"0 0 0\" Spacing=\""
+        << g.dx << " " << g.dy << " " << g.dz << "\">\n";
+
+    out << "    <Piece Extent=\"0 " << (ni-1)
+        << " 0 " << (nj-1)
+        << " 0 " << (nk-1) << "\">\n";
+
+    out << "      <PointData Scalars=\"phi\">\n";
+    out << "        <DataArray type=\"Float64\" Name=\"phi\" format=\"ascii\">\n";
+
+    // VTK expects values in x-fastest order   
+    for (int k = 0; k < nk; ++k) {
+        for (int j = 0; j < nj; ++j) {
+            for (int i = 0; i < ni; ++i) {
+                int id = idx3D(i,j,k,ni,nj,nk);
+                out << " " << phi[id];
+            }
+            out << "\n";
+        }
+    }
+
+    out << "        </DataArray>\n";
+    out << "      </PointData>\n";
+    out << "      <CellData></CellData>\n";
+    out << "    </Piece>\n";
+    out << "  </ImageData>\n";
+    out << "</VTKFile>\n";
+}
+

@@ -15,11 +15,14 @@ from scipy.sparse import spdiags,linalg,eye
 import socket
 
 def solve_gs(phi3d,aw3d,ae3d,as3d,an3d,al3d,ah3d,su3d,ap3d,tol_conv,nmax):
+   
+   acrank_conv = 1.0 # ? 
+   
    print('solve_3d gs called,nmax=',nmax)
    for n in range(0,nmax):
       phi3d=((ae3d*np.roll(phi3d,-1,axis=0)+aw3d*np.roll(phi3d,1,axis=0) \
       +an3d*np.roll(phi3d,-1,axis=1)+as3d*np.roll(phi3d,1,axis=1) \
-      +ah3*np.roll(phi3d,-1,axis=2)+al3d*np.roll(phi3d,1,axis=2))*acrank_conv+su3d)/ap3d
+      +ah3d*np.roll(phi3d,-1,axis=2)+al3d*np.roll(phi3d,1,axis=2))*acrank_conv+su3d)/ap3d
 
    res= ap3d*phi3d-\
      ((ae3d*np.roll(phi3d,-1,axis=0)+aw3d*np.roll(phi3d,1,axis=0) \
@@ -180,4 +183,67 @@ plt.xlabel('$x$')
 plt.title(r'$\phi$ in plane $z=z_{max}/2$')
 plt.colorbar();
 plt.savefig('poisson-p3d.png',bbox_inches='tight')
+
+
+
+from mpl_toolkits.mplot3d import Axes3D  
+
+X, Y, Z = np.meshgrid(x, y, z, indexing='ij')
+
+fig = plt.figure(figsize=(7, 6))
+ax = fig.add_subplot(111, projection='3d')
+
+sc = ax.scatter(
+    X.ravel(),
+    Y.ravel(),
+    Z.ravel(),
+    c=p3d.ravel(),
+    s=30,          # marker size
+    alpha=0.8
+)
+
+ax.set_xlabel('x')
+ax.set_ylabel('y')
+ax.set_zlabel('z')
+fig.colorbar(sc, ax=ax, label='Temperature')
+
+plt.tight_layout()
+plt.savefig('poisson_3d_scatter.png', bbox_inches='tight')
+plt.show()
+
+
+
+#from skimage.measure import marching_cubes
+#from mpl_toolkits.mplot3d.art3d import Poly3DCollection
+#
+#level = 0.5 * (p3d.min() + p3d.max())
+#
+#volume = np.transpose(p3d, (2, 1, 0))
+#
+#verts, faces, normals, values = marching_cubes(volume, level=level)
+#
+## Convert voxel indices back to physical coordinates
+#verts_x = verts[:, 2] * (x[1] - x[0]) + x[0]
+#verts_y = verts[:, 1] * (y[1] - y[0]) + y[0]
+#verts_z = verts[:, 0] * (z[1] - z[0]) + z[0]
+#verts = np.column_stack((verts_x, verts_y, verts_z))
+#
+#fig = plt.figure(figsize=(8, 6))
+#ax = fig.add_subplot(111, projection='3d')
+#
+#mesh = Poly3DCollection(verts[faces], alpha=0.5)
+#mesh.set_edgecolor('k')
+#ax.add_collection3d(mesh)
+#
+#ax.set_xlim(x[0], x[-1])
+#ax.set_ylim(y[0], y[-1])
+#ax.set_zlim(z[0], z[-1])
+#ax.set_xlabel('x')
+#ax.set_ylabel('y')
+#ax.set_zlabel('z')
+#
+#plt.tight_layout()
+#plt.savefig('poisson_isosurface.png', bbox_inches='tight')
+#plt.show()
+
 

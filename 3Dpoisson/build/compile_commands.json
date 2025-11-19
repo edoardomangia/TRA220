@@ -1,0 +1,32 @@
+[
+{
+  "directory": "/home/edoar/Chalmers/TRA220/3Dpoisson/build",
+  "command": "/usr/bin/c++  -I/home/edoar/Chalmers/TRA220/3Dpoisson/include -I/opt/cuda/targets/x86_64-linux/include -I/opt/cuda/targets/x86_64-linux/include/cccl -std=gnu++17 -o CMakeFiles/3Dpoisson.dir/src/main.cpp.o -c /home/edoar/Chalmers/TRA220/3Dpoisson/src/main.cpp",
+  "file": "/home/edoar/Chalmers/TRA220/3Dpoisson/src/main.cpp",
+  "output": "CMakeFiles/3Dpoisson.dir/src/main.cpp.o"
+},
+{
+  "directory": "/home/edoar/Chalmers/TRA220/3Dpoisson/build",
+  "command": "/usr/bin/c++  -I/home/edoar/Chalmers/TRA220/3Dpoisson/include -I/opt/cuda/targets/x86_64-linux/include -I/opt/cuda/targets/x86_64-linux/include/cccl -std=gnu++17 -o CMakeFiles/3Dpoisson.dir/src/grid3d.cpp.o -c /home/edoar/Chalmers/TRA220/3Dpoisson/src/grid3d.cpp",
+  "file": "/home/edoar/Chalmers/TRA220/3Dpoisson/src/grid3d.cpp",
+  "output": "CMakeFiles/3Dpoisson.dir/src/grid3d.cpp.o"
+},
+{
+  "directory": "/home/edoar/Chalmers/TRA220/3Dpoisson/build",
+  "command": "/usr/bin/c++  -I/home/edoar/Chalmers/TRA220/3Dpoisson/include -I/opt/cuda/targets/x86_64-linux/include -I/opt/cuda/targets/x86_64-linux/include/cccl -std=gnu++17 -o CMakeFiles/3Dpoisson.dir/src/poisson_coeffs.cpp.o -c /home/edoar/Chalmers/TRA220/3Dpoisson/src/poisson_coeffs.cpp",
+  "file": "/home/edoar/Chalmers/TRA220/3Dpoisson/src/poisson_coeffs.cpp",
+  "output": "CMakeFiles/3Dpoisson.dir/src/poisson_coeffs.cpp.o"
+},
+{
+  "directory": "/home/edoar/Chalmers/TRA220/3Dpoisson/build",
+  "command": "/opt/cuda/bin/nvcc -forward-unknown-to-host-compiler  --options-file CMakeFiles/3Dpoisson.dir/includes_CUDA.rsp -std=c++17 -arch=native -x cu -c /home/edoar/Chalmers/TRA220/3Dpoisson/src/poisson_solver.cu -o CMakeFiles/3Dpoisson.dir/src/poisson_solver.cu.o",
+  "file": "/home/edoar/Chalmers/TRA220/3Dpoisson/src/poisson_solver.cu",
+  "output": "CMakeFiles/3Dpoisson.dir/src/poisson_solver.cu.o"
+},
+{
+  "directory": "/home/edoar/Chalmers/TRA220/3Dpoisson/build",
+  "command": "/usr/bin/c++  -I/home/edoar/Chalmers/TRA220/3Dpoisson/include -I/opt/cuda/targets/x86_64-linux/include -I/opt/cuda/targets/x86_64-linux/include/cccl -std=gnu++17 -o CMakeFiles/3Dpoisson.dir/src/gen_vti.cpp.o -c /home/edoar/Chalmers/TRA220/3Dpoisson/src/gen_vti.cpp",
+  "file": "/home/edoar/Chalmers/TRA220/3Dpoisson/src/gen_vti.cpp",
+  "output": "CMakeFiles/3Dpoisson.dir/src/gen_vti.cpp.o"
+}
+]

@@ -1,0 +1,3 @@
+/home/edoar/Chalmers/TRA220/3Dpoisson/build/CMakeFiles/3Dpoisson.dir
+/home/edoar/Chalmers/TRA220/3Dpoisson/build/CMakeFiles/edit_cache.dir
+/home/edoar/Chalmers/TRA220/3Dpoisson/build/CMakeFiles/rebuild_cache.dir

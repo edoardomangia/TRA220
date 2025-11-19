@@ -1,0 +1,2447 @@
+////////////////// Start of input data ////////////////// 
+
+
+
+
+
+########### section 4 fluid properties ###########
+viscos:                       1.00e-03
+
+
+########### section 6 number of iteration and convergence criterira ###########
+sormax:                       1e-20
+maxit:                        200
+solver_u:                     lgmres
+nsweep_u:                     50
+convergence_limit_u:          1e-06
+
+
+########### section 7 all variables are printed during the iteration at node ###########
+imon:                         50
+jmon:                         30
+
+
+########### Section 10 grid and boundary conditions ###########
+ni:                           60
+nj:                           60
+cyclic_x:                     False
+
+
+
+
+------boundary conditions for u
+     u_bc_west_type:               d
+     u_bc_east_type:               d
+     u_bc_west[0]:                 0.0
+     u_bc_east[0]:                 0.0
+     u_bc_south_type:              d
+     u_bc_north_type:              d
+     u_bc_south[0]:                0.0
+     u_bc_north[0]:                1.0
+hostname:  tfd117.am.chalmers.se
+calcu called
+solve_2d called
+nmax 50
+solver in solve_2d: lgmres
+residual history in solve_2d: initial residual:  3.71e-02              final residual: 5.28e-07                    delta_phi: 5.00e-01
+time u: 4.78e-03
+
+--iter:0, residual:3.71e-02
+
+
+monitor iteration:   0, u: 1.00e-20
+
+
+---iter:  0, umax: 5.00e-01
+
+time one iteration: 4.80e-03
+residual history in solve_2d: initial residual:  1.86e-02              final residual: 8.35e-07                    delta_phi: 2.50e-01
+time u: 1.56e-03
+
+--iter:1, residual:1.86e-02
+
+
+monitor iteration:   1, u: 1.00e-20
+
+
+---iter:  1, umax: 7.50e-01
+
+time one iteration: 1.58e-03
+residual history in solve_2d: initial residual:  9.29e-03              final residual: 4.18e-07                    delta_phi: 1.25e-01
+time u: 1.51e-03
+
+--iter:2, residual:9.29e-03
+
+
+monitor iteration:   2, u: 1.00e-20
+
+
+---iter:  2, umax: 8.75e-01
+
+time one iteration: 1.53e-03
+residual history in solve_2d: initial residual:  4.64e-03              final residual: 6.48e-07                    delta_phi: 6.25e-02
+time u: 1.39e-03
+
+--iter:3, residual:4.64e-03
+
+
+monitor iteration:   3, u: 1.00e-20
+
+
+---iter:  3, umax: 9.38e-01
+
+time one iteration: 1.41e-03
+residual history in solve_2d: initial residual:  2.32e-03              final residual: 9.93e-07                    delta_phi: 3.13e-02
+time u: 1.34e-03
+
+--iter:4, residual:2.32e-03
+
+
+monitor iteration:   4, u: 1.00e-20
+
+
+---iter:  4, umax: 9.69e-01
+
+time one iteration: 1.36e-03
+residual history in solve_2d: initial residual:  1.16e-03              final residual: 4.97e-07                    delta_phi: 1.56e-02
+time u: 1.33e-03
+
+--iter:5, residual:1.16e-03
+
+
+monitor iteration:   5, u: 1.00e-20
+
+
+---iter:  5, umax: 9.84e-01
+
+time one iteration: 1.35e-03
+residual history in solve_2d: initial residual:  5.80e-04              final residual: 7.57e-07                    delta_phi: 7.83e-03
+time u: 1.26e-03
+
+--iter:6, residual:5.80e-04
+
+
+monitor iteration:   6, u: 1.00e-20
+
+
+---iter:  6, umax: 9.92e-01
+
+time one iteration: 1.28e-03
+residual history in solve_2d: initial residual:  2.90e-04              final residual: 3.79e-07                    delta_phi: 3.93e-03
+time u: 1.27e-03
+
+--iter:7, residual:2.90e-04
+
+
+monitor iteration:   7, u: 1.00e-20
+
+
+---iter:  7, umax: 9.96e-01
+
+time one iteration: 1.28e-03
+residual history in solve_2d: initial residual:  1.45e-04              final residual: 5.66e-07                    delta_phi: 1.97e-03
+time u: 1.20e-03
+
+--iter:8, residual:1.45e-04
+
+
+monitor iteration:   8, u: 1.00e-20
+
+
+---iter:  8, umax: 9.98e-01
+
+time one iteration: 1.22e-03
+residual history in solve_2d: initial residual:  7.26e-05              final residual: 8.47e-07                    delta_phi: 9.95e-04
+time u: 1.15e-03
+
+--iter:9, residual:7.26e-05
+
+
+monitor iteration:   9, u: 1.00e-20
+
+
+---iter:  9, umax: 9.99e-01
+
+time one iteration: 1.16e-03
+residual history in solve_2d: initial residual:  3.63e-05              final residual: 4.30e-07                    delta_phi: 5.09e-04
+time u: 1.15e-03
+
+--iter:10, residual:3.63e-05
+
+
+monitor iteration:  10, u: 1.00e-20
+
+
+---iter: 10, umax: 1.00e+00
+
+time one iteration: 1.17e-03
+residual history in solve_2d: initial residual:  1.81e-05              final residual: 6.41e-07                    delta_phi: 2.57e-04
+time u: 1.11e-03
+
+--iter:11, residual:1.81e-05
+
+
+monitor iteration:  11, u: 1.00e-20
+
+
+---iter: 11, umax: 1.00e+00
+
+time one iteration: 1.12e-03
+residual history in solve_2d: initial residual:  9.09e-06              final residual: 9.52e-07                    delta_phi: 1.36e-04
+time u: 1.03e-03
+
+--iter:12, residual:9.09e-06
+
+
+monitor iteration:  12, u: 1.00e-20
+
+
+---iter: 12, umax: 1.00e+00
+
+time one iteration: 1.05e-03
+residual history in solve_2d: initial residual:  4.62e-06              final residual: 5.51e-07                    delta_phi: 7.54e-05
+time u: 1.03e-03
+
+--iter:13, residual:4.62e-06
+
+
+monitor iteration:  13, u: 1.00e-20
+
+
+---iter: 13, umax: 1.00e+00
+
+time one iteration: 1.05e-03
+residual history in solve_2d: initial residual:  2.36e-06              final residual: 8.51e-07                    delta_phi: 4.80e-05
+time u: 1.01e-03
+
+--iter:14, residual:2.36e-06
+
+
+monitor iteration:  14, u: 1.00e-20
+
+
+---iter: 14, umax: 1.00e+00
+
+time one iteration: 1.03e-03
+residual history in solve_2d: initial residual:  1.39e-06              final residual: 5.81e-07                    delta_phi: 2.47e-05
+time u: 9.71e-04
+
+--iter:15, residual:1.39e-06
+
+
+monitor iteration:  15, u: 1.00e-20
+
+
+---iter: 15, umax: 1.00e+00
+
+time one iteration: 9.88e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.79e-04
+
+--iter:16, residual:8.58e-07
+
+
+monitor iteration:  16, u: 1.00e-20
+
+
+---iter: 16, umax: 1.00e+00
+
+time one iteration: 7.96e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.78e-04
+
+--iter:17, residual:8.58e-07
+
+
+monitor iteration:  17, u: 1.00e-20
+
+
+---iter: 17, umax: 1.00e+00
+
+time one iteration: 7.95e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.80e-04
+
+--iter:18, residual:8.58e-07
+
+
+monitor iteration:  18, u: 1.00e-20
+
+
+---iter: 18, umax: 1.00e+00
+
+time one iteration: 7.96e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.87e-04
+
+--iter:19, residual:8.58e-07
+
+
+monitor iteration:  19, u: 1.00e-20
+
+
+---iter: 19, umax: 1.00e+00
+
+time one iteration: 8.03e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.83e-04
+
+--iter:20, residual:8.58e-07
+
+
+monitor iteration:  20, u: 1.00e-20
+
+
+---iter: 20, umax: 1.00e+00
+
+time one iteration: 8.00e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.80e-04
+
+--iter:21, residual:8.58e-07
+
+
+monitor iteration:  21, u: 1.00e-20
+
+
+---iter: 21, umax: 1.00e+00
+
+time one iteration: 7.96e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.79e-04
+
+--iter:22, residual:8.58e-07
+
+
+monitor iteration:  22, u: 1.00e-20
+
+
+---iter: 22, umax: 1.00e+00
+
+time one iteration: 7.95e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.72e-04
+
+--iter:23, residual:8.58e-07
+
+
+monitor iteration:  23, u: 1.00e-20
+
+
+---iter: 23, umax: 1.00e+00
+
+time one iteration: 7.89e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.89e-04
+
+--iter:24, residual:8.58e-07
+
+
+monitor iteration:  24, u: 1.00e-20
+
+
+---iter: 24, umax: 1.00e+00
+
+time one iteration: 8.06e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.86e-04
+
+--iter:25, residual:8.58e-07
+
+
+monitor iteration:  25, u: 1.00e-20
+
+
+---iter: 25, umax: 1.00e+00
+
+time one iteration: 8.03e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.87e-04
+
+--iter:26, residual:8.58e-07
+
+
+monitor iteration:  26, u: 1.00e-20
+
+
+---iter: 26, umax: 1.00e+00
+
+time one iteration: 8.04e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.76e-04
+
+--iter:27, residual:8.58e-07
+
+
+monitor iteration:  27, u: 1.00e-20
+
+
+---iter: 27, umax: 1.00e+00
+
+time one iteration: 7.93e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.81e-04
+
+--iter:28, residual:8.58e-07
+
+
+monitor iteration:  28, u: 1.00e-20
+
+
+---iter: 28, umax: 1.00e+00
+
+time one iteration: 7.98e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.82e-04
+
+--iter:29, residual:8.58e-07
+
+
+monitor iteration:  29, u: 1.00e-20
+
+
+---iter: 29, umax: 1.00e+00
+
+time one iteration: 8.00e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.81e-04
+
+--iter:30, residual:8.58e-07
+
+
+monitor iteration:  30, u: 1.00e-20
+
+
+---iter: 30, umax: 1.00e+00
+
+time one iteration: 7.98e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.76e-04
+
+--iter:31, residual:8.58e-07
+
+
+monitor iteration:  31, u: 1.00e-20
+
+
+---iter: 31, umax: 1.00e+00
+
+time one iteration: 7.93e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.70e-04
+
+--iter:32, residual:8.58e-07
+
+
+monitor iteration:  32, u: 1.00e-20
+
+
+---iter: 32, umax: 1.00e+00
+
+time one iteration: 7.87e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.72e-04
+
+--iter:33, residual:8.58e-07
+
+
+monitor iteration:  33, u: 1.00e-20
+
+
+---iter: 33, umax: 1.00e+00
+
+time one iteration: 7.88e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.86e-04
+
+--iter:34, residual:8.58e-07
+
+
+monitor iteration:  34, u: 1.00e-20
+
+
+---iter: 34, umax: 1.00e+00
+
+time one iteration: 8.03e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.78e-04
+
+--iter:35, residual:8.58e-07
+
+
+monitor iteration:  35, u: 1.00e-20
+
+
+---iter: 35, umax: 1.00e+00
+
+time one iteration: 7.95e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.78e-04
+
+--iter:36, residual:8.58e-07
+
+
+monitor iteration:  36, u: 1.00e-20
+
+
+---iter: 36, umax: 1.00e+00
+
+time one iteration: 7.95e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.76e-04
+
+--iter:37, residual:8.58e-07
+
+
+monitor iteration:  37, u: 1.00e-20
+
+
+---iter: 37, umax: 1.00e+00
+
+time one iteration: 7.94e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.75e-04
+
+--iter:38, residual:8.58e-07
+
+
+monitor iteration:  38, u: 1.00e-20
+
+
+---iter: 38, umax: 1.00e+00
+
+time one iteration: 7.92e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.77e-04
+
+--iter:39, residual:8.58e-07
+
+
+monitor iteration:  39, u: 1.00e-20
+
+
+---iter: 39, umax: 1.00e+00
+
+time one iteration: 7.94e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.78e-04
+
+--iter:40, residual:8.58e-07
+
+
+monitor iteration:  40, u: 1.00e-20
+
+
+---iter: 40, umax: 1.00e+00
+
+time one iteration: 7.94e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.85e-04
+
+--iter:41, residual:8.58e-07
+
+
+monitor iteration:  41, u: 1.00e-20
+
+
+---iter: 41, umax: 1.00e+00
+
+time one iteration: 8.00e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.75e-04
+
+--iter:42, residual:8.58e-07
+
+
+monitor iteration:  42, u: 1.00e-20
+
+
+---iter: 42, umax: 1.00e+00
+
+time one iteration: 7.92e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.72e-04
+
+--iter:43, residual:8.58e-07
+
+
+monitor iteration:  43, u: 1.00e-20
+
+
+---iter: 43, umax: 1.00e+00
+
+time one iteration: 7.88e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.83e-04
+
+--iter:44, residual:8.58e-07
+
+
+monitor iteration:  44, u: 1.00e-20
+
+
+---iter: 44, umax: 1.00e+00
+
+time one iteration: 8.00e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.78e-04
+
+--iter:45, residual:8.58e-07
+
+
+monitor iteration:  45, u: 1.00e-20
+
+
+---iter: 45, umax: 1.00e+00
+
+time one iteration: 7.94e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.77e-04
+
+--iter:46, residual:8.58e-07
+
+
+monitor iteration:  46, u: 1.00e-20
+
+
+---iter: 46, umax: 1.00e+00
+
+time one iteration: 7.93e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.76e-04
+
+--iter:47, residual:8.58e-07
+
+
+monitor iteration:  47, u: 1.00e-20
+
+
+---iter: 47, umax: 1.00e+00
+
+time one iteration: 7.93e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.81e-04
+
+--iter:48, residual:8.58e-07
+
+
+monitor iteration:  48, u: 1.00e-20
+
+
+---iter: 48, umax: 1.00e+00
+
+time one iteration: 7.98e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.82e-04
+
+--iter:49, residual:8.58e-07
+
+
+monitor iteration:  49, u: 1.00e-20
+
+
+---iter: 49, umax: 1.00e+00
+
+time one iteration: 7.98e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.78e-04
+
+--iter:50, residual:8.58e-07
+
+
+monitor iteration:  50, u: 1.00e-20
+
+
+---iter: 50, umax: 1.00e+00
+
+time one iteration: 7.94e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 8.24e-04
+
+--iter:51, residual:8.58e-07
+
+
+monitor iteration:  51, u: 1.00e-20
+
+
+---iter: 51, umax: 1.00e+00
+
+time one iteration: 8.41e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.76e-04
+
+--iter:52, residual:8.58e-07
+
+
+monitor iteration:  52, u: 1.00e-20
+
+
+---iter: 52, umax: 1.00e+00
+
+time one iteration: 7.92e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.72e-04
+
+--iter:53, residual:8.58e-07
+
+
+monitor iteration:  53, u: 1.00e-20
+
+
+---iter: 53, umax: 1.00e+00
+
+time one iteration: 7.88e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.94e-04
+
+--iter:54, residual:8.58e-07
+
+
+monitor iteration:  54, u: 1.00e-20
+
+
+---iter: 54, umax: 1.00e+00
+
+time one iteration: 8.13e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.81e-04
+
+--iter:55, residual:8.58e-07
+
+
+monitor iteration:  55, u: 1.00e-20
+
+
+---iter: 55, umax: 1.00e+00
+
+time one iteration: 7.98e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.75e-04
+
+--iter:56, residual:8.58e-07
+
+
+monitor iteration:  56, u: 1.00e-20
+
+
+---iter: 56, umax: 1.00e+00
+
+time one iteration: 7.92e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.82e-04
+
+--iter:57, residual:8.58e-07
+
+
+monitor iteration:  57, u: 1.00e-20
+
+
+---iter: 57, umax: 1.00e+00
+
+time one iteration: 7.99e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.77e-04
+
+--iter:58, residual:8.58e-07
+
+
+monitor iteration:  58, u: 1.00e-20
+
+
+---iter: 58, umax: 1.00e+00
+
+time one iteration: 7.94e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.78e-04
+
+--iter:59, residual:8.58e-07
+
+
+monitor iteration:  59, u: 1.00e-20
+
+
+---iter: 59, umax: 1.00e+00
+
+time one iteration: 7.95e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.79e-04
+
+--iter:60, residual:8.58e-07
+
+
+monitor iteration:  60, u: 1.00e-20
+
+
+---iter: 60, umax: 1.00e+00
+
+time one iteration: 7.97e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.76e-04
+
+--iter:61, residual:8.58e-07
+
+
+monitor iteration:  61, u: 1.00e-20
+
+
+---iter: 61, umax: 1.00e+00
+
+time one iteration: 7.93e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.72e-04
+
+--iter:62, residual:8.58e-07
+
+
+monitor iteration:  62, u: 1.00e-20
+
+
+---iter: 62, umax: 1.00e+00
+
+time one iteration: 7.88e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.73e-04
+
+--iter:63, residual:8.58e-07
+
+
+monitor iteration:  63, u: 1.00e-20
+
+
+---iter: 63, umax: 1.00e+00
+
+time one iteration: 7.90e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.78e-04
+
+--iter:64, residual:8.58e-07
+
+
+monitor iteration:  64, u: 1.00e-20
+
+
+---iter: 64, umax: 1.00e+00
+
+time one iteration: 7.95e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.73e-04
+
+--iter:65, residual:8.58e-07
+
+
+monitor iteration:  65, u: 1.00e-20
+
+
+---iter: 65, umax: 1.00e+00
+
+time one iteration: 7.90e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.75e-04
+
+--iter:66, residual:8.58e-07
+
+
+monitor iteration:  66, u: 1.00e-20
+
+
+---iter: 66, umax: 1.00e+00
+
+time one iteration: 7.93e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.78e-04
+
+--iter:67, residual:8.58e-07
+
+
+monitor iteration:  67, u: 1.00e-20
+
+
+---iter: 67, umax: 1.00e+00
+
+time one iteration: 7.94e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.77e-04
+
+--iter:68, residual:8.58e-07
+
+
+monitor iteration:  68, u: 1.00e-20
+
+
+---iter: 68, umax: 1.00e+00
+
+time one iteration: 7.94e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.79e-04
+
+--iter:69, residual:8.58e-07
+
+
+monitor iteration:  69, u: 1.00e-20
+
+
+---iter: 69, umax: 1.00e+00
+
+time one iteration: 7.96e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.76e-04
+
+--iter:70, residual:8.58e-07
+
+
+monitor iteration:  70, u: 1.00e-20
+
+
+---iter: 70, umax: 1.00e+00
+
+time one iteration: 7.92e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.76e-04
+
+--iter:71, residual:8.58e-07
+
+
+monitor iteration:  71, u: 1.00e-20
+
+
+---iter: 71, umax: 1.00e+00
+
+time one iteration: 7.92e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.74e-04
+
+--iter:72, residual:8.58e-07
+
+
+monitor iteration:  72, u: 1.00e-20
+
+
+---iter: 72, umax: 1.00e+00
+
+time one iteration: 7.90e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.77e-04
+
+--iter:73, residual:8.58e-07
+
+
+monitor iteration:  73, u: 1.00e-20
+
+
+---iter: 73, umax: 1.00e+00
+
+time one iteration: 7.93e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.83e-04
+
+--iter:74, residual:8.58e-07
+
+
+monitor iteration:  74, u: 1.00e-20
+
+
+---iter: 74, umax: 1.00e+00
+
+time one iteration: 8.00e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.73e-04
+
+--iter:75, residual:8.58e-07
+
+
+monitor iteration:  75, u: 1.00e-20
+
+
+---iter: 75, umax: 1.00e+00
+
+time one iteration: 7.90e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.77e-04
+
+--iter:76, residual:8.58e-07
+
+
+monitor iteration:  76, u: 1.00e-20
+
+
+---iter: 76, umax: 1.00e+00
+
+time one iteration: 7.94e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.77e-04
+
+--iter:77, residual:8.58e-07
+
+
+monitor iteration:  77, u: 1.00e-20
+
+
+---iter: 77, umax: 1.00e+00
+
+time one iteration: 7.93e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.72e-04
+
+--iter:78, residual:8.58e-07
+
+
+monitor iteration:  78, u: 1.00e-20
+
+
+---iter: 78, umax: 1.00e+00
+
+time one iteration: 7.89e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.81e-04
+
+--iter:79, residual:8.58e-07
+
+
+monitor iteration:  79, u: 1.00e-20
+
+
+---iter: 79, umax: 1.00e+00
+
+time one iteration: 7.99e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.78e-04
+
+--iter:80, residual:8.58e-07
+
+
+monitor iteration:  80, u: 1.00e-20
+
+
+---iter: 80, umax: 1.00e+00
+
+time one iteration: 7.94e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.74e-04
+
+--iter:81, residual:8.58e-07
+
+
+monitor iteration:  81, u: 1.00e-20
+
+
+---iter: 81, umax: 1.00e+00
+
+time one iteration: 7.90e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.77e-04
+
+--iter:82, residual:8.58e-07
+
+
+monitor iteration:  82, u: 1.00e-20
+
+
+---iter: 82, umax: 1.00e+00
+
+time one iteration: 7.94e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.84e-04
+
+--iter:83, residual:8.58e-07
+
+
+monitor iteration:  83, u: 1.00e-20
+
+
+---iter: 83, umax: 1.00e+00
+
+time one iteration: 8.02e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.79e-04
+
+--iter:84, residual:8.58e-07
+
+
+monitor iteration:  84, u: 1.00e-20
+
+
+---iter: 84, umax: 1.00e+00
+
+time one iteration: 8.00e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.75e-04
+
+--iter:85, residual:8.58e-07
+
+
+monitor iteration:  85, u: 1.00e-20
+
+
+---iter: 85, umax: 1.00e+00
+
+time one iteration: 7.92e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.72e-04
+
+--iter:86, residual:8.58e-07
+
+
+monitor iteration:  86, u: 1.00e-20
+
+
+---iter: 86, umax: 1.00e+00
+
+time one iteration: 7.88e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.78e-04
+
+--iter:87, residual:8.58e-07
+
+
+monitor iteration:  87, u: 1.00e-20
+
+
+---iter: 87, umax: 1.00e+00
+
+time one iteration: 7.95e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.74e-04
+
+--iter:88, residual:8.58e-07
+
+
+monitor iteration:  88, u: 1.00e-20
+
+
+---iter: 88, umax: 1.00e+00
+
+time one iteration: 7.91e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.73e-04
+
+--iter:89, residual:8.58e-07
+
+
+monitor iteration:  89, u: 1.00e-20
+
+
+---iter: 89, umax: 1.00e+00
+
+time one iteration: 7.91e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.75e-04
+
+--iter:90, residual:8.58e-07
+
+
+monitor iteration:  90, u: 1.00e-20
+
+
+---iter: 90, umax: 1.00e+00
+
+time one iteration: 7.91e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.69e-04
+
+--iter:91, residual:8.58e-07
+
+
+monitor iteration:  91, u: 1.00e-20
+
+
+---iter: 91, umax: 1.00e+00
+
+time one iteration: 7.85e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.77e-04
+
+--iter:92, residual:8.58e-07
+
+
+monitor iteration:  92, u: 1.00e-20
+
+
+---iter: 92, umax: 1.00e+00
+
+time one iteration: 7.95e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.78e-04
+
+--iter:93, residual:8.58e-07
+
+
+monitor iteration:  93, u: 1.00e-20
+
+
+---iter: 93, umax: 1.00e+00
+
+time one iteration: 7.94e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.74e-04
+
+--iter:94, residual:8.58e-07
+
+
+monitor iteration:  94, u: 1.00e-20
+
+
+---iter: 94, umax: 1.00e+00
+
+time one iteration: 7.91e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.79e-04
+
+--iter:95, residual:8.58e-07
+
+
+monitor iteration:  95, u: 1.00e-20
+
+
+---iter: 95, umax: 1.00e+00
+
+time one iteration: 7.97e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.73e-04
+
+--iter:96, residual:8.58e-07
+
+
+monitor iteration:  96, u: 1.00e-20
+
+
+---iter: 96, umax: 1.00e+00
+
+time one iteration: 7.90e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.69e-04
+
+--iter:97, residual:8.58e-07
+
+
+monitor iteration:  97, u: 1.00e-20
+
+
+---iter: 97, umax: 1.00e+00
+
+time one iteration: 7.85e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.76e-04
+
+--iter:98, residual:8.58e-07
+
+
+monitor iteration:  98, u: 1.00e-20
+
+
+---iter: 98, umax: 1.00e+00
+
+time one iteration: 7.93e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.75e-04
+
+--iter:99, residual:8.58e-07
+
+
+monitor iteration:  99, u: 1.00e-20
+
+
+---iter: 99, umax: 1.00e+00
+
+time one iteration: 7.92e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.78e-04
+
+--iter:100, residual:8.58e-07
+
+
+monitor iteration: 100, u: 1.00e-20
+
+
+---iter: 100, umax: 1.00e+00
+
+time one iteration: 7.95e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.72e-04
+
+--iter:101, residual:8.58e-07
+
+
+monitor iteration: 101, u: 1.00e-20
+
+
+---iter: 101, umax: 1.00e+00
+
+time one iteration: 7.89e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.77e-04
+
+--iter:102, residual:8.58e-07
+
+
+monitor iteration: 102, u: 1.00e-20
+
+
+---iter: 102, umax: 1.00e+00
+
+time one iteration: 7.94e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.72e-04
+
+--iter:103, residual:8.58e-07
+
+
+monitor iteration: 103, u: 1.00e-20
+
+
+---iter: 103, umax: 1.00e+00
+
+time one iteration: 7.88e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.76e-04
+
+--iter:104, residual:8.58e-07
+
+
+monitor iteration: 104, u: 1.00e-20
+
+
+---iter: 104, umax: 1.00e+00
+
+time one iteration: 7.92e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.79e-04
+
+--iter:105, residual:8.58e-07
+
+
+monitor iteration: 105, u: 1.00e-20
+
+
+---iter: 105, umax: 1.00e+00
+
+time one iteration: 7.96e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.80e-04
+
+--iter:106, residual:8.58e-07
+
+
+monitor iteration: 106, u: 1.00e-20
+
+
+---iter: 106, umax: 1.00e+00
+
+time one iteration: 7.96e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.71e-04
+
+--iter:107, residual:8.58e-07
+
+
+monitor iteration: 107, u: 1.00e-20
+
+
+---iter: 107, umax: 1.00e+00
+
+time one iteration: 7.87e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.80e-04
+
+--iter:108, residual:8.58e-07
+
+
+monitor iteration: 108, u: 1.00e-20
+
+
+---iter: 108, umax: 1.00e+00
+
+time one iteration: 7.97e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.78e-04
+
+--iter:109, residual:8.58e-07
+
+
+monitor iteration: 109, u: 1.00e-20
+
+
+---iter: 109, umax: 1.00e+00
+
+time one iteration: 7.95e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.81e-04
+
+--iter:110, residual:8.58e-07
+
+
+monitor iteration: 110, u: 1.00e-20
+
+
+---iter: 110, umax: 1.00e+00
+
+time one iteration: 7.97e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.73e-04
+
+--iter:111, residual:8.58e-07
+
+
+monitor iteration: 111, u: 1.00e-20
+
+
+---iter: 111, umax: 1.00e+00
+
+time one iteration: 7.90e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.85e-04
+
+--iter:112, residual:8.58e-07
+
+
+monitor iteration: 112, u: 1.00e-20
+
+
+---iter: 112, umax: 1.00e+00
+
+time one iteration: 8.03e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.74e-04
+
+--iter:113, residual:8.58e-07
+
+
+monitor iteration: 113, u: 1.00e-20
+
+
+---iter: 113, umax: 1.00e+00
+
+time one iteration: 7.91e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.75e-04
+
+--iter:114, residual:8.58e-07
+
+
+monitor iteration: 114, u: 1.00e-20
+
+
+---iter: 114, umax: 1.00e+00
+
+time one iteration: 7.92e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.81e-04
+
+--iter:115, residual:8.58e-07
+
+
+monitor iteration: 115, u: 1.00e-20
+
+
+---iter: 115, umax: 1.00e+00
+
+time one iteration: 7.98e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.74e-04
+
+--iter:116, residual:8.58e-07
+
+
+monitor iteration: 116, u: 1.00e-20
+
+
+---iter: 116, umax: 1.00e+00
+
+time one iteration: 7.91e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.71e-04
+
+--iter:117, residual:8.58e-07
+
+
+monitor iteration: 117, u: 1.00e-20
+
+
+---iter: 117, umax: 1.00e+00
+
+time one iteration: 7.88e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.78e-04
+
+--iter:118, residual:8.58e-07
+
+
+monitor iteration: 118, u: 1.00e-20
+
+
+---iter: 118, umax: 1.00e+00
+
+time one iteration: 7.96e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.78e-04
+
+--iter:119, residual:8.58e-07
+
+
+monitor iteration: 119, u: 1.00e-20
+
+
+---iter: 119, umax: 1.00e+00
+
+time one iteration: 7.95e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.92e-04
+
+--iter:120, residual:8.58e-07
+
+
+monitor iteration: 120, u: 1.00e-20
+
+
+---iter: 120, umax: 1.00e+00
+
+time one iteration: 8.08e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.74e-04
+
+--iter:121, residual:8.58e-07
+
+
+monitor iteration: 121, u: 1.00e-20
+
+
+---iter: 121, umax: 1.00e+00
+
+time one iteration: 7.91e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.75e-04
+
+--iter:122, residual:8.58e-07
+
+
+monitor iteration: 122, u: 1.00e-20
+
+
+---iter: 122, umax: 1.00e+00
+
+time one iteration: 7.92e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.78e-04
+
+--iter:123, residual:8.58e-07
+
+
+monitor iteration: 123, u: 1.00e-20
+
+
+---iter: 123, umax: 1.00e+00
+
+time one iteration: 7.95e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.83e-04
+
+--iter:124, residual:8.58e-07
+
+
+monitor iteration: 124, u: 1.00e-20
+
+
+---iter: 124, umax: 1.00e+00
+
+time one iteration: 8.01e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.82e-04
+
+--iter:125, residual:8.58e-07
+
+
+monitor iteration: 125, u: 1.00e-20
+
+
+---iter: 125, umax: 1.00e+00
+
+time one iteration: 7.99e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.74e-04
+
+--iter:126, residual:8.58e-07
+
+
+monitor iteration: 126, u: 1.00e-20
+
+
+---iter: 126, umax: 1.00e+00
+
+time one iteration: 7.91e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.69e-04
+
+--iter:127, residual:8.58e-07
+
+
+monitor iteration: 127, u: 1.00e-20
+
+
+---iter: 127, umax: 1.00e+00
+
+time one iteration: 7.85e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.80e-04
+
+--iter:128, residual:8.58e-07
+
+
+monitor iteration: 128, u: 1.00e-20
+
+
+---iter: 128, umax: 1.00e+00
+
+time one iteration: 7.97e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.75e-04
+
+--iter:129, residual:8.58e-07
+
+
+monitor iteration: 129, u: 1.00e-20
+
+
+---iter: 129, umax: 1.00e+00
+
+time one iteration: 7.91e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.77e-04
+
+--iter:130, residual:8.58e-07
+
+
+monitor iteration: 130, u: 1.00e-20
+
+
+---iter: 130, umax: 1.00e+00
+
+time one iteration: 7.94e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.74e-04
+
+--iter:131, residual:8.58e-07
+
+
+monitor iteration: 131, u: 1.00e-20
+
+
+---iter: 131, umax: 1.00e+00
+
+time one iteration: 7.91e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.77e-04
+
+--iter:132, residual:8.58e-07
+
+
+monitor iteration: 132, u: 1.00e-20
+
+
+---iter: 132, umax: 1.00e+00
+
+time one iteration: 7.93e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.73e-04
+
+--iter:133, residual:8.58e-07
+
+
+monitor iteration: 133, u: 1.00e-20
+
+
+---iter: 133, umax: 1.00e+00
+
+time one iteration: 7.90e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.74e-04
+
+--iter:134, residual:8.58e-07
+
+
+monitor iteration: 134, u: 1.00e-20
+
+
+---iter: 134, umax: 1.00e+00
+
+time one iteration: 7.91e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.84e-04
+
+--iter:135, residual:8.58e-07
+
+
+monitor iteration: 135, u: 1.00e-20
+
+
+---iter: 135, umax: 1.00e+00
+
+time one iteration: 8.01e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.75e-04
+
+--iter:136, residual:8.58e-07
+
+
+monitor iteration: 136, u: 1.00e-20
+
+
+---iter: 136, umax: 1.00e+00
+
+time one iteration: 7.92e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.81e-04
+
+--iter:137, residual:8.58e-07
+
+
+monitor iteration: 137, u: 1.00e-20
+
+
+---iter: 137, umax: 1.00e+00
+
+time one iteration: 7.97e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.82e-04
+
+--iter:138, residual:8.58e-07
+
+
+monitor iteration: 138, u: 1.00e-20
+
+
+---iter: 138, umax: 1.00e+00
+
+time one iteration: 7.98e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.76e-04
+
+--iter:139, residual:8.58e-07
+
+
+monitor iteration: 139, u: 1.00e-20
+
+
+---iter: 139, umax: 1.00e+00
+
+time one iteration: 7.92e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.81e-04
+
+--iter:140, residual:8.58e-07
+
+
+monitor iteration: 140, u: 1.00e-20
+
+
+---iter: 140, umax: 1.00e+00
+
+time one iteration: 7.97e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.81e-04
+
+--iter:141, residual:8.58e-07
+
+
+monitor iteration: 141, u: 1.00e-20
+
+
+---iter: 141, umax: 1.00e+00
+
+time one iteration: 7.99e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.78e-04
+
+--iter:142, residual:8.58e-07
+
+
+monitor iteration: 142, u: 1.00e-20
+
+
+---iter: 142, umax: 1.00e+00
+
+time one iteration: 7.95e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.74e-04
+
+--iter:143, residual:8.58e-07
+
+
+monitor iteration: 143, u: 1.00e-20
+
+
+---iter: 143, umax: 1.00e+00
+
+time one iteration: 7.90e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.77e-04
+
+--iter:144, residual:8.58e-07
+
+
+monitor iteration: 144, u: 1.00e-20
+
+
+---iter: 144, umax: 1.00e+00
+
+time one iteration: 7.93e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.82e-04
+
+--iter:145, residual:8.58e-07
+
+
+monitor iteration: 145, u: 1.00e-20
+
+
+---iter: 145, umax: 1.00e+00
+
+time one iteration: 7.99e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.75e-04
+
+--iter:146, residual:8.58e-07
+
+
+monitor iteration: 146, u: 1.00e-20
+
+
+---iter: 146, umax: 1.00e+00
+
+time one iteration: 7.92e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.72e-04
+
+--iter:147, residual:8.58e-07
+
+
+monitor iteration: 147, u: 1.00e-20
+
+
+---iter: 147, umax: 1.00e+00
+
+time one iteration: 7.90e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.77e-04
+
+--iter:148, residual:8.58e-07
+
+
+monitor iteration: 148, u: 1.00e-20
+
+
+---iter: 148, umax: 1.00e+00
+
+time one iteration: 7.93e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.80e-04
+
+--iter:149, residual:8.58e-07
+
+
+monitor iteration: 149, u: 1.00e-20
+
+
+---iter: 149, umax: 1.00e+00
+
+time one iteration: 7.97e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.83e-04
+
+--iter:150, residual:8.58e-07
+
+
+monitor iteration: 150, u: 1.00e-20
+
+
+---iter: 150, umax: 1.00e+00
+
+time one iteration: 8.00e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.76e-04
+
+--iter:151, residual:8.58e-07
+
+
+monitor iteration: 151, u: 1.00e-20
+
+
+---iter: 151, umax: 1.00e+00
+
+time one iteration: 7.93e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.77e-04
+
+--iter:152, residual:8.58e-07
+
+
+monitor iteration: 152, u: 1.00e-20
+
+
+---iter: 152, umax: 1.00e+00
+
+time one iteration: 7.93e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.76e-04
+
+--iter:153, residual:8.58e-07
+
+
+monitor iteration: 153, u: 1.00e-20
+
+
+---iter: 153, umax: 1.00e+00
+
+time one iteration: 7.93e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.78e-04
+
+--iter:154, residual:8.58e-07
+
+
+monitor iteration: 154, u: 1.00e-20
+
+
+---iter: 154, umax: 1.00e+00
+
+time one iteration: 7.95e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.79e-04
+
+--iter:155, residual:8.58e-07
+
+
+monitor iteration: 155, u: 1.00e-20
+
+
+---iter: 155, umax: 1.00e+00
+
+time one iteration: 7.96e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.77e-04
+
+--iter:156, residual:8.58e-07
+
+
+monitor iteration: 156, u: 1.00e-20
+
+
+---iter: 156, umax: 1.00e+00
+
+time one iteration: 7.94e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.73e-04
+
+--iter:157, residual:8.58e-07
+
+
+monitor iteration: 157, u: 1.00e-20
+
+
+---iter: 157, umax: 1.00e+00
+
+time one iteration: 7.90e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.82e-04
+
+--iter:158, residual:8.58e-07
+
+
+monitor iteration: 158, u: 1.00e-20
+
+
+---iter: 158, umax: 1.00e+00
+
+time one iteration: 7.98e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.74e-04
+
+--iter:159, residual:8.58e-07
+
+
+monitor iteration: 159, u: 1.00e-20
+
+
+---iter: 159, umax: 1.00e+00
+
+time one iteration: 7.90e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.78e-04
+
+--iter:160, residual:8.58e-07
+
+
+monitor iteration: 160, u: 1.00e-20
+
+
+---iter: 160, umax: 1.00e+00
+
+time one iteration: 7.95e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.76e-04
+
+--iter:161, residual:8.58e-07
+
+
+monitor iteration: 161, u: 1.00e-20
+
+
+---iter: 161, umax: 1.00e+00
+
+time one iteration: 7.93e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.78e-04
+
+--iter:162, residual:8.58e-07
+
+
+monitor iteration: 162, u: 1.00e-20
+
+
+---iter: 162, umax: 1.00e+00
+
+time one iteration: 7.94e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.76e-04
+
+--iter:163, residual:8.58e-07
+
+
+monitor iteration: 163, u: 1.00e-20
+
+
+---iter: 163, umax: 1.00e+00
+
+time one iteration: 7.92e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.77e-04
+
+--iter:164, residual:8.58e-07
+
+
+monitor iteration: 164, u: 1.00e-20
+
+
+---iter: 164, umax: 1.00e+00
+
+time one iteration: 7.94e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.80e-04
+
+--iter:165, residual:8.58e-07
+
+
+monitor iteration: 165, u: 1.00e-20
+
+
+---iter: 165, umax: 1.00e+00
+
+time one iteration: 7.96e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.72e-04
+
+--iter:166, residual:8.58e-07
+
+
+monitor iteration: 166, u: 1.00e-20
+
+
+---iter: 166, umax: 1.00e+00
+
+time one iteration: 7.89e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.82e-04
+
+--iter:167, residual:8.58e-07
+
+
+monitor iteration: 167, u: 1.00e-20
+
+
+---iter: 167, umax: 1.00e+00
+
+time one iteration: 7.98e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.78e-04
+
+--iter:168, residual:8.58e-07
+
+
+monitor iteration: 168, u: 1.00e-20
+
+
+---iter: 168, umax: 1.00e+00
+
+time one iteration: 7.94e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.71e-04
+
+--iter:169, residual:8.58e-07
+
+
+monitor iteration: 169, u: 1.00e-20
+
+
+---iter: 169, umax: 1.00e+00
+
+time one iteration: 7.87e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.87e-04
+
+--iter:170, residual:8.58e-07
+
+
+monitor iteration: 170, u: 1.00e-20
+
+
+---iter: 170, umax: 1.00e+00
+
+time one iteration: 8.04e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.78e-04
+
+--iter:171, residual:8.58e-07
+
+
+monitor iteration: 171, u: 1.00e-20
+
+
+---iter: 171, umax: 1.00e+00
+
+time one iteration: 7.96e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.76e-04
+
+--iter:172, residual:8.58e-07
+
+
+monitor iteration: 172, u: 1.00e-20
+
+
+---iter: 172, umax: 1.00e+00
+
+time one iteration: 7.93e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.74e-04
+
+--iter:173, residual:8.58e-07
+
+
+monitor iteration: 173, u: 1.00e-20
+
+
+---iter: 173, umax: 1.00e+00
+
+time one iteration: 7.91e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.80e-04
+
+--iter:174, residual:8.58e-07
+
+
+monitor iteration: 174, u: 1.00e-20
+
+
+---iter: 174, umax: 1.00e+00
+
+time one iteration: 7.97e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.80e-04
+
+--iter:175, residual:8.58e-07
+
+
+monitor iteration: 175, u: 1.00e-20
+
+
+---iter: 175, umax: 1.00e+00
+
+time one iteration: 7.97e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.77e-04
+
+--iter:176, residual:8.58e-07
+
+
+monitor iteration: 176, u: 1.00e-20
+
+
+---iter: 176, umax: 1.00e+00
+
+time one iteration: 7.94e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.70e-04
+
+--iter:177, residual:8.58e-07
+
+
+monitor iteration: 177, u: 1.00e-20
+
+
+---iter: 177, umax: 1.00e+00
+
+time one iteration: 7.87e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.75e-04
+
+--iter:178, residual:8.58e-07
+
+
+monitor iteration: 178, u: 1.00e-20
+
+
+---iter: 178, umax: 1.00e+00
+
+time one iteration: 7.91e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.78e-04
+
+--iter:179, residual:8.58e-07
+
+
+monitor iteration: 179, u: 1.00e-20
+
+
+---iter: 179, umax: 1.00e+00
+
+time one iteration: 7.95e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.77e-04
+
+--iter:180, residual:8.58e-07
+
+
+monitor iteration: 180, u: 1.00e-20
+
+
+---iter: 180, umax: 1.00e+00
+
+time one iteration: 7.93e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.73e-04
+
+--iter:181, residual:8.58e-07
+
+
+monitor iteration: 181, u: 1.00e-20
+
+
+---iter: 181, umax: 1.00e+00
+
+time one iteration: 7.89e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.77e-04
+
+--iter:182, residual:8.58e-07
+
+
+monitor iteration: 182, u: 1.00e-20
+
+
+---iter: 182, umax: 1.00e+00
+
+time one iteration: 7.95e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.77e-04
+
+--iter:183, residual:8.58e-07
+
+
+monitor iteration: 183, u: 1.00e-20
+
+
+---iter: 183, umax: 1.00e+00
+
+time one iteration: 7.95e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.75e-04
+
+--iter:184, residual:8.58e-07
+
+
+monitor iteration: 184, u: 1.00e-20
+
+
+---iter: 184, umax: 1.00e+00
+
+time one iteration: 7.92e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.82e-04
+
+--iter:185, residual:8.58e-07
+
+
+monitor iteration: 185, u: 1.00e-20
+
+
+---iter: 185, umax: 1.00e+00
+
+time one iteration: 7.98e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.81e-04
+
+--iter:186, residual:8.58e-07
+
+
+monitor iteration: 186, u: 1.00e-20
+
+
+---iter: 186, umax: 1.00e+00
+
+time one iteration: 7.98e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.75e-04
+
+--iter:187, residual:8.58e-07
+
+
+monitor iteration: 187, u: 1.00e-20
+
+
+---iter: 187, umax: 1.00e+00
+
+time one iteration: 7.91e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.78e-04
+
+--iter:188, residual:8.58e-07
+
+
+monitor iteration: 188, u: 1.00e-20
+
+
+---iter: 188, umax: 1.00e+00
+
+time one iteration: 7.94e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.75e-04
+
+--iter:189, residual:8.58e-07
+
+
+monitor iteration: 189, u: 1.00e-20
+
+
+---iter: 189, umax: 1.00e+00
+
+time one iteration: 7.92e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 8.21e-04
+
+--iter:190, residual:8.58e-07
+
+
+monitor iteration: 190, u: 1.00e-20
+
+
+---iter: 190, umax: 1.00e+00
+
+time one iteration: 8.37e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.75e-04
+
+--iter:191, residual:8.58e-07
+
+
+monitor iteration: 191, u: 1.00e-20
+
+
+---iter: 191, umax: 1.00e+00
+
+time one iteration: 7.91e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.74e-04
+
+--iter:192, residual:8.58e-07
+
+
+monitor iteration: 192, u: 1.00e-20
+
+
+---iter: 192, umax: 1.00e+00
+
+time one iteration: 7.91e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.76e-04
+
+--iter:193, residual:8.58e-07
+
+
+monitor iteration: 193, u: 1.00e-20
+
+
+---iter: 193, umax: 1.00e+00
+
+time one iteration: 7.93e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.78e-04
+
+--iter:194, residual:8.58e-07
+
+
+monitor iteration: 194, u: 1.00e-20
+
+
+---iter: 194, umax: 1.00e+00
+
+time one iteration: 7.95e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 8.21e-04
+
+--iter:195, residual:8.58e-07
+
+
+monitor iteration: 195, u: 1.00e-20
+
+
+---iter: 195, umax: 1.00e+00
+
+time one iteration: 8.37e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.72e-04
+
+--iter:196, residual:8.58e-07
+
+
+monitor iteration: 196, u: 1.00e-20
+
+
+---iter: 196, umax: 1.00e+00
+
+time one iteration: 7.88e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.77e-04
+
+--iter:197, residual:8.58e-07
+
+
+monitor iteration: 197, u: 1.00e-20
+
+
+---iter: 197, umax: 1.00e+00
+
+time one iteration: 7.94e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.77e-04
+
+--iter:198, residual:8.58e-07
+
+
+monitor iteration: 198, u: 1.00e-20
+
+
+---iter: 198, umax: 1.00e+00
+
+time one iteration: 7.93e-04
+residual history in solve_2d: initial residual:  8.58e-07              final residual: 8.58e-07                    delta_phi: 0.00e+00
+time u: 7.83e-04
+
+--iter:199, residual:8.58e-07
+
+
+monitor iteration: 199, u: 1.00e-20
+
+
+---iter: 199, umax: 1.00e+00
+
+time one iteration: 8.01e-04
+save_data called
+program reached normal stop
