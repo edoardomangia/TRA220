@@ -1,15 +1,17 @@
 #include "gen_vti.hpp"
 #include <fstream>
 #include <iomanip>
+#include <type_traits>
 
 static inline int idx3D(int i, int j, int k, 
                         int ni, int nj, int nk) {
     return i + ni * (j + nj * k);
 }
 
+template<typename Real>
 void gen_vti(const std::string& filename,
              const Grid3D& g, 
-             const std::vector<double>& phi) {
+             const std::vector<Real>& phi) {
     int ni = g.ni, nj = g.nj, nk = g.nk;
 
     std::ofstream out(filename);
@@ -33,7 +35,15 @@ void gen_vti(const std::string& filename,
         << " 0 " << (nk-1) << "\">\n";
 
     out << "      <PointData Scalars=\"phi\">\n";
-    out << "        <DataArray type=\"Float64\" Name=\"phi\" format=\"ascii\">\n";
+    
+    // TODO int types?
+    const char* vtkType =
+        // std::is_same_v<Real, int> ? "..." :
+        std::is_same_v<Real, double> ? "Float64" :
+        std::is_same_v<Real, float>  ? "Float32" :
+                                       "Float64"; 
+
+    out << "        <DataArray type=\"" << vtkType << "\" Name=\"phi\" format=\"ascii\">\n";
 
     // VTK expects values in x-fastest order   
     for (int k = 0; k < nk; ++k) {

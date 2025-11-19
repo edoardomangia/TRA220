@@ -4,9 +4,7 @@
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o \
   CMakeFiles/3Dpoisson.dir/src/main.cpp.o \
   CMakeFiles/3Dpoisson.dir/src/grid3d.cpp.o \
-  CMakeFiles/3Dpoisson.dir/src/poisson_coeffs.cpp.o \
   CMakeFiles/3Dpoisson.dir/src/poisson_solver.cu.o \
-  CMakeFiles/3Dpoisson.dir/src/gen_vti.cpp.o \
   /opt/cuda/targets/x86_64-linux/lib/libcudadevrt.a \
   /opt/cuda/targets/x86_64-linux/lib/libcudart_static.a \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/librt.a \
@@ -49,11 +47,7 @@ CMakeFiles/3Dpoisson.dir/src/main.cpp.o:
 
 CMakeFiles/3Dpoisson.dir/src/grid3d.cpp.o:
 
-CMakeFiles/3Dpoisson.dir/src/poisson_coeffs.cpp.o:
-
 CMakeFiles/3Dpoisson.dir/src/poisson_solver.cu.o:
-
-CMakeFiles/3Dpoisson.dir/src/gen_vti.cpp.o:
 
 /opt/cuda/targets/x86_64-linux/lib/libcudadevrt.a:
 

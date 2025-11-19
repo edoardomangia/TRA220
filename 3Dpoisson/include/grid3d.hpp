@@ -9,7 +9,4 @@ struct Grid3D {
 };
 
 Grid3D make_grid(int ni, int nj, int nk,
-            double xmax = 1.0,
-            double ymax = 1.0,
-            double zmax = 1.0
-            );
+                 double xmax, double ymax, double zmax);

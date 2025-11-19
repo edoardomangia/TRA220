@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <cuda_runtime.h>
+#include <limits>
 #include "grid3d.hpp"
 #include "poisson_coeffs.hpp"
 #include "poisson_solver.hpp"
@@ -8,6 +9,10 @@
 
 int main() {
     
+    // using Real = int;    // not now
+    // using Real = float;
+    using Real = double;
+
     // Info
     int device = 0;
     cudaSetDevice(device);
@@ -27,7 +32,7 @@ int main() {
 
     Grid3D grid = make_grid(ni, nj, nk, xmax, ymax, zmax);
 
-    PoissonSystem sys = make_poisson_system(grid);
+    PoissonSystem<Real> sys = make_poisson_system<Real>(grid);
     
     // ni = grid.ni, nj = grid.nj, nk = grid.nk;
     int idx0 = 0;
@@ -40,28 +45,20 @@ int main() {
               << ", su[mid] = " << sys.su[idx_mid] << "\n";
     
     // Checks su
-    double minsu = 1e300, maxsu = -1e300;
-    for (double v : sys.su) {
+    Real minsu = std::numeric_limits<Real>::max();
+    Real maxsu = -std::numeric_limits<Real>::max();
+    for (Real v : sys.su) {
         if (v < minsu) minsu = v;
         if (v > maxsu) maxsu = v;
     }
     std::cout << "su range: min = " << minsu
               << ", max = " << maxsu << "\n";
 
-    // Checks phi 
-    double minphi = 1e300, maxphi = -1e300;
-    for (double v : sys.phi) {
-        if (v < minphi) minphi = v;
-        if (v > maxphi) maxphi = v;
-    } 
-    std::cout << "phi range: min = " << minphi
-              << ", max = " << maxphi << "\n";
-
     int nIter = 2000;  
     
-    // std::cout << "Before phi[0] = " << sys.phi[0] << "\n";
+    std::cout << "Before phi[0] = " << sys.phi[0] << "\n";
  
-    solvePoissonGPU(
+    solvePoissonGPU<Real>(
         ni, nj, nk,
         sys.aw.data(), sys.ae.data(),
         sys.as_.data(), sys.an.data(),
@@ -71,8 +68,18 @@ int main() {
         nIter
     );
     
-    // std::cout << "After phi[0] = " << sys.phi[0] << "\n";
+    std::cout << "After phi[0] = " << sys.phi[0] << "\n";
     
+    // Checks phi 
+    Real minphi = std::numeric_limits<Real>::max();
+    Real maxphi = -std::numeric_limits<Real>::max();
+    for (Real v : sys.phi) {
+        if (v < minphi) minphi = v;
+        if (v > maxphi) maxphi = v;
+    } 
+    std::cout << "phi range: min = " << minphi
+              << ", max = " << maxphi << "\n";
+
     // Plotting
     // std::ofstream fout("phi_midplane.csv");
     // int k_mid = nk / 2;

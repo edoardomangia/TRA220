@@ -2,18 +2,19 @@
 #include <iostream>
 #include "poisson_solver.hpp"
 
+template<typename Real>
 __global__
 void poissonKernel(
-    const double* __restrict__ phi_old,
-    double* __restrict__ phi_new,
-    const double* __restrict__ aw,
-    const double* __restrict__ ae,
-    const double* __restrict__ as_,
-    const double* __restrict__ an,
-    const double* __restrict__ al,
-    const double* __restrict__ ah,
-    const double* __restrict__ su,
-    const double* __restrict__ ap,
+    const Real* __restrict__ phi_old,
+    Real* __restrict__ phi_new,
+    const Real* __restrict__ aw,
+    const Real* __restrict__ ae,
+    const Real* __restrict__ as_,
+    const Real* __restrict__ an,
+    const Real* __restrict__ al,
+    const Real* __restrict__ ah,
+    const Real* __restrict__ su,
+    const Real* __restrict__ ap,
     int ni, int nj, int nk
 ) {
     int i = blockIdx.x * blockDim.x + threadIdx.x;
@@ -30,15 +31,15 @@ void poissonKernel(
     int idx = i + ni * (j + nj * k);
 
     // Read neighbors values with reflection at boundaries
-    double phiE = (i+1 < ni) ? phi_old[idx + sx] : phi_old[idx];
-    double phiW = (i-1 >= 0) ? phi_old[idx - sx] : phi_old[idx];
-    double phiN = (j+1 < nj) ? phi_old[idx + sy] : phi_old[idx];
-    double phiS = (j-1 >= 0) ? phi_old[idx - sy] : phi_old[idx];
-    double phiH = (k+1 < nk) ? phi_old[idx + sz] : phi_old[idx];
-    double phiL = (k-1 >= 0) ? phi_old[idx - sz] : phi_old[idx];
+    Real phiE = (i+1 < ni) ? phi_old[idx + sx] : phi_old[idx];
+    Real phiW = (i-1 >= 0) ? phi_old[idx - sx] : phi_old[idx];
+    Real phiN = (j+1 < nj) ? phi_old[idx + sy] : phi_old[idx];
+    Real phiS = (j-1 >= 0) ? phi_old[idx - sy] : phi_old[idx];
+    Real phiH = (k+1 < nk) ? phi_old[idx + sz] : phi_old[idx];
+    Real phiL = (k-1 >= 0) ? phi_old[idx - sz] : phi_old[idx];
 
     // Update
-    double numerator =
+    Real numerator =
         ae[idx] * phiE + aw[idx] * phiW +
         an[idx] * phiN + as_[idx] * phiS +
         ah[idx] * phiH + al[idx] * phiL +
@@ -47,32 +48,32 @@ void poissonKernel(
     phi_new[idx] = numerator / ap[idx];
 }
 
+template<typename Real>
 void solvePoissonGPU(
     int ni, int nj, int nk,
-    const double* h_aw,
-    const double* h_ae,
-    const double* h_as,
-    const double* h_an,
-    const double* h_al,
-    const double* h_ah,
-    const double* h_su,
-    const double* h_ap,
-    double* h_phi,
+    const Real* h_aw,
+    const Real* h_ae,
+    const Real* h_as,
+    const Real* h_an,
+    const Real* h_al,
+    const Real* h_ah,
+    const Real* h_su,
+    const Real* h_ap,
+    Real* h_phi,
     int nIter
 ) {
     
     // Number of cells and memory needed
     size_t N = (size_t)ni * nj * nk;
-    size_t bytes = N * sizeof(double);
+    size_t bytes = N * sizeof(Real);
     
     // Device memory allocation 
-    double *d_aw, *d_ae, 
+    Real *d_aw, *d_ae, 
            *d_as, *d_an, 
            *d_al, *d_ah, 
-           *d_su, 
-           *d_ap;
+           *d_su, *d_ap;
 
-    double *d_phi_old, *d_phi_new;
+    Real *d_phi_old, *d_phi_new;
 
     cudaMalloc(&d_aw, bytes);
     cudaMalloc(&d_ae, bytes);
@@ -135,8 +136,33 @@ void solvePoissonGPU(
     cudaFree(d_aw); cudaFree(d_ae); 
     cudaFree(d_as); cudaFree(d_an);
     cudaFree(d_al); cudaFree(d_ah); 
-    cudaFree(d_su); 
-    cudaFree(d_ap);
+    cudaFree(d_su); cudaFree(d_ap);
     cudaFree(d_phi_old); cudaFree(d_phi_new);
 }
+
+template void solvePoissonGPU<int>(
+    int, int, int,
+    const int*, const int*, 
+    const int*, const int*,
+    const int*, const int*,
+    const int*, const int*,
+    int*, int
+);
+template void solvePoissonGPU<float>(
+    int, int, int,
+    const float*, const float*, 
+    const float*, const float*,
+    const float*, const float*,
+    const float*, const float*,
+    float*, int
+);
+
+template void solvePoissonGPU<double>(
+    int, int, int,
+    const double*, const double*, 
+    const double*, const double*,
+    const double*, const double*,
+    const double*, const double*,
+    double*, int
+);
 

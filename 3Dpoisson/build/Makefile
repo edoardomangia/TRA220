@@ -129,30 +129,6 @@ depend:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Dpoisson.dir/build.make CMakeFiles/3Dpoisson.dir/build
 .PHONY : 3Dpoisson/fast
 
-src/gen_vti.o: src/gen_vti.cpp.o
-.PHONY : src/gen_vti.o
-
-# target to build an object file
-src/gen_vti.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Dpoisson.dir/build.make CMakeFiles/3Dpoisson.dir/src/gen_vti.cpp.o
-.PHONY : src/gen_vti.cpp.o
-
-src/gen_vti.i: src/gen_vti.cpp.i
-.PHONY : src/gen_vti.i
-
-# target to preprocess a source file
-src/gen_vti.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Dpoisson.dir/build.make CMakeFiles/3Dpoisson.dir/src/gen_vti.cpp.i
-.PHONY : src/gen_vti.cpp.i
-
-src/gen_vti.s: src/gen_vti.cpp.s
-.PHONY : src/gen_vti.s
-
-# target to generate assembly for a file
-src/gen_vti.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Dpoisson.dir/build.make CMakeFiles/3Dpoisson.dir/src/gen_vti.cpp.s
-.PHONY : src/gen_vti.cpp.s
-
 src/grid3d.o: src/grid3d.cpp.o
 .PHONY : src/grid3d.o
 
@@ -201,30 +177,6 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Dpoisson.dir/build.make CMakeFiles/3Dpoisson.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
-src/poisson_coeffs.o: src/poisson_coeffs.cpp.o
-.PHONY : src/poisson_coeffs.o
-
-# target to build an object file
-src/poisson_coeffs.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Dpoisson.dir/build.make CMakeFiles/3Dpoisson.dir/src/poisson_coeffs.cpp.o
-.PHONY : src/poisson_coeffs.cpp.o
-
-src/poisson_coeffs.i: src/poisson_coeffs.cpp.i
-.PHONY : src/poisson_coeffs.i
-
-# target to preprocess a source file
-src/poisson_coeffs.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Dpoisson.dir/build.make CMakeFiles/3Dpoisson.dir/src/poisson_coeffs.cpp.i
-.PHONY : src/poisson_coeffs.cpp.i
-
-src/poisson_coeffs.s: src/poisson_coeffs.cpp.s
-.PHONY : src/poisson_coeffs.s
-
-# target to generate assembly for a file
-src/poisson_coeffs.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Dpoisson.dir/build.make CMakeFiles/3Dpoisson.dir/src/poisson_coeffs.cpp.s
-.PHONY : src/poisson_coeffs.cpp.s
-
 src/poisson_solver.o: src/poisson_solver.cu.o
 .PHONY : src/poisson_solver.o
 
@@ -258,18 +210,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... 3Dpoisson"
-	@echo "... src/gen_vti.o"
-	@echo "... src/gen_vti.i"
-	@echo "... src/gen_vti.s"
 	@echo "... src/grid3d.o"
 	@echo "... src/grid3d.i"
 	@echo "... src/grid3d.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
-	@echo "... src/poisson_coeffs.o"
-	@echo "... src/poisson_coeffs.i"
-	@echo "... src/poisson_coeffs.s"
 	@echo "... src/poisson_solver.o"
 	@echo "... src/poisson_solver.i"
 	@echo "... src/poisson_solver.s"

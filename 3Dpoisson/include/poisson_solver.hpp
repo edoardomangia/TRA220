@@ -1,16 +1,17 @@
 #pragma once
 
+template<typename Real>
 void solvePoissonGPU(
     int ni, int nj, int nk,
-    const double* h_aw,
-    const double* h_ae,
-    const double* h_as,
-    const double* h_an,
-    const double* h_al,
-    const double* h_ah,
-    const double* h_su,
-    const double* h_ap,
-    double* h_phi,
+    const Real* h_aw,
+    const Real* h_ae,
+    const Real* h_as,
+    const Real* h_an,
+    const Real* h_al,
+    const Real* h_ah,
+    const Real* h_su,
+    const Real* h_ap,
+    Real* h_phi,
     int nIter
 );
 

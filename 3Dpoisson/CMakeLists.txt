@@ -11,9 +11,9 @@ find_package(CUDAToolkit REQUIRED)
 add_executable(3Dpoisson
     src/main.cpp
     src/grid3d.cpp
-    src/poisson_coeffs.cpp
+    # src/poisson_coeffs.cpp
     src/poisson_solver.cu
-    src/gen_vti.cpp
+    # src/gen_vti.cpp
 )
 
 target_include_directories(3Dpoisson PRIVATE 

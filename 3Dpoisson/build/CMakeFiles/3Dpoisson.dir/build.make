@@ -100,25 +100,11 @@ CMakeFiles/3Dpoisson.dir/src/grid3d.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Dpoisson.dir/src/grid3d.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/edoar/Chalmers/TRA220/3Dpoisson/src/grid3d.cpp -o CMakeFiles/3Dpoisson.dir/src/grid3d.cpp.s
 
-CMakeFiles/3Dpoisson.dir/src/poisson_coeffs.cpp.o: CMakeFiles/3Dpoisson.dir/flags.make
-CMakeFiles/3Dpoisson.dir/src/poisson_coeffs.cpp.o: /home/edoar/Chalmers/TRA220/3Dpoisson/src/poisson_coeffs.cpp
-CMakeFiles/3Dpoisson.dir/src/poisson_coeffs.cpp.o: CMakeFiles/3Dpoisson.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/edoar/Chalmers/TRA220/3Dpoisson/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/3Dpoisson.dir/src/poisson_coeffs.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Dpoisson.dir/src/poisson_coeffs.cpp.o -MF CMakeFiles/3Dpoisson.dir/src/poisson_coeffs.cpp.o.d -o CMakeFiles/3Dpoisson.dir/src/poisson_coeffs.cpp.o -c /home/edoar/Chalmers/TRA220/3Dpoisson/src/poisson_coeffs.cpp
-
-CMakeFiles/3Dpoisson.dir/src/poisson_coeffs.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Dpoisson.dir/src/poisson_coeffs.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/edoar/Chalmers/TRA220/3Dpoisson/src/poisson_coeffs.cpp > CMakeFiles/3Dpoisson.dir/src/poisson_coeffs.cpp.i
-
-CMakeFiles/3Dpoisson.dir/src/poisson_coeffs.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Dpoisson.dir/src/poisson_coeffs.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/edoar/Chalmers/TRA220/3Dpoisson/src/poisson_coeffs.cpp -o CMakeFiles/3Dpoisson.dir/src/poisson_coeffs.cpp.s
-
 CMakeFiles/3Dpoisson.dir/src/poisson_solver.cu.o: CMakeFiles/3Dpoisson.dir/flags.make
 CMakeFiles/3Dpoisson.dir/src/poisson_solver.cu.o: CMakeFiles/3Dpoisson.dir/includes_CUDA.rsp
 CMakeFiles/3Dpoisson.dir/src/poisson_solver.cu.o: /home/edoar/Chalmers/TRA220/3Dpoisson/src/poisson_solver.cu
 CMakeFiles/3Dpoisson.dir/src/poisson_solver.cu.o: CMakeFiles/3Dpoisson.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/edoar/Chalmers/TRA220/3Dpoisson/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CUDA object CMakeFiles/3Dpoisson.dir/src/poisson_solver.cu.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/edoar/Chalmers/TRA220/3Dpoisson/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CUDA object CMakeFiles/3Dpoisson.dir/src/poisson_solver.cu.o"
 	/opt/cuda/bin/nvcc -forward-unknown-to-host-compiler $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -MD -MT CMakeFiles/3Dpoisson.dir/src/poisson_solver.cu.o -MF CMakeFiles/3Dpoisson.dir/src/poisson_solver.cu.o.d -x cu -c /home/edoar/Chalmers/TRA220/3Dpoisson/src/poisson_solver.cu -o CMakeFiles/3Dpoisson.dir/src/poisson_solver.cu.o
 
 CMakeFiles/3Dpoisson.dir/src/poisson_solver.cu.i: cmake_force
@@ -129,40 +115,22 @@ CMakeFiles/3Dpoisson.dir/src/poisson_solver.cu.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CUDA source to assembly CMakeFiles/3Dpoisson.dir/src/poisson_solver.cu.s"
 	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CUDA_CREATE_ASSEMBLY_SOURCE
 
-CMakeFiles/3Dpoisson.dir/src/gen_vti.cpp.o: CMakeFiles/3Dpoisson.dir/flags.make
-CMakeFiles/3Dpoisson.dir/src/gen_vti.cpp.o: /home/edoar/Chalmers/TRA220/3Dpoisson/src/gen_vti.cpp
-CMakeFiles/3Dpoisson.dir/src/gen_vti.cpp.o: CMakeFiles/3Dpoisson.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/edoar/Chalmers/TRA220/3Dpoisson/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/3Dpoisson.dir/src/gen_vti.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Dpoisson.dir/src/gen_vti.cpp.o -MF CMakeFiles/3Dpoisson.dir/src/gen_vti.cpp.o.d -o CMakeFiles/3Dpoisson.dir/src/gen_vti.cpp.o -c /home/edoar/Chalmers/TRA220/3Dpoisson/src/gen_vti.cpp
-
-CMakeFiles/3Dpoisson.dir/src/gen_vti.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Dpoisson.dir/src/gen_vti.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/edoar/Chalmers/TRA220/3Dpoisson/src/gen_vti.cpp > CMakeFiles/3Dpoisson.dir/src/gen_vti.cpp.i
-
-CMakeFiles/3Dpoisson.dir/src/gen_vti.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Dpoisson.dir/src/gen_vti.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/edoar/Chalmers/TRA220/3Dpoisson/src/gen_vti.cpp -o CMakeFiles/3Dpoisson.dir/src/gen_vti.cpp.s
-
 # Object files for target 3Dpoisson
 3Dpoisson_OBJECTS = \
 "CMakeFiles/3Dpoisson.dir/src/main.cpp.o" \
 "CMakeFiles/3Dpoisson.dir/src/grid3d.cpp.o" \
-"CMakeFiles/3Dpoisson.dir/src/poisson_coeffs.cpp.o" \
-"CMakeFiles/3Dpoisson.dir/src/poisson_solver.cu.o" \
-"CMakeFiles/3Dpoisson.dir/src/gen_vti.cpp.o"
+"CMakeFiles/3Dpoisson.dir/src/poisson_solver.cu.o"
 
 # External object files for target 3Dpoisson
 3Dpoisson_EXTERNAL_OBJECTS =
 
 3Dpoisson: CMakeFiles/3Dpoisson.dir/src/main.cpp.o
 3Dpoisson: CMakeFiles/3Dpoisson.dir/src/grid3d.cpp.o
-3Dpoisson: CMakeFiles/3Dpoisson.dir/src/poisson_coeffs.cpp.o
 3Dpoisson: CMakeFiles/3Dpoisson.dir/src/poisson_solver.cu.o
-3Dpoisson: CMakeFiles/3Dpoisson.dir/src/gen_vti.cpp.o
 3Dpoisson: CMakeFiles/3Dpoisson.dir/build.make
 3Dpoisson: CMakeFiles/3Dpoisson.dir/compiler_depend.ts
 3Dpoisson: CMakeFiles/3Dpoisson.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/edoar/Chalmers/TRA220/3Dpoisson/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable 3Dpoisson"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/edoar/Chalmers/TRA220/3Dpoisson/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable 3Dpoisson"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/3Dpoisson.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
