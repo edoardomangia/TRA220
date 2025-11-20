@@ -1,21 +1,17 @@
 #include <cuda_runtime.h>
 #include <iostream>
-#include "poisson_solver.hpp"
+#include "poisson_solver.cuh"
+#include "stencils.cuh"
 
-template<typename Real>
+template<typename Real, typename Stencil>
 __global__
 void poissonKernel(
     const Real* __restrict__ phi_old,
     Real* __restrict__ phi_new,
-    const Real* __restrict__ aw,
-    const Real* __restrict__ ae,
-    const Real* __restrict__ as_,
-    const Real* __restrict__ an,
-    const Real* __restrict__ al,
-    const Real* __restrict__ ah,
     const Real* __restrict__ su,
     const Real* __restrict__ ap,
-    int ni, int nj, int nk
+    int ni, int nj, int nk,
+    Stencil stencil
 ) {
     int i = blockIdx.x * blockDim.x + threadIdx.x;
     int j = blockIdx.y * blockDim.y + threadIdx.y;
@@ -25,31 +21,17 @@ void poissonKernel(
     if (i >= ni || j >= nj || k >= nk) return;
     
     // 1D flat array index 
-    int sx = 1;
-    int sy = ni;
-    int sz = ni * nj;
     int idx = i + ni * (j + nj * k);
 
-    // Read neighbors values with reflection at boundaries
-    Real phiE = (i+1 < ni) ? phi_old[idx + sx] : phi_old[idx];
-    Real phiW = (i-1 >= 0) ? phi_old[idx - sx] : phi_old[idx];
-    Real phiN = (j+1 < nj) ? phi_old[idx + sy] : phi_old[idx];
-    Real phiS = (j-1 >= 0) ? phi_old[idx - sy] : phi_old[idx];
-    Real phiH = (k+1 < nk) ? phi_old[idx + sz] : phi_old[idx];
-    Real phiL = (k-1 >= 0) ? phi_old[idx - sz] : phi_old[idx];
-
     // Update
-    Real numerator =
-        ae[idx] * phiE + aw[idx] * phiW +
-        an[idx] * phiN + as_[idx] * phiS +
-        ah[idx] * phiH + al[idx] * phiL +
-        su[idx];
-    
+    Real neighborSum = stencil(idx, i, j, k, phi_old);
+    Real numerator = su[idx] + stencil(idx, i, j, k, phi_old);
     phi_new[idx] = numerator / ap[idx];
 }
 
-template<typename Real>
-void solvePoissonGPU(
+
+template<typename Real, typename Stencil>
+void solvePoissonGPU_impl(
     int ni, int nj, int nk,
     const Real* h_aw,
     const Real* h_ae,
@@ -69,9 +51,9 @@ void solvePoissonGPU(
     
     // Device memory allocation 
     Real *d_aw, *d_ae, 
-           *d_as, *d_an, 
-           *d_al, *d_ah, 
-           *d_su, *d_ap;
+         *d_as, *d_an, 
+         *d_al, *d_ah, 
+         *d_su, *d_ap;
 
     Real *d_phi_old, *d_phi_new;
 
@@ -96,6 +78,11 @@ void solvePoissonGPU(
     cudaMemcpy(d_ap,  h_ap,  bytes, cudaMemcpyHostToDevice);
     cudaMemcpy(d_phi_old, h_phi, bytes, cudaMemcpyHostToDevice);
     
+    Stencil stencil {
+        d_aw, d_ae, d_as, d_an, d_al, d_ah,
+        ni, nj, nk
+    };
+    
     // Dimensions
     dim3 block(8, 8, 8);
     dim3 grid(
@@ -112,11 +99,11 @@ void solvePoissonGPU(
     
     // Iter
     for (int it = 0; it < nIter; ++it) {
-        poissonKernel<<<grid, block>>>(
-            d_phi_old, d_phi_new,
-            d_aw, d_ae, d_as, d_an, d_al, d_ah,
+        poissonKernel<Real><<<grid, block>>>(
+            d_phi_new, d_phi_old
             d_su, d_ap,
-            ni, nj, nk
+            ni, nj, nk,
+            stencil
         );
         // cudaDeviceSynchronize(); 
         std::swap(d_phi_old, d_phi_new);
@@ -138,6 +125,42 @@ void solvePoissonGPU(
     cudaFree(d_al); cudaFree(d_ah); 
     cudaFree(d_su); cudaFree(d_ap);
     cudaFree(d_phi_old); cudaFree(d_phi_new);
+}
+
+template<typename Real>
+void solvePoissonGPU(
+    int ni, int nj, int nk,
+    const Real* h_aw,
+    const Real* h_ae,
+    const Real* h_as,
+    const Real* h_an,
+    const Real* h_al,
+    const Real* h_ah,
+    const Real* h_su,
+    const Real* h_ap,
+    Real* h_phi,
+    int nIter
+) {
+    solvePoissonGPU_impl<Real, Stencil7<Real>>(
+        ni, nj, nk,
+        h_aw, h_ae, h_as, h_an,
+        h_al, h_ah,
+        h_su, h_ap,
+        h_phi,
+        nIter
+    );
+}
+
+template<typename Real>
+void solvePoissonGPU27(
+    int ni, int nj, int nk,
+    const Real* coeffs[26],  // or some other layout
+    const Real* h_su,
+    const Real* h_ap,
+    Real* h_phi,
+    int nIter
+) {
+    solvePoissonGPU_impl<Real, Stencil27<Real>>( ... );
 }
 
 template void solvePoissonGPU<int>(

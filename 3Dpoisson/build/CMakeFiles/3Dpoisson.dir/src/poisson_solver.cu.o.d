@@ -294,4 +294,4 @@ CMakeFiles/3Dpoisson.dir/src/poisson_solver.cu.o : /home/edoar/Chalmers/TRA220/3
     /usr/include/c++/15.2.1/bits/ostream.tcc \
     /usr/include/c++/15.2.1/istream \
     /usr/include/c++/15.2.1/bits/istream.tcc \
-    /home/edoar/Chalmers/TRA220/3Dpoisson/include/poisson_solver.hpp
+    /home/edoar/Chalmers/TRA220/3Dpoisson/include/poisson_solver.cuh

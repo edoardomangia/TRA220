@@ -180,7 +180,7 @@ CMakeFiles/3Dpoisson.dir/src/main.cpp.o: \
  /usr/include/c++/15.2.1/bits/stl_bvector.h \
  /usr/include/c++/15.2.1/bits/vector.tcc \
  /home/edoar/Chalmers/TRA220/3Dpoisson/include/poisson_coeffs.hpp \
- /home/edoar/Chalmers/TRA220/3Dpoisson/include/poisson_solver.hpp \
+ /home/edoar/Chalmers/TRA220/3Dpoisson/include/poisson_solver.cuh \
  /home/edoar/Chalmers/TRA220/3Dpoisson/include/gen_vti.hpp \
  /usr/include/c++/15.2.1/iomanip /usr/include/c++/15.2.1/locale \
  /usr/include/c++/15.2.1/bits/locale_facets_nonio.h \

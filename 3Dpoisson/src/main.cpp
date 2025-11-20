@@ -4,7 +4,7 @@
 #include <limits>
 #include "grid3d.hpp"
 #include "poisson_coeffs.hpp"
-#include "poisson_solver.hpp"
+#include "poisson_solver.cuh"
 #include "gen_vti.hpp"
 
 int main() {
