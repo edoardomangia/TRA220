@@ -49,15 +49,14 @@ PoissonSystem<Real> make_poisson_system(const Grid3D& g) {
         }
     }
 
-    // Dirichlet west boundary p=2, Neumann elsewhere
+    // Dirichlet on west boundary p=2
     Real p_west = Real(2.0);
-
+    
     for (int k = 0; k < nk; ++k) {
         for (int j = 0; j < nj; ++j) {
-            int i = 0;
+            int i = 0; // Cells on the west boundary
             int id = idx3D(i,j,k,ni,nj,nk);
 
-            // Dirichlet: phi = p_west
             // Enforce by setting ap=1, su=p_west, zero neighbors
             sys.aw[id] = Real(0);
             sys.ae[id] = Real(0);
@@ -70,21 +69,10 @@ PoissonSystem<Real> make_poisson_system(const Grid3D& g) {
         }
     }
 
-    // Neumann on other boundaries (zero flux)
-    // Zeroing the outward coefficient, ap will be recomputed
-    for (int k = 0; k < nk; ++k) {
-        for (int i = 0; i < ni; ++i) {
-            int j0 = 0;
-            int j1 = nj-1;
-            sys.as_[idx3D(i,j0,k,ni,nj,nk)] = Real(0);
-            sys.an[idx3D(i,j1,k,ni,nj,nk)] = Real(0);
-        }
-    }
-
     // ap = sum of neighbor coeffs - sp (here sp=0)
     for (size_t id = 0; id < N; ++id) {
         if (sys.ap[id] == Real(1.0) && sys.su[id] == p_west) {
-            continue;
+            continue; // Skip Dirichlet cells
         }
         sys.ap[id] = sys.aw[id] + sys.ae[id]
                    + sys.as_[id] + sys.an[id]

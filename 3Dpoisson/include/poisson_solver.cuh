@@ -1,7 +1,7 @@
 #pragma once
 
 template<typename Real>
-void solvePoissonGPU(
+void solvePoissonGPU7(
     int ni, int nj, int nk,
     const Real* h_aw,
     const Real* h_ae,
@@ -15,3 +15,12 @@ void solvePoissonGPU(
     int nIter
 );
 
+template<typename Real>
+void solvePoissonGPU27(
+    int ni, int nj, int nk,
+    const Real* const h_coeffs[26],
+    const Real* h_su,
+    const Real* h_ap,
+    Real* h_phi,
+    int nIter
+);

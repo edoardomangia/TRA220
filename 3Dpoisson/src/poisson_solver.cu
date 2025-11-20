@@ -31,7 +31,7 @@ void poissonKernel(
 
 
 template<typename Real, typename Stencil>
-void solvePoissonGPU_impl(
+void solvePoissonGPU(
     int ni, int nj, int nk,
     const Real* h_aw,
     const Real* h_ae,
@@ -99,8 +99,8 @@ void solvePoissonGPU_impl(
     
     // Iter
     for (int it = 0; it < nIter; ++it) {
-        poissonKernel<Real><<<grid, block>>>(
-            d_phi_new, d_phi_old
+        poissonKernel<Real, Stencil><<<grid, block>>>(
+            d_phi_old, d_phi_new,
             d_su, d_ap,
             ni, nj, nk,
             stencil
@@ -128,7 +128,7 @@ void solvePoissonGPU_impl(
 }
 
 template<typename Real>
-void solvePoissonGPU(
+void solvePoissonGPU7(
     int ni, int nj, int nk,
     const Real* h_aw,
     const Real* h_ae,
@@ -141,7 +141,7 @@ void solvePoissonGPU(
     Real* h_phi,
     int nIter
 ) {
-    solvePoissonGPU_impl<Real, Stencil7<Real>>(
+    solvePoissonGPU<Real, Stencil7<Real>>(
         ni, nj, nk,
         h_aw, h_ae, h_as, h_an,
         h_al, h_ah,
@@ -154,15 +154,16 @@ void solvePoissonGPU(
 template<typename Real>
 void solvePoissonGPU27(
     int ni, int nj, int nk,
-    const Real* coeffs[26],  // or some other layout
+    const Real* const h_coeffs[26],
     const Real* h_su,
     const Real* h_ap,
     Real* h_phi,
     int nIter
 ) {
-    solvePoissonGPU_impl<Real, Stencil27<Real>>( ... );
+    solvePoissonGPU_impl<Real, Stencil27<Real>>(
+        ni, nj, nk,
+    );
 }
-
 template void solvePoissonGPU<int>(
     int, int, int,
     const int*, const int*, 
