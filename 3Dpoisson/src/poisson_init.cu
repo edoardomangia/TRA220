@@ -102,7 +102,7 @@ void initPoissonSystemDevice(const Grid3DDevice &g,
     int id_mid = idx3D(ni2, nj2, nk2, ni, nj, nk);
 
     // Point source strength 
-    Real source_strength = Real(10000.0) * dx * dy * dz;
+    Real source_strength = Real(1000000.0) * dx * dy * dz;
 
     dim3 block(8, 8, 8);
     dim3 gridDim(

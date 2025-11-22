@@ -23,15 +23,15 @@ void allocatePoissonSystemDevice(int ni, int nj, int nk,
     cudaMalloc(&sys.su,  bytes);
     cudaMalloc(&sys.phi, bytes);
 
-    cudaMemset(sys.aw,  0, bytes);
-    cudaMemset(sys.ae,  0, bytes);
-    cudaMemset(sys.as_, 0, bytes);
-    cudaMemset(sys.an,  0, bytes);
-    cudaMemset(sys.al,  0, bytes);
-    cudaMemset(sys.ah,  0, bytes);
-    cudaMemset(sys.ap,  0, bytes);
-    cudaMemset(sys.su,  0, bytes);
-    cudaMemset(sys.phi, 0, bytes);
+    // cudaMemset(sys.aw,  0, bytes);
+    // cudaMemset(sys.ae,  0, bytes);
+    // cudaMemset(sys.as_, 0, bytes);
+    // cudaMemset(sys.an,  0, bytes);
+    // cudaMemset(sys.al,  0, bytes);
+    // cudaMemset(sys.ah,  0, bytes);
+    // cudaMemset(sys.ap,  0, bytes);
+    // cudaMemset(sys.su,  0, bytes);
+    // cudaMemset(sys.phi, 0, bytes);
 }
 
 template<typename Real>

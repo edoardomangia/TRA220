@@ -7,7 +7,7 @@ struct Grid3DDevice {
     int ni, nj, nk;             // Number of cells
     double xmax, ymax, zmax;    // Domain
     double dx, dy, dz;          // Cells spacing
-    double *x, *y, *z;          // Device pointers
+    // double *x, *y, *z;          // Device pointers
 };
 
 // Allocate device arrays, fills them with coords

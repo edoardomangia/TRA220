@@ -3,11 +3,6 @@
 #include <iomanip>
 #include <type_traits>
 
-static inline int idx3D(int i, int j, int k, 
-                        int ni, int nj, int nk) {
-    return i + ni * (j + nj * k);
-}
-
 template<typename Real>
 void gen_vti(const std::string& filename,
              const Grid3D& g, 

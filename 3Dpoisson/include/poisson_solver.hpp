@@ -2,10 +2,5 @@
 #pragma once
 #include "grid3d.cuh"
 
-namespace poisson3d {
-    void solvePoissonGPU_float(
-            const Grid3DDevice&, float *h_phi, int nIter);
-    void solvePoissonGPU_double(
-            const Grid3DDevice&, double *h_phi, int nIter);
-}
-
+template<typename Real>
+void solvePoissonGPU(const Grid3DDevice& g, Real* h_phi, int nIter);

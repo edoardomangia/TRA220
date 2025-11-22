@@ -7,7 +7,6 @@
 #include "poisson_system.cuh"
 #include "poisson_init.cuh"
 #include "poisson_solver.hpp"
-// #include "cuda_utils.hpp"
 
 template<typename Real>
 __global__
@@ -37,7 +36,7 @@ void PoissonKernel(
 
     int idx = i + ni * (j + nj * k);
 
-    // Neumann BC 
+    // Boundary check 
     Real phiC = phi_old[idx];
 
     Real phiE = (i + 1 < ni) ? phi_old[idx + sx] : phiC;
@@ -53,13 +52,11 @@ void PoissonKernel(
         ah[idx] * phiH + al[idx] * phiL +
         su[idx];
 
-    // For Dirichlet cells set ap = 1 and all neighbor coeffs = 0
-    // so this reduces to phi_new[idx] = su[idx]
     phi_new[idx] = numerator / ap[idx];
 }
 
 template<typename Real>
-void solvePoissonGPU_impl(const Grid3DDevice &g,
+void solvePoissonGPU(const Grid3DDevice &g,
                           Real *h_phi,
                           int nIter)
 {
@@ -129,26 +126,6 @@ void solvePoissonGPU_impl(const Grid3DDevice &g,
     freePoissonSystemDevice<Real>(sys);
 }
 
-// Explicit instantiation of the internal templated solver
-template void solvePoissonGPU_impl<float>(const Grid3DDevice&, float*, int);
-template void solvePoissonGPU_impl<double>(const Grid3DDevice&, double*, int);
-
-// Public non templated wrappers
-namespace poisson3d {
-
-    void solvePoissonGPU_float(const Grid3DDevice &g,
-                               float *h_phi,
-                               int nIter)
-    {
-        solvePoissonGPU_impl<float>(g, h_phi, nIter);
-    }
-
-    void solvePoissonGPU_double(const Grid3DDevice &g,
-                                double *h_phi,
-                                int nIter)
-    {
-        solvePoissonGPU_impl<double>(g, h_phi, nIter);
-    }
-
-} 
+template void solvePoissonGPU<float>(const Grid3DDevice&, float*, int);
+template void solvePoissonGPU<double>(const Grid3DDevice&, double*, int);
 
