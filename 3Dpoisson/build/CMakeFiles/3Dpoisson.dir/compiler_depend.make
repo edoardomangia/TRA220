@@ -282,6 +282,7 @@ CMakeFiles/3Dpoisson.dir/src/grid3d.cu.o: /home/edoar/Chalmers/TRA220/3Dpoisson/
 CMakeFiles/3Dpoisson.dir/src/main.cpp.o: /home/edoar/Chalmers/TRA220/3Dpoisson/src/main.cpp \
   /home/edoar/Chalmers/TRA220/3Dpoisson/include/gen_vti.hpp \
   /home/edoar/Chalmers/TRA220/3Dpoisson/include/grid3d.cuh \
+  /home/edoar/Chalmers/TRA220/3Dpoisson/include/grid3d.hpp \
   /home/edoar/Chalmers/TRA220/3Dpoisson/include/poisson_solver.hpp \
   /home/edoar/Chalmers/TRA220/3Dpoisson/include/types.hpp \
   /opt/cuda/targets/x86_64-linux/include/builtin_types.h \
@@ -386,6 +387,7 @@ CMakeFiles/3Dpoisson.dir/src/main.cpp.o: /home/edoar/Chalmers/TRA220/3Dpoisson/s
   /usr/include/c++/15.2.1/bits/basic_string.tcc \
   /usr/include/c++/15.2.1/bits/char_traits.h \
   /usr/include/c++/15.2.1/bits/charconv.h \
+  /usr/include/c++/15.2.1/bits/codecvt.h \
   /usr/include/c++/15.2.1/bits/concept_check.h \
   /usr/include/c++/15.2.1/bits/cpp_type_traits.h \
   /usr/include/c++/15.2.1/bits/cxxabi_forced.h \
@@ -393,6 +395,7 @@ CMakeFiles/3Dpoisson.dir/src/main.cpp.o: /home/edoar/Chalmers/TRA220/3Dpoisson/s
   /usr/include/c++/15.2.1/bits/exception.h \
   /usr/include/c++/15.2.1/bits/exception_defines.h \
   /usr/include/c++/15.2.1/bits/exception_ptr.h \
+  /usr/include/c++/15.2.1/bits/fstream.tcc \
   /usr/include/c++/15.2.1/bits/functexcept.h \
   /usr/include/c++/15.2.1/bits/functional_hash.h \
   /usr/include/c++/15.2.1/bits/hash_bytes.h \
@@ -456,6 +459,7 @@ CMakeFiles/3Dpoisson.dir/src/main.cpp.o: /home/edoar/Chalmers/TRA220/3Dpoisson/s
   /usr/include/c++/15.2.1/ext/numeric_traits.h \
   /usr/include/c++/15.2.1/ext/string_conversions.h \
   /usr/include/c++/15.2.1/ext/type_traits.h \
+  /usr/include/c++/15.2.1/fstream \
   /usr/include/c++/15.2.1/initializer_list \
   /usr/include/c++/15.2.1/ios \
   /usr/include/c++/15.2.1/iosfwd \
@@ -475,8 +479,10 @@ CMakeFiles/3Dpoisson.dir/src/main.cpp.o: /home/edoar/Chalmers/TRA220/3Dpoisson/s
   /usr/include/c++/15.2.1/utility \
   /usr/include/c++/15.2.1/vector \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/atomic_word.h \
+  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/basic_file.h \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++allocator.h \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++config.h \
+  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++io.h \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++locale.h \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/cpu_defines.h \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/ctype_base.h \
@@ -1232,6 +1238,10 @@ CMakeFiles/3Dpoisson.dir/src/poisson_system.cu.o: /home/edoar/Chalmers/TRA220/3D
 
 /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/ctype_base.h:
 
+/usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++io.h:
+
+/usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/basic_file.h:
+
 /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/atomic_word.h:
 
 /usr/include/c++/15.2.1/streambuf:
@@ -1239,6 +1249,8 @@ CMakeFiles/3Dpoisson.dir/src/poisson_system.cu.o: /home/edoar/Chalmers/TRA220/3D
 /usr/include/c++/15.2.1/ostream:
 
 /usr/include/c++/15.2.1/istream:
+
+/usr/include/c++/15.2.1/fstream:
 
 /usr/include/c++/15.2.1/cwctype:
 
@@ -1257,6 +1269,8 @@ CMakeFiles/3Dpoisson.dir/src/poisson_system.cu.o: /home/edoar/Chalmers/TRA220/3D
 /usr/include/c++/15.2.1/bits/locale_facets.h:
 
 /usr/include/c++/15.2.1/bits/locale_classes.tcc:
+
+/usr/include/c++/15.2.1/bits/codecvt.h:
 
 /usr/include/c++/15.2.1/bits/basic_ios.tcc:
 
@@ -1282,6 +1296,8 @@ CMakeFiles/3Dpoisson.dir/src/poisson_system.cu.o: /home/edoar/Chalmers/TRA220/3D
 
 /home/edoar/Chalmers/TRA220/3Dpoisson/include/poisson_solver.hpp:
 
+/home/edoar/Chalmers/TRA220/3Dpoisson/include/grid3d.hpp:
+
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/syslimits.h:
 
 /usr/include/asm-generic/int-ll64.h:
@@ -1291,6 +1307,8 @@ CMakeFiles/3Dpoisson.dir/src/poisson_system.cu.o: /home/edoar/Chalmers/TRA220/3D
 /usr/include/c++/15.2.1/bits/ostream.tcc:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdarg.h:
+
+/usr/include/c++/15.2.1/bits/fstream.tcc:
 
 /usr/include/time.h:
 

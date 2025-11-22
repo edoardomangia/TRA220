@@ -32,9 +32,14 @@ void initPoissonSystemKernel(PoissonSystemDevice<Real> sys,
     Real phi = Real(0);
 
     // Neumann BC: kill flux by zeroing those coefficients
+    if (i == 0)      aw  = Real(0);
+    if (i == ni - 1) ae  = Real(0);
     if (j == 0)      as_ = Real(0);
     if (j == nj - 1) an  = Real(0);
-
+    if (k == 0)      al  = Real(0);
+    if (k == nk - 1) ah  = Real(0);
+   
+    // TODO What if other Dir BCs? 
     // Dirichlet BC: at west boundary i = 0, p = p_west
     if (i == 0) {
         aw  = Real(0);
@@ -66,6 +71,8 @@ void initPoissonSystemKernel(PoissonSystemDevice<Real> sys,
         sys.su[id] += source_strength;
     }
 }
+    
+    // TODO Other BCs? 
 
 template<typename Real>
 void initPoissonSystemDevice(const Grid3DDevice &g,
@@ -95,7 +102,7 @@ void initPoissonSystemDevice(const Grid3DDevice &g,
     int id_mid = idx3D(ni2, nj2, nk2, ni, nj, nk);
 
     // Point source strength 
-    Real source_strength = Real(100.0) * dx * dy * dz;
+    Real source_strength = Real(10000.0) * dx * dy * dz;
 
     dim3 block(8, 8, 8);
     dim3 gridDim(

@@ -2,11 +2,11 @@
 #include <cuda_runtime.h>
 #include <iostream>
 #include <vector>
-
+#include "types.hpp"
 #include "grid3d.cuh"
 #include "poisson_solver.hpp"
+#include "grid3d.hpp"
 #include "gen_vti.hpp"
-#include "types.hpp"
 
 using poisson3d::Real;
 
@@ -39,11 +39,8 @@ int main() {
 
     std::cout << "Before phi[0] = " << phi[0] << "\n";
     
-    if constexpr (std::is_same_v<Real, float>) {
-        poisson3d::solvePoissonGPU_float(grid_d, phi.data(), nIter);
-    } else {
-        poisson3d::solvePoissonGPU_double(grid_d, phi.data(), nIter);
-    }
+    // poisson3d::solvePoissonGPU_float(grid_d, phi.data(), nIter);
+    poisson3d::solvePoissonGPU_double(grid_d, phi.data(), nIter);
     
     std::cout << "After phi[0] = " << phi[0] << "\n";
 
@@ -60,9 +57,11 @@ int main() {
     // } 
     // std::cout << "phi range: min = " << minphi
     //           << ", max = " << maxphi << "\n";
+    
+    Grid3D grid_h = make_grid_from_device(grid_d);
 
     // Plotting 
-    // gen_vti("phi.vti", grid_host, phi);
+    write_vti("phi.vti", grid_h, phi);
     
     free_grid_device(grid_d);
     return 0;

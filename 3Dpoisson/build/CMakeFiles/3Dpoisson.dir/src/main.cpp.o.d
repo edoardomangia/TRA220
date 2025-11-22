@@ -176,7 +176,12 @@ CMakeFiles/3Dpoisson.dir/src/main.cpp.o: \
  /usr/include/c++/15.2.1/bits/stl_vector.h \
  /usr/include/c++/15.2.1/bits/stl_bvector.h \
  /usr/include/c++/15.2.1/bits/vector.tcc \
+ /home/edoar/Chalmers/TRA220/3Dpoisson/include/types.hpp \
  /home/edoar/Chalmers/TRA220/3Dpoisson/include/grid3d.cuh \
  /home/edoar/Chalmers/TRA220/3Dpoisson/include/poisson_solver.hpp \
+ /home/edoar/Chalmers/TRA220/3Dpoisson/include/grid3d.hpp \
  /home/edoar/Chalmers/TRA220/3Dpoisson/include/gen_vti.hpp \
- /home/edoar/Chalmers/TRA220/3Dpoisson/include/types.hpp
+ /usr/include/c++/15.2.1/fstream /usr/include/c++/15.2.1/bits/codecvt.h \
+ /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/basic_file.h \
+ /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++io.h \
+ /usr/include/c++/15.2.1/bits/fstream.tcc
