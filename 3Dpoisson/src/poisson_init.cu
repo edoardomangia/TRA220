@@ -1,7 +1,7 @@
-// src/poisson_init.cu
+// poisson_init.cu
 #include <cuda_runtime.h>
-#include "poisson_init.cuh"
 #include "idx3d.cuh"
+#include "poisson_init.cuh"
 
 // Kernel to initialize the system on the GPU
 template<typename Real>
@@ -19,7 +19,7 @@ void initPoissonSystemKernel(PoissonSystemDevice<Real> sys,
 
     if (i >= ni || j >= nj || k >= nk) return;
 
-    int id = idx3D(i, j, k, ni, nj);
+    int id = idx3D(i, j, k, ni, nj, nk);
 
     // Default coefficients
     Real aw  = cx;
@@ -92,7 +92,7 @@ void initPoissonSystemDevice(const Grid3DDevice &g,
     int nj2 = nj / 2;
     int nk2 = nk / 2;
 
-    int id_mid = idx3D(ni2, nj2, nk2, ni, nj);
+    int id_mid = idx3D(ni2, nj2, nk2, ni, nj, nk);
 
     // Point source strength 
     Real source_strength = Real(100.0) * dx * dy * dz;
@@ -114,8 +114,13 @@ void initPoissonSystemDevice(const Grid3DDevice &g,
     );
 }
 
-template void initPoissonSystemDevice<float>(const Grid3DDevice &,
-                                             PoissonSystemDevice<float> &);
-template void initPoissonSystemDevice<double>(const Grid3DDevice &,
-                                              PoissonSystemDevice<double> &);
+// cudaGetLastError();
+
+template void initPoissonSystemDevice<float>(
+        const Grid3DDevice &,
+        PoissonSystemDevice<float> &);
+
+template void initPoissonSystemDevice<double>(
+        const Grid3DDevice &,
+        PoissonSystemDevice<double> &);
 

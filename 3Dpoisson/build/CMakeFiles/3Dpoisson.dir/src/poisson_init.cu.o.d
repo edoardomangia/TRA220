@@ -188,7 +188,7 @@ CMakeFiles/3Dpoisson.dir/src/poisson_init.cu.o : /home/edoar/Chalmers/TRA220/3Dp
     /usr/include/c++/15.2.1/utility \
     /usr/include/c++/15.2.1/bits/stl_relops.h \
     /usr/include/c++/15.2.1/initializer_list \
+    /home/edoar/Chalmers/TRA220/3Dpoisson/include/idx3d.cuh \
     /home/edoar/Chalmers/TRA220/3Dpoisson/include/poisson_init.cuh \
     /home/edoar/Chalmers/TRA220/3Dpoisson/include/grid3d.cuh \
-    /home/edoar/Chalmers/TRA220/3Dpoisson/include/poisson_system.cuh \
-    /home/edoar/Chalmers/TRA220/3Dpoisson/include/idx3d.cuh
+    /home/edoar/Chalmers/TRA220/3Dpoisson/include/poisson_system.cuh

@@ -2,12 +2,12 @@
 #include <cuda_runtime.h>
 #include <utility>   
 #include <iostream>  
-#include "poisson_solver.hpp"
+#include "idx3d.cuh"
+#include "grid3d.cuh"
 #include "poisson_system.cuh"
 #include "poisson_init.cuh"
-#include "grid3d_device.cuh"
-#include "idx3d.cuh"
-#include "cuda_utils.hpp"
+#include "poisson_solver.hpp"
+// #include "cuda_utils.hpp"
 
 template<typename Real>
 __global__

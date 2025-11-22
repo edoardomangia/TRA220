@@ -22,9 +22,12 @@
   /usr/lib/libc_nonshared.a \
   /usr/lib/libm.so.6 \
   /usr/lib/libmvec.so.1 \
-  CMakeFiles/3Dpoisson.dir/src/grid3d.cpp.o \
+  CMakeFiles/3Dpoisson.dir/cmake_device_link.o \
+  CMakeFiles/3Dpoisson.dir/src/grid3d.cu.o \
   CMakeFiles/3Dpoisson.dir/src/main.cpp.o \
-  CMakeFiles/3Dpoisson.dir/src/poisson_solver.cu.o
+  CMakeFiles/3Dpoisson.dir/src/poisson_init.cu.o \
+  CMakeFiles/3Dpoisson.dir/src/poisson_solver.cu.o \
+  CMakeFiles/3Dpoisson.dir/src/poisson_system.cu.o
 
 CMakeFiles/3Dpoisson.dir/src/grid3d.cu.o: /home/edoar/Chalmers/TRA220/3Dpoisson/src/grid3d.cu \
   /home/edoar/Chalmers/TRA220/3Dpoisson/include/grid3d.cuh \
@@ -280,6 +283,7 @@ CMakeFiles/3Dpoisson.dir/src/main.cpp.o: /home/edoar/Chalmers/TRA220/3Dpoisson/s
   /home/edoar/Chalmers/TRA220/3Dpoisson/include/gen_vti.hpp \
   /home/edoar/Chalmers/TRA220/3Dpoisson/include/grid3d.cuh \
   /home/edoar/Chalmers/TRA220/3Dpoisson/include/poisson_solver.hpp \
+  /home/edoar/Chalmers/TRA220/3Dpoisson/include/types.hpp \
   /opt/cuda/targets/x86_64-linux/include/builtin_types.h \
   /opt/cuda/targets/x86_64-linux/include/channel_descriptor.h \
   /opt/cuda/targets/x86_64-linux/include/crt/host_config.h \
@@ -513,11 +517,207 @@ CMakeFiles/3Dpoisson.dir/src/main.cpp.o: /home/edoar/Chalmers/TRA220/3Dpoisson/s
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stddef.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/syslimits.h
 
+CMakeFiles/3Dpoisson.dir/src/poisson_init.cu.o: /home/edoar/Chalmers/TRA220/3Dpoisson/src/poisson_init.cu \
+  /home/edoar/Chalmers/TRA220/3Dpoisson/include/grid3d.cuh \
+  /home/edoar/Chalmers/TRA220/3Dpoisson/include/idx3d.cuh \
+  /home/edoar/Chalmers/TRA220/3Dpoisson/include/poisson_init.cuh \
+  /home/edoar/Chalmers/TRA220/3Dpoisson/include/poisson_system.cuh \
+  /opt/cuda/targets/x86_64-linux/include/builtin_types.h \
+  /opt/cuda/targets/x86_64-linux/include/channel_descriptor.h \
+  /opt/cuda/targets/x86_64-linux/include/crt/common_functions.h \
+  /opt/cuda/targets/x86_64-linux/include/crt/cudacc_ext.h \
+  /opt/cuda/targets/x86_64-linux/include/crt/device_double_functions.h \
+  /opt/cuda/targets/x86_64-linux/include/crt/device_double_functions.hpp \
+  /opt/cuda/targets/x86_64-linux/include/crt/device_functions.h \
+  /opt/cuda/targets/x86_64-linux/include/crt/device_functions.hpp \
+  /opt/cuda/targets/x86_64-linux/include/crt/host_config.h \
+  /opt/cuda/targets/x86_64-linux/include/crt/host_defines.h \
+  /opt/cuda/targets/x86_64-linux/include/crt/math_functions.h \
+  /opt/cuda/targets/x86_64-linux/include/crt/math_functions.hpp \
+  /opt/cuda/targets/x86_64-linux/include/crt/sm_100_rt.h \
+  /opt/cuda/targets/x86_64-linux/include/crt/sm_100_rt.hpp \
+  /opt/cuda/targets/x86_64-linux/include/crt/sm_70_rt.h \
+  /opt/cuda/targets/x86_64-linux/include/crt/sm_70_rt.hpp \
+  /opt/cuda/targets/x86_64-linux/include/crt/sm_80_rt.h \
+  /opt/cuda/targets/x86_64-linux/include/crt/sm_80_rt.hpp \
+  /opt/cuda/targets/x86_64-linux/include/crt/sm_90_rt.h \
+  /opt/cuda/targets/x86_64-linux/include/crt/sm_90_rt.hpp \
+  /opt/cuda/targets/x86_64-linux/include/cuda_device_runtime_api.h \
+  /opt/cuda/targets/x86_64-linux/include/cuda_runtime.h \
+  /opt/cuda/targets/x86_64-linux/include/cuda_runtime_api.h \
+  /opt/cuda/targets/x86_64-linux/include/device_atomic_functions.h \
+  /opt/cuda/targets/x86_64-linux/include/device_atomic_functions.hpp \
+  /opt/cuda/targets/x86_64-linux/include/device_launch_parameters.h \
+  /opt/cuda/targets/x86_64-linux/include/device_types.h \
+  /opt/cuda/targets/x86_64-linux/include/driver_functions.h \
+  /opt/cuda/targets/x86_64-linux/include/driver_types.h \
+  /opt/cuda/targets/x86_64-linux/include/library_types.h \
+  /opt/cuda/targets/x86_64-linux/include/sm_20_atomic_functions.h \
+  /opt/cuda/targets/x86_64-linux/include/sm_20_atomic_functions.hpp \
+  /opt/cuda/targets/x86_64-linux/include/sm_20_intrinsics.h \
+  /opt/cuda/targets/x86_64-linux/include/sm_20_intrinsics.hpp \
+  /opt/cuda/targets/x86_64-linux/include/sm_30_intrinsics.h \
+  /opt/cuda/targets/x86_64-linux/include/sm_30_intrinsics.hpp \
+  /opt/cuda/targets/x86_64-linux/include/sm_32_atomic_functions.h \
+  /opt/cuda/targets/x86_64-linux/include/sm_32_atomic_functions.hpp \
+  /opt/cuda/targets/x86_64-linux/include/sm_32_intrinsics.h \
+  /opt/cuda/targets/x86_64-linux/include/sm_32_intrinsics.hpp \
+  /opt/cuda/targets/x86_64-linux/include/sm_35_atomic_functions.h \
+  /opt/cuda/targets/x86_64-linux/include/sm_35_intrinsics.h \
+  /opt/cuda/targets/x86_64-linux/include/sm_60_atomic_functions.h \
+  /opt/cuda/targets/x86_64-linux/include/sm_60_atomic_functions.hpp \
+  /opt/cuda/targets/x86_64-linux/include/sm_61_intrinsics.h \
+  /opt/cuda/targets/x86_64-linux/include/sm_61_intrinsics.hpp \
+  /opt/cuda/targets/x86_64-linux/include/surface_indirect_functions.h \
+  /opt/cuda/targets/x86_64-linux/include/surface_types.h \
+  /opt/cuda/targets/x86_64-linux/include/texture_indirect_functions.h \
+  /opt/cuda/targets/x86_64-linux/include/texture_types.h \
+  /opt/cuda/targets/x86_64-linux/include/vector_functions.h \
+  /opt/cuda/targets/x86_64-linux/include/vector_functions.hpp \
+  /opt/cuda/targets/x86_64-linux/include/vector_types.h \
+  /usr/include/alloca.h \
+  /usr/include/assert.h \
+  /usr/include/bits/atomic_wide_counter.h \
+  /usr/include/bits/byteswap.h \
+  /usr/include/bits/endian.h \
+  /usr/include/bits/endianness.h \
+  /usr/include/bits/floatn-common.h \
+  /usr/include/bits/floatn.h \
+  /usr/include/bits/flt-eval-method.h \
+  /usr/include/bits/fp-fast.h \
+  /usr/include/bits/fp-logb.h \
+  /usr/include/bits/iscanonical.h \
+  /usr/include/bits/libc-header-start.h \
+  /usr/include/bits/libm-simd-decl-stubs.h \
+  /usr/include/bits/local_lim.h \
+  /usr/include/bits/long-double.h \
+  /usr/include/bits/math-vector.h \
+  /usr/include/bits/mathcalls-helper-functions.h \
+  /usr/include/bits/mathcalls-macros.h \
+  /usr/include/bits/mathcalls-narrow.h \
+  /usr/include/bits/mathcalls.h \
+  /usr/include/bits/posix1_lim.h \
+  /usr/include/bits/posix2_lim.h \
+  /usr/include/bits/pthread_stack_min-dynamic.h \
+  /usr/include/bits/pthreadtypes-arch.h \
+  /usr/include/bits/pthreadtypes.h \
+  /usr/include/bits/select.h \
+  /usr/include/bits/stdint-intn.h \
+  /usr/include/bits/stdio_lim.h \
+  /usr/include/bits/stdlib-float.h \
+  /usr/include/bits/struct_mutex.h \
+  /usr/include/bits/struct_rwlock.h \
+  /usr/include/bits/thread-shared-types.h \
+  /usr/include/bits/time.h \
+  /usr/include/bits/time64.h \
+  /usr/include/bits/timesize.h \
+  /usr/include/bits/timex.h \
+  /usr/include/bits/types.h \
+  /usr/include/bits/types/FILE.h \
+  /usr/include/bits/types/__FILE.h \
+  /usr/include/bits/types/__fpos64_t.h \
+  /usr/include/bits/types/__fpos_t.h \
+  /usr/include/bits/types/__locale_t.h \
+  /usr/include/bits/types/__mbstate_t.h \
+  /usr/include/bits/types/__sigset_t.h \
+  /usr/include/bits/types/clock_t.h \
+  /usr/include/bits/types/clockid_t.h \
+  /usr/include/bits/types/cookie_io_functions_t.h \
+  /usr/include/bits/types/locale_t.h \
+  /usr/include/bits/types/sigset_t.h \
+  /usr/include/bits/types/struct_FILE.h \
+  /usr/include/bits/types/struct_itimerspec.h \
+  /usr/include/bits/types/struct_timespec.h \
+  /usr/include/bits/types/struct_timeval.h \
+  /usr/include/bits/types/struct_tm.h \
+  /usr/include/bits/types/time_t.h \
+  /usr/include/bits/types/timer_t.h \
+  /usr/include/bits/typesizes.h \
+  /usr/include/bits/uintn-identity.h \
+  /usr/include/bits/uio_lim.h \
+  /usr/include/bits/waitflags.h \
+  /usr/include/bits/waitstatus.h \
+  /usr/include/bits/wordsize.h \
+  /usr/include/bits/xopen_lim.h \
+  /usr/include/c++/15.2.1/bit \
+  /usr/include/c++/15.2.1/bits/concept_check.h \
+  /usr/include/c++/15.2.1/bits/cpp_type_traits.h \
+  /usr/include/c++/15.2.1/bits/exception.h \
+  /usr/include/c++/15.2.1/bits/exception_defines.h \
+  /usr/include/c++/15.2.1/bits/functexcept.h \
+  /usr/include/c++/15.2.1/bits/move.h \
+  /usr/include/c++/15.2.1/bits/predefined_ops.h \
+  /usr/include/c++/15.2.1/bits/ptr_traits.h \
+  /usr/include/c++/15.2.1/bits/requires_hosted.h \
+  /usr/include/c++/15.2.1/bits/specfun.h \
+  /usr/include/c++/15.2.1/bits/std_abs.h \
+  /usr/include/c++/15.2.1/bits/stl_algobase.h \
+  /usr/include/c++/15.2.1/bits/stl_iterator.h \
+  /usr/include/c++/15.2.1/bits/stl_iterator_base_funcs.h \
+  /usr/include/c++/15.2.1/bits/stl_iterator_base_types.h \
+  /usr/include/c++/15.2.1/bits/stl_pair.h \
+  /usr/include/c++/15.2.1/bits/stl_relops.h \
+  /usr/include/c++/15.2.1/bits/utility.h \
+  /usr/include/c++/15.2.1/bits/version.h \
+  /usr/include/c++/15.2.1/cmath \
+  /usr/include/c++/15.2.1/concepts \
+  /usr/include/c++/15.2.1/cstdlib \
+  /usr/include/c++/15.2.1/debug/assertions.h \
+  /usr/include/c++/15.2.1/debug/debug.h \
+  /usr/include/c++/15.2.1/ext/numeric_traits.h \
+  /usr/include/c++/15.2.1/ext/type_traits.h \
+  /usr/include/c++/15.2.1/initializer_list \
+  /usr/include/c++/15.2.1/limits \
+  /usr/include/c++/15.2.1/math.h \
+  /usr/include/c++/15.2.1/new \
+  /usr/include/c++/15.2.1/pstl/pstl_config.h \
+  /usr/include/c++/15.2.1/stdlib.h \
+  /usr/include/c++/15.2.1/tr1/bessel_function.tcc \
+  /usr/include/c++/15.2.1/tr1/beta_function.tcc \
+  /usr/include/c++/15.2.1/tr1/ell_integral.tcc \
+  /usr/include/c++/15.2.1/tr1/exp_integral.tcc \
+  /usr/include/c++/15.2.1/tr1/gamma.tcc \
+  /usr/include/c++/15.2.1/tr1/hypergeometric.tcc \
+  /usr/include/c++/15.2.1/tr1/legendre_function.tcc \
+  /usr/include/c++/15.2.1/tr1/modified_bessel_func.tcc \
+  /usr/include/c++/15.2.1/tr1/poly_hermite.tcc \
+  /usr/include/c++/15.2.1/tr1/poly_laguerre.tcc \
+  /usr/include/c++/15.2.1/tr1/riemann_zeta.tcc \
+  /usr/include/c++/15.2.1/tr1/special_function_util.h \
+  /usr/include/c++/15.2.1/type_traits \
+  /usr/include/c++/15.2.1/utility \
+  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++config.h \
+  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/cpu_defines.h \
+  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/os_defines.h \
+  /usr/include/ctype.h \
+  /usr/include/endian.h \
+  /usr/include/features-time64.h \
+  /usr/include/features.h \
+  /usr/include/gnu/stubs-64.h \
+  /usr/include/gnu/stubs.h \
+  /usr/include/limits.h \
+  /usr/include/linux/limits.h \
+  /usr/include/math.h \
+  /usr/include/stdc-predef.h \
+  /usr/include/stdio.h \
+  /usr/include/stdlib.h \
+  /usr/include/string.h \
+  /usr/include/strings.h \
+  /usr/include/sys/cdefs.h \
+  /usr/include/sys/select.h \
+  /usr/include/sys/types.h \
+  /usr/include/time.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/limits.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdarg.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stddef.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/syslimits.h
+
 CMakeFiles/3Dpoisson.dir/src/poisson_solver.cu.o: /home/edoar/Chalmers/TRA220/3Dpoisson/src/poisson_solver.cu \
   /home/edoar/Chalmers/TRA220/3Dpoisson/include/grid3d.cuh \
   /home/edoar/Chalmers/TRA220/3Dpoisson/include/idx3d.cuh \
-  /home/edoar/Chalmers/TRA220/3Dpoisson/include/poisson_gpu.cuh \
-  /home/edoar/Chalmers/TRA220/3Dpoisson/include/poisson_solver.cuh \
+  /home/edoar/Chalmers/TRA220/3Dpoisson/include/poisson_init.cuh \
+  /home/edoar/Chalmers/TRA220/3Dpoisson/include/poisson_solver.hpp \
+  /home/edoar/Chalmers/TRA220/3Dpoisson/include/poisson_system.cuh \
   /opt/cuda/targets/x86_64-linux/include/builtin_types.h \
   /opt/cuda/targets/x86_64-linux/include/channel_descriptor.h \
   /opt/cuda/targets/x86_64-linux/include/crt/common_functions.h \
@@ -701,7 +901,6 @@ CMakeFiles/3Dpoisson.dir/src/poisson_solver.cu.o: /home/edoar/Chalmers/TRA220/3D
   /usr/include/c++/15.2.1/bits/refwrap.h \
   /usr/include/c++/15.2.1/bits/requires_hosted.h \
   /usr/include/c++/15.2.1/bits/specfun.h \
-  /usr/include/c++/15.2.1/bits/sstream.tcc \
   /usr/include/c++/15.2.1/bits/std_abs.h \
   /usr/include/c++/15.2.1/bits/stl_algobase.h \
   /usr/include/c++/15.2.1/bits/stl_construct.h \
@@ -723,7 +922,6 @@ CMakeFiles/3Dpoisson.dir/src/poisson_solver.cu.o: /home/edoar/Chalmers/TRA220/3D
   /usr/include/c++/15.2.1/cerrno \
   /usr/include/c++/15.2.1/clocale \
   /usr/include/c++/15.2.1/cmath \
-  /usr/include/c++/15.2.1/complex \
   /usr/include/c++/15.2.1/concepts \
   /usr/include/c++/15.2.1/cstddef \
   /usr/include/c++/15.2.1/cstdio \
@@ -748,7 +946,6 @@ CMakeFiles/3Dpoisson.dir/src/poisson_solver.cu.o: /home/edoar/Chalmers/TRA220/3D
   /usr/include/c++/15.2.1/new \
   /usr/include/c++/15.2.1/ostream \
   /usr/include/c++/15.2.1/pstl/pstl_config.h \
-  /usr/include/c++/15.2.1/sstream \
   /usr/include/c++/15.2.1/stdexcept \
   /usr/include/c++/15.2.1/stdlib.h \
   /usr/include/c++/15.2.1/streambuf \
@@ -817,18 +1014,207 @@ CMakeFiles/3Dpoisson.dir/src/poisson_solver.cu.o: /home/edoar/Chalmers/TRA220/3D
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stddef.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/syslimits.h
 
+CMakeFiles/3Dpoisson.dir/src/poisson_system.cu.o: /home/edoar/Chalmers/TRA220/3Dpoisson/src/poisson_system.cu \
+  /home/edoar/Chalmers/TRA220/3Dpoisson/include/poisson_system.cuh \
+  /opt/cuda/targets/x86_64-linux/include/builtin_types.h \
+  /opt/cuda/targets/x86_64-linux/include/channel_descriptor.h \
+  /opt/cuda/targets/x86_64-linux/include/crt/common_functions.h \
+  /opt/cuda/targets/x86_64-linux/include/crt/cudacc_ext.h \
+  /opt/cuda/targets/x86_64-linux/include/crt/device_double_functions.h \
+  /opt/cuda/targets/x86_64-linux/include/crt/device_double_functions.hpp \
+  /opt/cuda/targets/x86_64-linux/include/crt/device_functions.h \
+  /opt/cuda/targets/x86_64-linux/include/crt/device_functions.hpp \
+  /opt/cuda/targets/x86_64-linux/include/crt/host_config.h \
+  /opt/cuda/targets/x86_64-linux/include/crt/host_defines.h \
+  /opt/cuda/targets/x86_64-linux/include/crt/math_functions.h \
+  /opt/cuda/targets/x86_64-linux/include/crt/math_functions.hpp \
+  /opt/cuda/targets/x86_64-linux/include/crt/sm_100_rt.h \
+  /opt/cuda/targets/x86_64-linux/include/crt/sm_100_rt.hpp \
+  /opt/cuda/targets/x86_64-linux/include/crt/sm_70_rt.h \
+  /opt/cuda/targets/x86_64-linux/include/crt/sm_70_rt.hpp \
+  /opt/cuda/targets/x86_64-linux/include/crt/sm_80_rt.h \
+  /opt/cuda/targets/x86_64-linux/include/crt/sm_80_rt.hpp \
+  /opt/cuda/targets/x86_64-linux/include/crt/sm_90_rt.h \
+  /opt/cuda/targets/x86_64-linux/include/crt/sm_90_rt.hpp \
+  /opt/cuda/targets/x86_64-linux/include/cuda_device_runtime_api.h \
+  /opt/cuda/targets/x86_64-linux/include/cuda_runtime.h \
+  /opt/cuda/targets/x86_64-linux/include/cuda_runtime_api.h \
+  /opt/cuda/targets/x86_64-linux/include/device_atomic_functions.h \
+  /opt/cuda/targets/x86_64-linux/include/device_atomic_functions.hpp \
+  /opt/cuda/targets/x86_64-linux/include/device_launch_parameters.h \
+  /opt/cuda/targets/x86_64-linux/include/device_types.h \
+  /opt/cuda/targets/x86_64-linux/include/driver_functions.h \
+  /opt/cuda/targets/x86_64-linux/include/driver_types.h \
+  /opt/cuda/targets/x86_64-linux/include/library_types.h \
+  /opt/cuda/targets/x86_64-linux/include/sm_20_atomic_functions.h \
+  /opt/cuda/targets/x86_64-linux/include/sm_20_atomic_functions.hpp \
+  /opt/cuda/targets/x86_64-linux/include/sm_20_intrinsics.h \
+  /opt/cuda/targets/x86_64-linux/include/sm_20_intrinsics.hpp \
+  /opt/cuda/targets/x86_64-linux/include/sm_30_intrinsics.h \
+  /opt/cuda/targets/x86_64-linux/include/sm_30_intrinsics.hpp \
+  /opt/cuda/targets/x86_64-linux/include/sm_32_atomic_functions.h \
+  /opt/cuda/targets/x86_64-linux/include/sm_32_atomic_functions.hpp \
+  /opt/cuda/targets/x86_64-linux/include/sm_32_intrinsics.h \
+  /opt/cuda/targets/x86_64-linux/include/sm_32_intrinsics.hpp \
+  /opt/cuda/targets/x86_64-linux/include/sm_35_atomic_functions.h \
+  /opt/cuda/targets/x86_64-linux/include/sm_35_intrinsics.h \
+  /opt/cuda/targets/x86_64-linux/include/sm_60_atomic_functions.h \
+  /opt/cuda/targets/x86_64-linux/include/sm_60_atomic_functions.hpp \
+  /opt/cuda/targets/x86_64-linux/include/sm_61_intrinsics.h \
+  /opt/cuda/targets/x86_64-linux/include/sm_61_intrinsics.hpp \
+  /opt/cuda/targets/x86_64-linux/include/surface_indirect_functions.h \
+  /opt/cuda/targets/x86_64-linux/include/surface_types.h \
+  /opt/cuda/targets/x86_64-linux/include/texture_indirect_functions.h \
+  /opt/cuda/targets/x86_64-linux/include/texture_types.h \
+  /opt/cuda/targets/x86_64-linux/include/vector_functions.h \
+  /opt/cuda/targets/x86_64-linux/include/vector_functions.hpp \
+  /opt/cuda/targets/x86_64-linux/include/vector_types.h \
+  /usr/include/alloca.h \
+  /usr/include/assert.h \
+  /usr/include/bits/atomic_wide_counter.h \
+  /usr/include/bits/byteswap.h \
+  /usr/include/bits/endian.h \
+  /usr/include/bits/endianness.h \
+  /usr/include/bits/floatn-common.h \
+  /usr/include/bits/floatn.h \
+  /usr/include/bits/flt-eval-method.h \
+  /usr/include/bits/fp-fast.h \
+  /usr/include/bits/fp-logb.h \
+  /usr/include/bits/iscanonical.h \
+  /usr/include/bits/libc-header-start.h \
+  /usr/include/bits/libm-simd-decl-stubs.h \
+  /usr/include/bits/local_lim.h \
+  /usr/include/bits/long-double.h \
+  /usr/include/bits/math-vector.h \
+  /usr/include/bits/mathcalls-helper-functions.h \
+  /usr/include/bits/mathcalls-macros.h \
+  /usr/include/bits/mathcalls-narrow.h \
+  /usr/include/bits/mathcalls.h \
+  /usr/include/bits/posix1_lim.h \
+  /usr/include/bits/posix2_lim.h \
+  /usr/include/bits/pthread_stack_min-dynamic.h \
+  /usr/include/bits/pthreadtypes-arch.h \
+  /usr/include/bits/pthreadtypes.h \
+  /usr/include/bits/select.h \
+  /usr/include/bits/stdint-intn.h \
+  /usr/include/bits/stdio_lim.h \
+  /usr/include/bits/stdlib-float.h \
+  /usr/include/bits/struct_mutex.h \
+  /usr/include/bits/struct_rwlock.h \
+  /usr/include/bits/thread-shared-types.h \
+  /usr/include/bits/time.h \
+  /usr/include/bits/time64.h \
+  /usr/include/bits/timesize.h \
+  /usr/include/bits/timex.h \
+  /usr/include/bits/types.h \
+  /usr/include/bits/types/FILE.h \
+  /usr/include/bits/types/__FILE.h \
+  /usr/include/bits/types/__fpos64_t.h \
+  /usr/include/bits/types/__fpos_t.h \
+  /usr/include/bits/types/__locale_t.h \
+  /usr/include/bits/types/__mbstate_t.h \
+  /usr/include/bits/types/__sigset_t.h \
+  /usr/include/bits/types/clock_t.h \
+  /usr/include/bits/types/clockid_t.h \
+  /usr/include/bits/types/cookie_io_functions_t.h \
+  /usr/include/bits/types/locale_t.h \
+  /usr/include/bits/types/sigset_t.h \
+  /usr/include/bits/types/struct_FILE.h \
+  /usr/include/bits/types/struct_itimerspec.h \
+  /usr/include/bits/types/struct_timespec.h \
+  /usr/include/bits/types/struct_timeval.h \
+  /usr/include/bits/types/struct_tm.h \
+  /usr/include/bits/types/time_t.h \
+  /usr/include/bits/types/timer_t.h \
+  /usr/include/bits/typesizes.h \
+  /usr/include/bits/uintn-identity.h \
+  /usr/include/bits/uio_lim.h \
+  /usr/include/bits/waitflags.h \
+  /usr/include/bits/waitstatus.h \
+  /usr/include/bits/wordsize.h \
+  /usr/include/bits/xopen_lim.h \
+  /usr/include/c++/15.2.1/bit \
+  /usr/include/c++/15.2.1/bits/concept_check.h \
+  /usr/include/c++/15.2.1/bits/cpp_type_traits.h \
+  /usr/include/c++/15.2.1/bits/exception.h \
+  /usr/include/c++/15.2.1/bits/exception_defines.h \
+  /usr/include/c++/15.2.1/bits/functexcept.h \
+  /usr/include/c++/15.2.1/bits/move.h \
+  /usr/include/c++/15.2.1/bits/predefined_ops.h \
+  /usr/include/c++/15.2.1/bits/ptr_traits.h \
+  /usr/include/c++/15.2.1/bits/requires_hosted.h \
+  /usr/include/c++/15.2.1/bits/specfun.h \
+  /usr/include/c++/15.2.1/bits/std_abs.h \
+  /usr/include/c++/15.2.1/bits/stl_algobase.h \
+  /usr/include/c++/15.2.1/bits/stl_iterator.h \
+  /usr/include/c++/15.2.1/bits/stl_iterator_base_funcs.h \
+  /usr/include/c++/15.2.1/bits/stl_iterator_base_types.h \
+  /usr/include/c++/15.2.1/bits/stl_pair.h \
+  /usr/include/c++/15.2.1/bits/stl_relops.h \
+  /usr/include/c++/15.2.1/bits/utility.h \
+  /usr/include/c++/15.2.1/bits/version.h \
+  /usr/include/c++/15.2.1/cmath \
+  /usr/include/c++/15.2.1/concepts \
+  /usr/include/c++/15.2.1/cstddef \
+  /usr/include/c++/15.2.1/cstdlib \
+  /usr/include/c++/15.2.1/debug/assertions.h \
+  /usr/include/c++/15.2.1/debug/debug.h \
+  /usr/include/c++/15.2.1/ext/numeric_traits.h \
+  /usr/include/c++/15.2.1/ext/type_traits.h \
+  /usr/include/c++/15.2.1/initializer_list \
+  /usr/include/c++/15.2.1/limits \
+  /usr/include/c++/15.2.1/math.h \
+  /usr/include/c++/15.2.1/new \
+  /usr/include/c++/15.2.1/pstl/pstl_config.h \
+  /usr/include/c++/15.2.1/stdlib.h \
+  /usr/include/c++/15.2.1/tr1/bessel_function.tcc \
+  /usr/include/c++/15.2.1/tr1/beta_function.tcc \
+  /usr/include/c++/15.2.1/tr1/ell_integral.tcc \
+  /usr/include/c++/15.2.1/tr1/exp_integral.tcc \
+  /usr/include/c++/15.2.1/tr1/gamma.tcc \
+  /usr/include/c++/15.2.1/tr1/hypergeometric.tcc \
+  /usr/include/c++/15.2.1/tr1/legendre_function.tcc \
+  /usr/include/c++/15.2.1/tr1/modified_bessel_func.tcc \
+  /usr/include/c++/15.2.1/tr1/poly_hermite.tcc \
+  /usr/include/c++/15.2.1/tr1/poly_laguerre.tcc \
+  /usr/include/c++/15.2.1/tr1/riemann_zeta.tcc \
+  /usr/include/c++/15.2.1/tr1/special_function_util.h \
+  /usr/include/c++/15.2.1/type_traits \
+  /usr/include/c++/15.2.1/utility \
+  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++config.h \
+  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/cpu_defines.h \
+  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/os_defines.h \
+  /usr/include/ctype.h \
+  /usr/include/endian.h \
+  /usr/include/features-time64.h \
+  /usr/include/features.h \
+  /usr/include/gnu/stubs-64.h \
+  /usr/include/gnu/stubs.h \
+  /usr/include/limits.h \
+  /usr/include/linux/limits.h \
+  /usr/include/math.h \
+  /usr/include/stdc-predef.h \
+  /usr/include/stdio.h \
+  /usr/include/stdlib.h \
+  /usr/include/string.h \
+  /usr/include/strings.h \
+  /usr/include/sys/cdefs.h \
+  /usr/include/sys/select.h \
+  /usr/include/sys/types.h \
+  /usr/include/time.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/limits.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdarg.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stddef.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/syslimits.h
 
-/usr/include/c++/15.2.1/sstream:
 
-/usr/include/c++/15.2.1/bits/sstream.tcc:
+/home/edoar/Chalmers/TRA220/3Dpoisson/src/poisson_solver.cu:
 
-/home/edoar/Chalmers/TRA220/3Dpoisson/include/poisson_solver.cuh:
-
-/home/edoar/Chalmers/TRA220/3Dpoisson/include/poisson_gpu.cuh:
+/home/edoar/Chalmers/TRA220/3Dpoisson/include/poisson_system.cuh:
 
 /home/edoar/Chalmers/TRA220/3Dpoisson/include/idx3d.cuh:
 
-/home/edoar/Chalmers/TRA220/3Dpoisson/src/poisson_solver.cu:
+/home/edoar/Chalmers/TRA220/3Dpoisson/src/poisson_init.cu:
 
 /usr/include/sys/single_threaded.h:
 
@@ -837,6 +1223,8 @@ CMakeFiles/3Dpoisson.dir/src/poisson_solver.cu.o: /home/edoar/Chalmers/TRA220/3D
 /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/gthr.h:
 
 /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/gthr-default.h:
+
+/home/edoar/Chalmers/TRA220/3Dpoisson/include/poisson_init.cuh:
 
 /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/error_constants.h:
 
@@ -918,9 +1306,11 @@ CMakeFiles/3Dpoisson.dir/src/poisson_solver.cu.o: /home/edoar/Chalmers/TRA220/3D
 
 /usr/include/stdc-predef.h:
 
-/usr/include/bits/types/__locale_t.h:
+/usr/include/linux/limits.h:
 
-/usr/include/bits/types/__fpos64_t.h:
+/usr/include/linux/errno.h:
+
+/usr/include/limits.h:
 
 /usr/include/bits/time64.h:
 
@@ -1008,8 +1398,6 @@ CMakeFiles/3Dpoisson.dir/src/poisson_solver.cu.o: /home/edoar/Chalmers/TRA220/3D
 
 /usr/include/c++/15.2.1/tr1/special_function_util.h:
 
-/opt/cuda/targets/x86_64-linux/include/vector_functions.h:
-
 /opt/cuda/targets/x86_64-linux/include/sm_35_intrinsics.h:
 
 /opt/cuda/targets/x86_64-linux/include/sm_35_atomic_functions.h:
@@ -1030,7 +1418,7 @@ CMakeFiles/3Dpoisson.dir/src/poisson_solver.cu.o: /home/edoar/Chalmers/TRA220/3D
 
 /usr/include/c++/15.2.1/bits/stl_algobase.h:
 
-/opt/cuda/targets/x86_64-linux/include/channel_descriptor.h:
+/usr/lib/Scrt1.o:
 
 /opt/cuda/targets/x86_64-linux/include/sm_20_atomic_functions.hpp:
 
@@ -1038,15 +1426,27 @@ CMakeFiles/3Dpoisson.dir/src/poisson_solver.cu.o: /home/edoar/Chalmers/TRA220/3D
 
 /usr/include/c++/15.2.1/tr1/riemann_zeta.tcc:
 
+/opt/cuda/targets/x86_64-linux/include/sm_32_intrinsics.h:
+
+/usr/include/c++/15.2.1/bits/stl_vector.h:
+
+/usr/include/asm-generic/errno.h:
+
+/opt/cuda/targets/x86_64-linux/include/sm_20_atomic_functions.h:
+
+CMakeFiles/3Dpoisson.dir/src/poisson_system.cu.o:
+
+/usr/include/bits/floatn.h:
+
 CMakeFiles/3Dpoisson.dir/src/poisson_solver.cu.o:
 
 /opt/cuda/targets/x86_64-linux/include/cuda_device_runtime_api.h:
 
-/usr/lib/Scrt1.o:
+CMakeFiles/3Dpoisson.dir/cmake_device_link.o:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/libgcc.a:
 
 /usr/lib/libmvec.so.1:
-
-/opt/cuda/targets/x86_64-linux/include/sm_32_intrinsics.h:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o:
 
@@ -1084,23 +1484,11 @@ CMakeFiles/3Dpoisson.dir/src/poisson_solver.cu.o:
 
 /usr/lib/crti.o:
 
-/usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/cpu_defines.h:
-
-/usr/include/c++/15.2.1/bits/uses_allocator.h:
-
-/opt/cuda/targets/x86_64-linux/include/crt/sm_80_rt.h:
-
 /usr/include/c++/15.2.1/bits/specfun.h:
 
-CMakeFiles/3Dpoisson.dir/src/grid3d.cpp.o:
+CMakeFiles/3Dpoisson.dir/src/poisson_init.cu.o:
 
-/usr/include/linux/posix_types.h:
-
-/usr/include/bits/types/FILE.h:
-
-/usr/include/c++/15.2.1/bits/utility.h:
-
-/usr/include/linux/limits.h:
+/usr/include/c++/15.2.1/tr1/gamma.tcc:
 
 /usr/include/c++/15.2.1/bits/ios_base.h:
 
@@ -1109,8 +1497,6 @@ CMakeFiles/3Dpoisson.dir/src/grid3d.cpp.o:
 /usr/include/bits/pthread_stack_min-dynamic.h:
 
 /usr/include/c++/15.2.1/pstl/pstl_config.h:
-
-/usr/include/c++/15.2.1/complex:
 
 /usr/lib/libc.so.6:
 
@@ -1128,8 +1514,6 @@ CMakeFiles/3Dpoisson.dir/src/grid3d.cpp.o:
 
 /usr/include/features.h:
 
-/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/libgcc.a:
-
 CMakeFiles/3Dpoisson.dir/src/main.cpp.o:
 
 /usr/include/wchar.h:
@@ -1146,6 +1530,10 @@ CMakeFiles/3Dpoisson.dir/src/main.cpp.o:
 
 /opt/cuda/targets/x86_64-linux/include/device_atomic_functions.hpp:
 
+/opt/cuda/targets/x86_64-linux/include/vector_functions.h:
+
+CMakeFiles/3Dpoisson.dir/src/grid3d.cu.o:
+
 /opt/cuda/targets/x86_64-linux/include/crt/sm_100_rt.h:
 
 /usr/include/bits/types/struct_tm.h:
@@ -1159,6 +1547,8 @@ CMakeFiles/3Dpoisson.dir/src/main.cpp.o:
 /usr/lib/librt.a:
 
 /opt/cuda/targets/x86_64-linux/include/crt/sm_90_rt.h:
+
+/opt/cuda/targets/x86_64-linux/include/channel_descriptor.h:
 
 /usr/include/math.h:
 
@@ -1214,8 +1604,6 @@ CMakeFiles/3Dpoisson.dir/src/main.cpp.o:
 
 /usr/include/bits/atomic_wide_counter.h:
 
-/usr/include/bits/floatn.h:
-
 /opt/cuda/targets/x86_64-linux/include/cuda_runtime_api.h:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtendS.o:
@@ -1232,11 +1620,15 @@ CMakeFiles/3Dpoisson.dir/src/main.cpp.o:
 
 /usr/include/c++/15.2.1/bits/ptr_traits.h:
 
-/usr/include/c++/15.2.1/bits/stl_vector.h:
+/usr/include/bits/types/__fpos64_t.h:
 
-/usr/include/asm-generic/errno.h:
+/usr/include/bits/types/__locale_t.h:
 
-/opt/cuda/targets/x86_64-linux/include/sm_20_atomic_functions.h:
+/usr/include/c++/15.2.1/bits/uses_allocator.h:
+
+/opt/cuda/targets/x86_64-linux/include/crt/sm_80_rt.h:
+
+/usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/cpu_defines.h:
 
 /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++config.h:
 
@@ -1390,6 +1782,8 @@ CMakeFiles/3Dpoisson.dir/src/main.cpp.o:
 
 /usr/include/c++/15.2.1/bits/refwrap.h:
 
+/home/edoar/Chalmers/TRA220/3Dpoisson/src/poisson_system.cu:
+
 /usr/include/linux/types.h:
 
 /usr/include/c++/15.2.1/bits/std_abs.h:
@@ -1409,6 +1803,12 @@ CMakeFiles/3Dpoisson.dir/src/main.cpp.o:
 /usr/include/c++/15.2.1/bits/basic_string.h:
 
 /usr/include/c++/15.2.1/bits/uses_allocator_args.h:
+
+/usr/include/linux/posix_types.h:
+
+/usr/include/bits/types/FILE.h:
+
+/usr/include/c++/15.2.1/bits/utility.h:
 
 /usr/include/c++/15.2.1/bits/version.h:
 
@@ -1442,6 +1842,8 @@ CMakeFiles/3Dpoisson.dir/src/main.cpp.o:
 
 /usr/include/c++/15.2.1/ext/type_traits.h:
 
+/home/edoar/Chalmers/TRA220/3Dpoisson/include/types.hpp:
+
 /usr/include/c++/15.2.1/initializer_list:
 
 /usr/include/bits/types/struct_timeval.h:
@@ -1457,8 +1859,6 @@ CMakeFiles/3Dpoisson.dir/src/main.cpp.o:
 /usr/include/endian.h:
 
 /usr/include/c++/15.2.1/tr1/bessel_function.tcc:
-
-/usr/include/c++/15.2.1/tr1/gamma.tcc:
 
 /usr/include/c++/15.2.1/tr1/legendre_function.tcc:
 
@@ -1485,7 +1885,3 @@ CMakeFiles/3Dpoisson.dir/src/main.cpp.o:
 /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/os_defines.h:
 
 /usr/include/features-time64.h:
-
-/usr/include/limits.h:
-
-/usr/include/linux/errno.h:

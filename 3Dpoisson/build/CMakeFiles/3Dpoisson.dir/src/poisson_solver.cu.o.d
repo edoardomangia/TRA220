@@ -294,10 +294,8 @@ CMakeFiles/3Dpoisson.dir/src/poisson_solver.cu.o : /home/edoar/Chalmers/TRA220/3
     /usr/include/c++/15.2.1/bits/ostream.tcc \
     /usr/include/c++/15.2.1/istream \
     /usr/include/c++/15.2.1/bits/istream.tcc \
+    /home/edoar/Chalmers/TRA220/3Dpoisson/include/idx3d.cuh \
     /home/edoar/Chalmers/TRA220/3Dpoisson/include/grid3d.cuh \
-    /usr/include/c++/15.2.1/complex \
-    /usr/include/c++/15.2.1/sstream \
-    /usr/include/c++/15.2.1/bits/sstream.tcc \
-    /home/edoar/Chalmers/TRA220/3Dpoisson/include/poisson_solver.cuh \
-    /home/edoar/Chalmers/TRA220/3Dpoisson/include/poisson_gpu.cuh \
-    /home/edoar/Chalmers/TRA220/3Dpoisson/include/idx3d.cuh
+    /home/edoar/Chalmers/TRA220/3Dpoisson/include/poisson_system.cuh \
+    /home/edoar/Chalmers/TRA220/3Dpoisson/include/poisson_init.cuh \
+    /home/edoar/Chalmers/TRA220/3Dpoisson/include/poisson_solver.hpp

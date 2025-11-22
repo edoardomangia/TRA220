@@ -6,6 +6,9 @@
 #include "grid3d.cuh"
 #include "poisson_solver.hpp"
 #include "gen_vti.hpp"
+#include "types.hpp"
+
+using poisson3d::Real;
 
 int main() {
     
@@ -29,14 +32,19 @@ int main() {
     
     Grid3DDevice grid_d = make_grid_device(ni, nj, nk, xmax, ymax, zmax);
     
-    const std::size_t N = static_cast<std::size_t>(ni) * nj * nk;
-    std::vector<double> phi(N, 0.0);
+    std::size_t N = static_cast<std::size_t>(ni) * nj * nk;
+    std::vector<Real> phi(N, Real(0));
 
     int nIter = 2000;
 
-
     std::cout << "Before phi[0] = " << phi[0] << "\n";
-    poisson3d::solvePoissonGPU_double(grid_d, phi.data(), nIter);
+    
+    if constexpr (std::is_same_v<Real, float>) {
+        poisson3d::solvePoissonGPU_float(grid_d, phi.data(), nIter);
+    } else {
+        poisson3d::solvePoissonGPU_double(grid_d, phi.data(), nIter);
+    }
+    
     std::cout << "After phi[0] = " << phi[0] << "\n";
 
     // TODO: write phi + grid to .vti using a CPU-only writer later

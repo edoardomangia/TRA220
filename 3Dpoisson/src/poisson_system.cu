@@ -1,29 +1,27 @@
 // poisson_system.cu
+#include <cuda_runtime.h>
+#include <cstddef>
 #include "poisson_system.cuh"
-#include <stdexcept>
+// #include "cuda_utils.hpp"
 
 template<typename Real>
-PoissonSystemDevice<Real> allocatePoissonSystemDevice(int ni, int nj, int nk) {
-    PoissonSystemDevice<Real> sys{};
-    size_t N = (size_t)ni * nj * nk;
+void allocatePoissonSystemDevice(int ni, int nj, int nk,
+                                 PoissonSystemDevice<Real> &sys) {
+    size_t N = static_cast<size_t>(ni) * nj * nk;
     size_t bytes = N * sizeof(Real);
-
-    auto check = [](cudaError_t err, const char* msg) {
-        if (err != cudaSuccess) {
-            throw std::runtime_error(std::string(msg) + ": " +
-                                     cudaGetErrorString(err));
-        }
-    };
-
-    check(cudaMalloc(&sys.aw,  bytes), "cudaMalloc aw");
-    check(cudaMalloc(&sys.ae,  bytes), "cudaMalloc ae");
-    check(cudaMalloc(&sys.as_, bytes), "cudaMalloc as");
-    check(cudaMalloc(&sys.an,  bytes), "cudaMalloc an");
-    check(cudaMalloc(&sys.al,  bytes), "cudaMalloc al");
-    check(cudaMalloc(&sys.ah,  bytes), "cudaMalloc ah");
-    check(cudaMalloc(&sys.ap,  bytes), "cudaMalloc ap");
-    check(cudaMalloc(&sys.su,  bytes), "cudaMalloc su");
-    check(cudaMalloc(&sys.phi, bytes), "cudaMalloc phi");
+    
+    sys.aw = sys.ae = sys.as_ = sys.an = sys.al = sys.ah = nullptr;
+    sys.ap = sys.su = sys.phi = nullptr;
+    
+    cudaMalloc(&sys.aw,  bytes);
+    cudaMalloc(&sys.ae,  bytes);
+    cudaMalloc(&sys.as_, bytes);
+    cudaMalloc(&sys.an,  bytes);
+    cudaMalloc(&sys.al,  bytes);
+    cudaMalloc(&sys.ah,  bytes);
+    cudaMalloc(&sys.ap,  bytes);
+    cudaMalloc(&sys.su,  bytes);
+    cudaMalloc(&sys.phi, bytes);
 
     cudaMemset(sys.aw,  0, bytes);
     cudaMemset(sys.ae,  0, bytes);
@@ -34,8 +32,6 @@ PoissonSystemDevice<Real> allocatePoissonSystemDevice(int ni, int nj, int nk) {
     cudaMemset(sys.ap,  0, bytes);
     cudaMemset(sys.su,  0, bytes);
     cudaMemset(sys.phi, 0, bytes);
-
-    return sys;
 }
 
 template<typename Real>
@@ -54,8 +50,13 @@ void freePoissonSystemDevice(PoissonSystemDevice<Real>& sys) {
     sys.ap = sys.su = sys.phi = nullptr;
 }
 
-template PoissonSystemDevice<float>  allocatePoissonSystemDevice<float>(int,int,int);
-template PoissonSystemDevice<double> allocatePoissonSystemDevice<double>(int,int,int);
+template void allocatePoissonSystemDevice<float>(int, int, int,
+                                                 PoissonSystemDevice<float>&);
+
+template void allocatePoissonSystemDevice<double>(int, int, int,
+                                                  PoissonSystemDevice<double>&);
+
 template void freePoissonSystemDevice<float>(PoissonSystemDevice<float>&);
+
 template void freePoissonSystemDevice<double>(PoissonSystemDevice<double>&);
 
