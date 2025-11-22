@@ -1,3 +1,4 @@
+/*
 #pragma once
 
 #include <string>
@@ -70,4 +71,4 @@ void gen_vti(const std::string& filename,
     out << "</VTKFile>\n";
 }
 
-
+*/

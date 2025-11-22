@@ -129,29 +129,29 @@ depend:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Dpoisson.dir/build.make CMakeFiles/3Dpoisson.dir/build
 .PHONY : 3Dpoisson/fast
 
-src/grid3d.o: src/grid3d.cpp.o
+src/grid3d.o: src/grid3d.cu.o
 .PHONY : src/grid3d.o
 
 # target to build an object file
-src/grid3d.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Dpoisson.dir/build.make CMakeFiles/3Dpoisson.dir/src/grid3d.cpp.o
-.PHONY : src/grid3d.cpp.o
+src/grid3d.cu.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Dpoisson.dir/build.make CMakeFiles/3Dpoisson.dir/src/grid3d.cu.o
+.PHONY : src/grid3d.cu.o
 
-src/grid3d.i: src/grid3d.cpp.i
+src/grid3d.i: src/grid3d.cu.i
 .PHONY : src/grid3d.i
 
 # target to preprocess a source file
-src/grid3d.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Dpoisson.dir/build.make CMakeFiles/3Dpoisson.dir/src/grid3d.cpp.i
-.PHONY : src/grid3d.cpp.i
+src/grid3d.cu.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Dpoisson.dir/build.make CMakeFiles/3Dpoisson.dir/src/grid3d.cu.i
+.PHONY : src/grid3d.cu.i
 
-src/grid3d.s: src/grid3d.cpp.s
+src/grid3d.s: src/grid3d.cu.s
 .PHONY : src/grid3d.s
 
 # target to generate assembly for a file
-src/grid3d.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Dpoisson.dir/build.make CMakeFiles/3Dpoisson.dir/src/grid3d.cpp.s
-.PHONY : src/grid3d.cpp.s
+src/grid3d.cu.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Dpoisson.dir/build.make CMakeFiles/3Dpoisson.dir/src/grid3d.cu.s
+.PHONY : src/grid3d.cu.s
 
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
@@ -177,6 +177,30 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Dpoisson.dir/build.make CMakeFiles/3Dpoisson.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/poisson_init.o: src/poisson_init.cu.o
+.PHONY : src/poisson_init.o
+
+# target to build an object file
+src/poisson_init.cu.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Dpoisson.dir/build.make CMakeFiles/3Dpoisson.dir/src/poisson_init.cu.o
+.PHONY : src/poisson_init.cu.o
+
+src/poisson_init.i: src/poisson_init.cu.i
+.PHONY : src/poisson_init.i
+
+# target to preprocess a source file
+src/poisson_init.cu.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Dpoisson.dir/build.make CMakeFiles/3Dpoisson.dir/src/poisson_init.cu.i
+.PHONY : src/poisson_init.cu.i
+
+src/poisson_init.s: src/poisson_init.cu.s
+.PHONY : src/poisson_init.s
+
+# target to generate assembly for a file
+src/poisson_init.cu.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Dpoisson.dir/build.make CMakeFiles/3Dpoisson.dir/src/poisson_init.cu.s
+.PHONY : src/poisson_init.cu.s
+
 src/poisson_solver.o: src/poisson_solver.cu.o
 .PHONY : src/poisson_solver.o
 
@@ -201,6 +225,30 @@ src/poisson_solver.cu.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Dpoisson.dir/build.make CMakeFiles/3Dpoisson.dir/src/poisson_solver.cu.s
 .PHONY : src/poisson_solver.cu.s
 
+src/poisson_system.o: src/poisson_system.cu.o
+.PHONY : src/poisson_system.o
+
+# target to build an object file
+src/poisson_system.cu.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Dpoisson.dir/build.make CMakeFiles/3Dpoisson.dir/src/poisson_system.cu.o
+.PHONY : src/poisson_system.cu.o
+
+src/poisson_system.i: src/poisson_system.cu.i
+.PHONY : src/poisson_system.i
+
+# target to preprocess a source file
+src/poisson_system.cu.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Dpoisson.dir/build.make CMakeFiles/3Dpoisson.dir/src/poisson_system.cu.i
+.PHONY : src/poisson_system.cu.i
+
+src/poisson_system.s: src/poisson_system.cu.s
+.PHONY : src/poisson_system.s
+
+# target to generate assembly for a file
+src/poisson_system.cu.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Dpoisson.dir/build.make CMakeFiles/3Dpoisson.dir/src/poisson_system.cu.s
+.PHONY : src/poisson_system.cu.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -216,9 +264,15 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/poisson_init.o"
+	@echo "... src/poisson_init.i"
+	@echo "... src/poisson_init.s"
 	@echo "... src/poisson_solver.o"
 	@echo "... src/poisson_solver.i"
 	@echo "... src/poisson_solver.s"
+	@echo "... src/poisson_system.o"
+	@echo "... src/poisson_system.i"
+	@echo "... src/poisson_system.s"
 .PHONY : help
 
 

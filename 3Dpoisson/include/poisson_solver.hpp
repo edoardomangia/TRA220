@@ -1,17 +1,11 @@
+// poisson_solver.hpp
 #pragma once
+#include "grid3d.cuh"
 
-template<typename Real>
-void solvePoissonGPU(
-    int ni, int nj, int nk,
-    const Real* h_aw,
-    const Real* h_ae,
-    const Real* h_as,
-    const Real* h_an,
-    const Real* h_al,
-    const Real* h_ah,
-    const Real* h_su,
-    const Real* h_ap,
-    Real* h_phi,
-    int nIter
-);
+namespace poisson3d {
+    void solvePoissonGPU_float(
+            const Grid3DDevice&, float *h_phi, int nIter);
+    void solvePoissonGPU_double(
+            const Grid3DDevice&, double *h_phi, int nIter);
+}
 

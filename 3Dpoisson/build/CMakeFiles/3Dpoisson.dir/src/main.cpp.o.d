@@ -1,23 +1,56 @@
 CMakeFiles/3Dpoisson.dir/src/main.cpp.o: \
  /home/edoar/Chalmers/TRA220/3Dpoisson/src/main.cpp \
- /usr/include/stdc-predef.h /usr/include/c++/15.2.1/iostream \
- /usr/include/c++/15.2.1/bits/requires_hosted.h \
- /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++config.h \
- /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/os_defines.h \
+ /usr/include/stdc-predef.h \
+ /opt/cuda/targets/x86_64-linux/include/cuda_runtime.h \
+ /opt/cuda/targets/x86_64-linux/include/crt/host_config.h \
+ /opt/cuda/targets/x86_64-linux/include/builtin_types.h \
+ /opt/cuda/targets/x86_64-linux/include/device_types.h \
+ /opt/cuda/targets/x86_64-linux/include/crt/host_defines.h \
+ /opt/cuda/targets/x86_64-linux/include/driver_types.h \
+ /opt/cuda/targets/x86_64-linux/include/vector_types.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/limits.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/syslimits.h \
+ /usr/include/limits.h /usr/include/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \
  /usr/include/bits/wordsize.h /usr/include/bits/timesize.h \
  /usr/include/sys/cdefs.h /usr/include/bits/long-double.h \
  /usr/include/gnu/stubs.h /usr/include/gnu/stubs-64.h \
+ /usr/include/bits/posix1_lim.h /usr/include/bits/local_lim.h \
+ /usr/include/linux/limits.h \
+ /usr/include/bits/pthread_stack_min-dynamic.h \
+ /usr/include/bits/posix2_lim.h /usr/include/bits/xopen_lim.h \
+ /usr/include/bits/uio_lim.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stddef.h \
+ /opt/cuda/targets/x86_64-linux/include/surface_types.h \
+ /opt/cuda/targets/x86_64-linux/include/texture_types.h \
+ /opt/cuda/targets/x86_64-linux/include/library_types.h \
+ /opt/cuda/targets/x86_64-linux/include/channel_descriptor.h \
+ /opt/cuda/targets/x86_64-linux/include/cuda_runtime_api.h \
+ /opt/cuda/targets/x86_64-linux/include/cuda_device_runtime_api.h \
+ /opt/cuda/targets/x86_64-linux/include/driver_functions.h \
+ /opt/cuda/targets/x86_64-linux/include/vector_functions.h \
+ /opt/cuda/targets/x86_64-linux/include/vector_functions.hpp \
+ /usr/include/c++/15.2.1/utility \
+ /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++config.h \
+ /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/os_defines.h \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/cpu_defines.h \
  /usr/include/c++/15.2.1/pstl/pstl_config.h \
+ /usr/include/c++/15.2.1/bits/stl_relops.h \
+ /usr/include/c++/15.2.1/bits/stl_pair.h \
+ /usr/include/c++/15.2.1/type_traits \
+ /usr/include/c++/15.2.1/bits/version.h \
+ /usr/include/c++/15.2.1/bits/move.h \
+ /usr/include/c++/15.2.1/bits/utility.h \
+ /usr/include/c++/15.2.1/initializer_list \
+ /usr/include/c++/15.2.1/iostream \
+ /usr/include/c++/15.2.1/bits/requires_hosted.h \
  /usr/include/c++/15.2.1/ostream /usr/include/c++/15.2.1/bits/ostream.h \
  /usr/include/c++/15.2.1/ios /usr/include/c++/15.2.1/iosfwd \
  /usr/include/c++/15.2.1/bits/stringfwd.h \
  /usr/include/c++/15.2.1/bits/memoryfwd.h \
  /usr/include/c++/15.2.1/bits/postypes.h /usr/include/c++/15.2.1/cwchar \
- /usr/include/wchar.h /usr/include/bits/libc-header-start.h \
- /usr/include/bits/floatn.h /usr/include/bits/floatn-common.h \
- /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stddef.h \
+ /usr/include/wchar.h /usr/include/bits/floatn.h \
+ /usr/include/bits/floatn-common.h \
  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdarg.h \
  /usr/include/bits/wchar.h /usr/include/bits/types/wint_t.h \
  /usr/include/bits/types/mbstate_t.h \
@@ -25,13 +58,11 @@ CMakeFiles/3Dpoisson.dir/src/main.cpp.o: \
  /usr/include/bits/types/FILE.h /usr/include/bits/types/locale_t.h \
  /usr/include/bits/types/__locale_t.h /usr/include/c++/15.2.1/exception \
  /usr/include/c++/15.2.1/bits/exception.h \
- /usr/include/c++/15.2.1/bits/version.h \
  /usr/include/c++/15.2.1/bits/exception_ptr.h \
  /usr/include/c++/15.2.1/bits/exception_defines.h \
  /usr/include/c++/15.2.1/bits/cxxabi_init_exception.h \
  /usr/include/c++/15.2.1/typeinfo \
  /usr/include/c++/15.2.1/bits/hash_bytes.h /usr/include/c++/15.2.1/new \
- /usr/include/c++/15.2.1/bits/move.h /usr/include/c++/15.2.1/type_traits \
  /usr/include/c++/15.2.1/bits/nested_exception.h \
  /usr/include/c++/15.2.1/bits/char_traits.h \
  /usr/include/c++/15.2.1/bits/localefwd.h \
@@ -66,7 +97,6 @@ CMakeFiles/3Dpoisson.dir/src/main.cpp.o: \
  /usr/include/bits/struct_rwlock.h /usr/include/bits/setjmp.h \
  /usr/include/bits/types/__sigset_t.h \
  /usr/include/bits/types/struct___jmp_buf_tag.h \
- /usr/include/bits/pthread_stack_min-dynamic.h \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/atomic_word.h \
  /usr/include/sys/single_threaded.h \
  /usr/include/c++/15.2.1/bits/locale_classes.h \
@@ -88,15 +118,12 @@ CMakeFiles/3Dpoisson.dir/src/main.cpp.o: \
  /usr/include/c++/15.2.1/backward/binders.h \
  /usr/include/c++/15.2.1/ext/numeric_traits.h \
  /usr/include/c++/15.2.1/bits/stl_algobase.h \
- /usr/include/c++/15.2.1/bits/stl_pair.h \
- /usr/include/c++/15.2.1/bits/utility.h \
  /usr/include/c++/15.2.1/debug/debug.h \
  /usr/include/c++/15.2.1/bits/predefined_ops.h \
  /usr/include/c++/15.2.1/bit /usr/include/c++/15.2.1/concepts \
  /usr/include/c++/15.2.1/bits/refwrap.h \
  /usr/include/c++/15.2.1/bits/invoke.h \
  /usr/include/c++/15.2.1/bits/range_access.h \
- /usr/include/c++/15.2.1/initializer_list \
  /usr/include/c++/15.2.1/bits/basic_string.h \
  /usr/include/c++/15.2.1/ext/alloc_traits.h \
  /usr/include/c++/15.2.1/bits/alloc_traits.h \
@@ -144,51 +171,11 @@ CMakeFiles/3Dpoisson.dir/src/main.cpp.o: \
  /usr/include/c++/15.2.1/bits/locale_facets.tcc \
  /usr/include/c++/15.2.1/bits/basic_ios.tcc \
  /usr/include/c++/15.2.1/bits/ostream.tcc /usr/include/c++/15.2.1/istream \
- /usr/include/c++/15.2.1/bits/istream.tcc /usr/include/c++/15.2.1/fstream \
- /usr/include/c++/15.2.1/bits/codecvt.h \
- /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/basic_file.h \
- /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++io.h \
- /usr/include/c++/15.2.1/bits/fstream.tcc \
- /opt/cuda/targets/x86_64-linux/include/cuda_runtime.h \
- /opt/cuda/targets/x86_64-linux/include/crt/host_config.h \
- /opt/cuda/targets/x86_64-linux/include/builtin_types.h \
- /opt/cuda/targets/x86_64-linux/include/device_types.h \
- /opt/cuda/targets/x86_64-linux/include/crt/host_defines.h \
- /opt/cuda/targets/x86_64-linux/include/driver_types.h \
- /opt/cuda/targets/x86_64-linux/include/vector_types.h \
- /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/limits.h \
- /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/syslimits.h \
- /usr/include/limits.h /usr/include/bits/posix1_lim.h \
- /usr/include/bits/local_lim.h /usr/include/linux/limits.h \
- /usr/include/bits/posix2_lim.h /usr/include/bits/xopen_lim.h \
- /usr/include/bits/uio_lim.h \
- /opt/cuda/targets/x86_64-linux/include/surface_types.h \
- /opt/cuda/targets/x86_64-linux/include/texture_types.h \
- /opt/cuda/targets/x86_64-linux/include/library_types.h \
- /opt/cuda/targets/x86_64-linux/include/channel_descriptor.h \
- /opt/cuda/targets/x86_64-linux/include/cuda_runtime_api.h \
- /opt/cuda/targets/x86_64-linux/include/cuda_device_runtime_api.h \
- /opt/cuda/targets/x86_64-linux/include/driver_functions.h \
- /opt/cuda/targets/x86_64-linux/include/vector_functions.h \
- /opt/cuda/targets/x86_64-linux/include/vector_functions.hpp \
- /usr/include/c++/15.2.1/utility \
- /usr/include/c++/15.2.1/bits/stl_relops.h /usr/include/c++/15.2.1/limits \
- /home/edoar/Chalmers/TRA220/3Dpoisson/include/grid3d.hpp \
- /usr/include/c++/15.2.1/vector \
+ /usr/include/c++/15.2.1/bits/istream.tcc /usr/include/c++/15.2.1/vector \
  /usr/include/c++/15.2.1/bits/stl_uninitialized.h \
  /usr/include/c++/15.2.1/bits/stl_vector.h \
  /usr/include/c++/15.2.1/bits/stl_bvector.h \
  /usr/include/c++/15.2.1/bits/vector.tcc \
- /home/edoar/Chalmers/TRA220/3Dpoisson/include/poisson_coeffs.hpp \
+ /home/edoar/Chalmers/TRA220/3Dpoisson/include/grid3d.cuh \
  /home/edoar/Chalmers/TRA220/3Dpoisson/include/poisson_solver.hpp \
- /home/edoar/Chalmers/TRA220/3Dpoisson/include/gen_vti.hpp \
- /usr/include/c++/15.2.1/iomanip /usr/include/c++/15.2.1/locale \
- /usr/include/c++/15.2.1/bits/locale_facets_nonio.h \
- /usr/include/c++/15.2.1/ctime \
- /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/time_members.h \
- /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/messages_members.h \
- /usr/include/libintl.h \
- /usr/include/c++/15.2.1/bits/locale_facets_nonio.tcc \
- /usr/include/c++/15.2.1/bits/locale_conv.h \
- /usr/include/c++/15.2.1/bits/quoted_string.h \
- /usr/include/c++/15.2.1/sstream /usr/include/c++/15.2.1/bits/sstream.tcc
+ /home/edoar/Chalmers/TRA220/3Dpoisson/include/gen_vti.hpp

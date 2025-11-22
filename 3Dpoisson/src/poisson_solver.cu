@@ -1,10 +1,17 @@
+// poisson_solver.cu
 #include <cuda_runtime.h>
-#include <iostream>
+#include <utility>   
+#include <iostream>  
 #include "poisson_solver.hpp"
+#include "poisson_system.cuh"
+#include "poisson_init.cuh"
+#include "grid3d_device.cuh"
+#include "idx3d.cuh"
+#include "cuda_utils.hpp"
 
 template<typename Real>
 __global__
-void poissonKernel(
+void PoissonKernel(
     const Real* __restrict__ phi_old,
     Real* __restrict__ phi_new,
     const Real* __restrict__ aw,
@@ -16,89 +23,69 @@ void poissonKernel(
     const Real* __restrict__ su,
     const Real* __restrict__ ap,
     int ni, int nj, int nk
-) {
+)
+{
     int i = blockIdx.x * blockDim.x + threadIdx.x;
     int j = blockIdx.y * blockDim.y + threadIdx.y;
     int k = blockIdx.z * blockDim.z + threadIdx.z;
 
-    // Skip threads outside the domain... halos on stencils?
     if (i >= ni || j >= nj || k >= nk) return;
-    
-    // 1D flat array index 
-    int sx = 1;
-    int sy = ni;
-    int sz = ni * nj;
+
+    const int sx = 1;
+    const int sy = ni;
+    const int sz = ni * nj;
+
     int idx = i + ni * (j + nj * k);
 
-    // Read neighbors values with reflection at boundaries
-    Real phiE = (i+1 < ni) ? phi_old[idx + sx] : phi_old[idx];
-    Real phiW = (i-1 >= 0) ? phi_old[idx - sx] : phi_old[idx];
-    Real phiN = (j+1 < nj) ? phi_old[idx + sy] : phi_old[idx];
-    Real phiS = (j-1 >= 0) ? phi_old[idx - sy] : phi_old[idx];
-    Real phiH = (k+1 < nk) ? phi_old[idx + sz] : phi_old[idx];
-    Real phiL = (k-1 >= 0) ? phi_old[idx - sz] : phi_old[idx];
+    // Neumann BC 
+    Real phiC = phi_old[idx];
 
-    // Update
+    Real phiE = (i + 1 < ni) ? phi_old[idx + sx] : phiC;
+    Real phiW = (i - 1 >= 0) ? phi_old[idx - sx] : phiC;
+    Real phiN = (j + 1 < nj) ? phi_old[idx + sy] : phiC;
+    Real phiS = (j - 1 >= 0) ? phi_old[idx - sy] : phiC;
+    Real phiH = (k + 1 < nk) ? phi_old[idx + sz] : phiC;
+    Real phiL = (k - 1 >= 0) ? phi_old[idx - sz] : phiC;
+
     Real numerator =
         ae[idx] * phiE + aw[idx] * phiW +
         an[idx] * phiN + as_[idx] * phiS +
         ah[idx] * phiH + al[idx] * phiL +
         su[idx];
-    
+
+    // For Dirichlet cells set ap = 1 and all neighbor coeffs = 0
+    // so this reduces to phi_new[idx] = su[idx]
     phi_new[idx] = numerator / ap[idx];
 }
 
 template<typename Real>
-void solvePoissonGPU(
-    int ni, int nj, int nk,
-    const Real* h_aw,
-    const Real* h_ae,
-    const Real* h_as,
-    const Real* h_an,
-    const Real* h_al,
-    const Real* h_ah,
-    const Real* h_su,
-    const Real* h_ap,
-    Real* h_phi,
-    int nIter
-) {
-    
-    // Number of cells and memory needed
-    size_t N = (size_t)ni * nj * nk;
-    size_t bytes = N * sizeof(Real);
-    
-    // Device memory allocation 
-    Real *d_aw, *d_ae, 
-           *d_as, *d_an, 
-           *d_al, *d_ah, 
-           *d_su, *d_ap;
+void solvePoissonGPU_impl(const Grid3DDevice &g,
+                          Real *h_phi,
+                          int nIter)
+{
+    const int ni = g.ni;
+    const int nj = g.nj;
+    const int nk = g.nk;
 
-    Real *d_phi_old, *d_phi_new;
+    const std::size_t N = static_cast<std::size_t>(ni) * nj * nk;
+    const std::size_t bytes = N * sizeof(Real);
 
-    cudaMalloc(&d_aw, bytes);
-    cudaMalloc(&d_ae, bytes);
-    cudaMalloc(&d_as, bytes);
-    cudaMalloc(&d_an, bytes);
-    cudaMalloc(&d_al, bytes);
-    cudaMalloc(&d_ah, bytes);
-    cudaMalloc(&d_su, bytes);
-    cudaMalloc(&d_ap, bytes);
-    cudaMalloc(&d_phi_old, bytes);
+    // Allocate and initialize Poisson system 
+    PoissonSystemDevice<Real> sys;
+    allocatePoissonSystemDevice<Real>(ni, nj, nk, sys);
+    initPoissonSystemDevice<Real>(g, sys);
+
+    // Set up phi buffers
+    // sys.phi contains the initial guess from initPoissonSystemDevice
+    Real *d_phi_old = sys.phi;
+    Real *d_phi_new = nullptr;
+
     cudaMalloc(&d_phi_new, bytes);
+    cudaMemcpy(d_phi_new, d_phi_old, bytes, cudaMemcpyDeviceToDevice);
 
-    cudaMemcpy(d_aw,  h_aw,  bytes, cudaMemcpyHostToDevice);
-    cudaMemcpy(d_ae,  h_ae,  bytes, cudaMemcpyHostToDevice);
-    cudaMemcpy(d_as,  h_as,  bytes, cudaMemcpyHostToDevice);
-    cudaMemcpy(d_an,  h_an,  bytes, cudaMemcpyHostToDevice);
-    cudaMemcpy(d_al,  h_al,  bytes, cudaMemcpyHostToDevice);
-    cudaMemcpy(d_ah,  h_ah,  bytes, cudaMemcpyHostToDevice);
-    cudaMemcpy(d_su,  h_su,  bytes, cudaMemcpyHostToDevice);
-    cudaMemcpy(d_ap,  h_ap,  bytes, cudaMemcpyHostToDevice);
-    cudaMemcpy(d_phi_old, h_phi, bytes, cudaMemcpyHostToDevice);
-    
-    // Dimensions
+    // Launch
     dim3 block(8, 8, 8);
-    dim3 grid(
+    dim3 gridDim(
         (ni + block.x - 1) / block.x,
         (nj + block.y - 1) / block.y,
         (nk + block.z - 1) / block.z
@@ -109,16 +96,18 @@ void solvePoissonGPU(
     cudaEventCreate(&start);
     cudaEventCreate(&stop);
     cudaEventRecord(start);
-    
-    // Iter
+
+    // Iterations
     for (int it = 0; it < nIter; ++it) {
-        poissonKernel<<<grid, block>>>(
+        PoissonKernel<Real><<<gridDim, block>>>(
             d_phi_old, d_phi_new,
-            d_aw, d_ae, d_as, d_an, d_al, d_ah,
-            d_su, d_ap,
+            sys.aw, sys.ae, sys.as_, sys.an,
+            sys.al, sys.ah,
+            sys.su, sys.ap,
             ni, nj, nk
         );
-        // cudaDeviceSynchronize(); 
+        cudaGetLastError();
+
         std::swap(d_phi_old, d_phi_new);
     }
 
@@ -126,43 +115,40 @@ void solvePoissonGPU(
     cudaEventSynchronize(stop);
     float ms = 0.0f;
     cudaEventElapsedTime(&ms, start, stop);
-    std::cout << "GPU solve time: " << ms << " ms for " << nIter << " iterations\n";
     cudaEventDestroy(start);
     cudaEventDestroy(stop);
-    
-    // Copy solution back
+
+    std::cout << "GPU Poisson solve: " << ms
+              << " ms for " << nIter << " iterations\n";
+
+    // Copy result back to host
     cudaMemcpy(h_phi, d_phi_old, bytes, cudaMemcpyDeviceToHost);
 
-    cudaFree(d_aw); cudaFree(d_ae); 
-    cudaFree(d_as); cudaFree(d_an);
-    cudaFree(d_al); cudaFree(d_ah); 
-    cudaFree(d_su); cudaFree(d_ap);
-    cudaFree(d_phi_old); cudaFree(d_phi_new);
+    // Clean 
+    cudaFree(d_phi_new);
+    freePoissonSystemDevice<Real>(sys);
 }
 
-template void solvePoissonGPU<int>(
-    int, int, int,
-    const int*, const int*, 
-    const int*, const int*,
-    const int*, const int*,
-    const int*, const int*,
-    int*, int
-);
-template void solvePoissonGPU<float>(
-    int, int, int,
-    const float*, const float*, 
-    const float*, const float*,
-    const float*, const float*,
-    const float*, const float*,
-    float*, int
-);
+// Explicit instantiation of the internal templated solver
+template void solvePoissonGPU_impl<float>(const Grid3DDevice&, float*, int);
+template void solvePoissonGPU_impl<double>(const Grid3DDevice&, double*, int);
 
-template void solvePoissonGPU<double>(
-    int, int, int,
-    const double*, const double*, 
-    const double*, const double*,
-    const double*, const double*,
-    const double*, const double*,
-    double*, int
-);
+// Public non templated wrappers
+namespace poisson3d {
+
+    void solvePoissonGPU_float(const Grid3DDevice &g,
+                               float *h_phi,
+                               int nIter)
+    {
+        solvePoissonGPU_impl<float>(g, h_phi, nIter);
+    }
+
+    void solvePoissonGPU_double(const Grid3DDevice &g,
+                                double *h_phi,
+                                int nIter)
+    {
+        solvePoissonGPU_impl<double>(g, h_phi, nIter);
+    }
+
+} 
 

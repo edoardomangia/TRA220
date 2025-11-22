@@ -85,12 +85,12 @@ clean: CMakeFiles/3Dpoisson.dir/clean
 CMakeFiles/3Dpoisson.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Dpoisson.dir/build.make CMakeFiles/3Dpoisson.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Dpoisson.dir/build.make CMakeFiles/3Dpoisson.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/edoar/Chalmers/TRA220/3Dpoisson/build/CMakeFiles --progress-num=1,2,3,4 "Built target 3Dpoisson"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/edoar/Chalmers/TRA220/3Dpoisson/build/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Built target 3Dpoisson"
 .PHONY : CMakeFiles/3Dpoisson.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/3Dpoisson.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/edoar/Chalmers/TRA220/3Dpoisson/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/edoar/Chalmers/TRA220/3Dpoisson/build/CMakeFiles 7
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/3Dpoisson.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/edoar/Chalmers/TRA220/3Dpoisson/build/CMakeFiles 0
 .PHONY : CMakeFiles/3Dpoisson.dir/rule
@@ -102,7 +102,7 @@ CMakeFiles/3Dpoisson.dir/rule: cmake_check_build_system
 # codegen rule for target.
 CMakeFiles/3Dpoisson.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Dpoisson.dir/build.make CMakeFiles/3Dpoisson.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/edoar/Chalmers/TRA220/3Dpoisson/build/CMakeFiles --progress-num=1,2,3,4 "Finished codegen for target 3Dpoisson"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/edoar/Chalmers/TRA220/3Dpoisson/build/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Finished codegen for target 3Dpoisson"
 .PHONY : CMakeFiles/3Dpoisson.dir/codegen
 
 # clean rule for target.
