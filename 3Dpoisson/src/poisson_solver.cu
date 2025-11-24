@@ -118,7 +118,7 @@ void solvePoissonGPU(const Grid3DDevice &g,
     std::cout << "GPU Poisson solve: " << ms
               << " ms for " << nIter << " iterations\n";
 
-    // Copy result back to host
+    // back to host
     cudaMemcpy(h_phi, d_phi_old, bytes, cudaMemcpyDeviceToHost);
 
     // Clean 

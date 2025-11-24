@@ -1,9 +1,9 @@
 // include/grid3d.hpp
 #pragma once
 
-#include "grid3d.cuh"  // for Grid3DDevice
+#include "grid3d.cuh"  
 
-// Minimal host-side grid representation for writing output
+// host-side grid, for plotting output
 struct Grid3D {
     int ni, nj, nk;
     double dx, dy, dz;

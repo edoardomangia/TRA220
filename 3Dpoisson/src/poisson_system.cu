@@ -22,7 +22,8 @@ void allocatePoissonSystemDevice(int ni, int nj, int nk,
     cudaMalloc(&sys.ap,  bytes);
     cudaMalloc(&sys.su,  bytes);
     cudaMalloc(&sys.phi, bytes);
-
+    
+    // Useless
     // cudaMemset(sys.aw,  0, bytes);
     // cudaMemset(sys.ae,  0, bytes);
     // cudaMemset(sys.as_, 0, bytes);

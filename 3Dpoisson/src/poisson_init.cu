@@ -3,7 +3,6 @@
 #include "idx3d.cuh"
 #include "poisson_init.cuh"
 
-// Kernel to initialize the system on the GPU
 template<typename Real>
 __global__
 void initPoissonSystemKernel(PoissonSystemDevice<Real> sys,

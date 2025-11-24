@@ -31,9 +31,8 @@ void gen_vti(const std::string& filename,
 
     out << "      <PointData Scalars=\"phi\">\n";
     
-    // TODO int types?
+    // TODO other types?
     const char* vtkType =
-        // std::is_same_v<Real, int> ? "..." :
         std::is_same_v<Real, double> ? "Float64" :
         std::is_same_v<Real, float>  ? "Float32" :
                                        "Float64"; 
