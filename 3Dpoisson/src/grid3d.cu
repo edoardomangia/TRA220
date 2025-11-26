@@ -18,3 +18,7 @@ Grid3DDevice make_grid_device(int ni, int nj, int nk,
     
     return g;
 }
+
+void free_grid_device(Grid3DDevice&) {
+    // Grid3DDevice currently holds only metadata; nothing to free.
+}

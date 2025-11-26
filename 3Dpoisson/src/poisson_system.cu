@@ -1,8 +1,11 @@
-// poisson_system.cu
+/* 
+ * poisson_system.cu
+ */
+
+#include "poisson_system.cuh"
+
 #include <cuda_runtime.h>
 #include <cstddef>
-#include "poisson_system.cuh"
-// #include "cuda_utils.hpp"
 
 template<typename Real>
 void allocatePoissonSystemDevice(int ni, int nj, int nk,
@@ -51,13 +54,15 @@ void freePoissonSystemDevice(PoissonSystemDevice<Real>& sys) {
     sys.ap = sys.su = sys.phi = nullptr;
 }
 
-template void allocatePoissonSystemDevice<float>(int, int, int,
-                                                 PoissonSystemDevice<float>&);
+template void allocatePoissonSystemDevice<float>(
+        int, int, int, PoissonSystemDevice<float>&);
 
-template void allocatePoissonSystemDevice<double>(int, int, int,
-                                                  PoissonSystemDevice<double>&);
+template void allocatePoissonSystemDevice<double>(
+        int, int, int, PoissonSystemDevice<double>&);
 
-template void freePoissonSystemDevice<float>(PoissonSystemDevice<float>&);
+template void freePoissonSystemDevice<float>(
+        PoissonSystemDevice<float>&);
 
-template void freePoissonSystemDevice<double>(PoissonSystemDevice<double>&);
+template void freePoissonSystemDevice<double>(
+        PoissonSystemDevice<double>&);
 

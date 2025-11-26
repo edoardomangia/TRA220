@@ -8,7 +8,7 @@ set(CMAKE_CUDA_ARCHITECTURES native)
 
 find_package(CUDAToolkit REQUIRED)
 
-add_executable(3Dpoisson
+add_executable(run
     src/main.cpp
     src/grid3d.cu
     src/poisson_system.cu
@@ -17,13 +17,13 @@ add_executable(3Dpoisson
     # src/gen_vti.cpp
 ) 
    
-target_include_directories(3Dpoisson 
+target_include_directories(run 
     PRIVATE 
         ${CMAKE_SOURCE_DIR}/include
         ${CUDAToolkit_INCLUDE_DIRS}
 )
 
-set_target_properties(3Dpoisson PROPERTIES
+set_target_properties(run PROPERTIES
     CUDA_SEPARABLE_COMPILATION ON
 )
 

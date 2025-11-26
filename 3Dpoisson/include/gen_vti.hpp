@@ -1,9 +1,15 @@
-// gen_vti.hpp
+/*
+ * 
+ */
+
 #pragma once
+
+#include "grid3d.hpp"
+
 #include <vector>
 #include <string>
 #include <fstream>
-#include "grid3d.hpp"  // the host-side Grid3D
+#include <stdexcept>
 
 template<typename Real>
 void write_vti(const std::string &filename,
@@ -44,4 +50,3 @@ void write_vti(const std::string &filename,
     f << "  </ImageData>\n";
     f << "</VTKFile>\n";
 }
-

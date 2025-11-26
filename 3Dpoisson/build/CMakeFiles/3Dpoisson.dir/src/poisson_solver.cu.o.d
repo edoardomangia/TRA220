@@ -188,6 +188,11 @@ CMakeFiles/3Dpoisson.dir/src/poisson_solver.cu.o : /home/edoar/Chalmers/TRA220/3
     /usr/include/c++/15.2.1/utility \
     /usr/include/c++/15.2.1/bits/stl_relops.h \
     /usr/include/c++/15.2.1/initializer_list \
+    /home/edoar/Chalmers/TRA220/3Dpoisson/include/idx3d.cuh \
+    /home/edoar/Chalmers/TRA220/3Dpoisson/include/grid3d.cuh \
+    /home/edoar/Chalmers/TRA220/3Dpoisson/include/poisson_system.cuh \
+    /home/edoar/Chalmers/TRA220/3Dpoisson/include/poisson_init.cuh \
+    /home/edoar/Chalmers/TRA220/3Dpoisson/include/poisson_solver.hpp \
     /usr/include/c++/15.2.1/iostream \
     /usr/include/c++/15.2.1/ostream \
     /usr/include/c++/15.2.1/bits/ostream.h \
@@ -293,9 +298,4 @@ CMakeFiles/3Dpoisson.dir/src/poisson_solver.cu.o : /home/edoar/Chalmers/TRA220/3
     /usr/include/c++/15.2.1/bits/basic_ios.tcc \
     /usr/include/c++/15.2.1/bits/ostream.tcc \
     /usr/include/c++/15.2.1/istream \
-    /usr/include/c++/15.2.1/bits/istream.tcc \
-    /home/edoar/Chalmers/TRA220/3Dpoisson/include/idx3d.cuh \
-    /home/edoar/Chalmers/TRA220/3Dpoisson/include/grid3d.cuh \
-    /home/edoar/Chalmers/TRA220/3Dpoisson/include/poisson_system.cuh \
-    /home/edoar/Chalmers/TRA220/3Dpoisson/include/poisson_init.cuh \
-    /home/edoar/Chalmers/TRA220/3Dpoisson/include/poisson_solver.hpp
+    /usr/include/c++/15.2.1/bits/istream.tcc

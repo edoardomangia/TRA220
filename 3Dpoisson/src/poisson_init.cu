@@ -1,7 +1,11 @@
-// poisson_init.cu
-#include <cuda_runtime.h>
+/*
+ * poisson_init.cu
+ */ 
+
 #include "idx3d.cuh"
 #include "poisson_init.cuh"
+
+#include <cuda_runtime.h>
 
 template<typename Real>
 __global__
@@ -38,24 +42,38 @@ void initPoissonSystemKernel(PoissonSystemDevice<Real> sys,
     if (k == 0)      al  = Real(0);
     if (k == nk - 1) ah  = Real(0);
    
-    // TODO What if other Dir BCs? 
     // Dirichlet BC: at west boundary i = 0, p = p_west
+    // TODO What if other Dir BCs? 
+    
+    // !!! Different from .py
+    // if (i == 0) {
+    //     aw  = Real(0);
+    //     ae  = Real(0);
+    //     as_ = Real(0);
+    //     an  = Real(0);
+    //     al  = Real(0);
+    //     ah  = Real(0);
+
+    //     su  = p_west;
+    //     phi = p_west;
+
+    //     sys.ap[id] = Real(1);    
+    // } else {
+    //     sys.ap[id] = aw + ae + as_ + an + al + ah;
+    // }
+
     if (i == 0) {
-        aw  = Real(0);
-        ae  = Real(0);
-        as_ = Real(0);
-        an  = Real(0);
-        al  = Real(0);
-        ah  = Real(0);
+        Real aw_orig = cx;           // original west coefficient
+        su += aw_orig * p_west;      // add boundary value
+        aw = Real(0);                // no west flux
 
-        su  = p_west;
-        phi = p_west;
-
-        sys.ap[id] = Real(1);    
+        // Keep other coefficients (Neumann adjustments may already zero some)
+        sys.ap[id] = aw_orig + ae + as_ + an + al + ah;
+        phi = p_west;                // initial guess at boundary
     } else {
         sys.ap[id] = aw + ae + as_ + an + al + ah;
     }
-
+    
     sys.aw[id]  = aw;
     sys.ae[id]  = ae;
     sys.as_[id] = as_;
@@ -101,7 +119,7 @@ void initPoissonSystemDevice(const Grid3DDevice &g,
     int id_mid = idx3D(ni2, nj2, nk2, ni, nj, nk);
 
     // Point source strength 
-    Real source_strength = Real(1000000.0) * dx * dy * dz;
+    Real source_strength = Real(100.0) * dx * dy * dz;
 
     dim3 block(8, 8, 8);
     dim3 gridDim(
@@ -129,4 +147,3 @@ template void initPoissonSystemDevice<float>(
 template void initPoissonSystemDevice<double>(
         const Grid3DDevice &,
         PoissonSystemDevice<double> &);
-

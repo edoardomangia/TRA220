@@ -1,12 +1,16 @@
-// poisson_solver.cu
-#include <cuda_runtime.h>
-#include <utility>   
-#include <iostream>  
+/* 
+ * poisson_solver.cu
+ */
+
 #include "idx3d.cuh"
 #include "grid3d.cuh"
 #include "poisson_system.cuh"
 #include "poisson_init.cuh"
 #include "poisson_solver.hpp"
+
+#include <cuda_runtime.h>
+#include <utility>   
+#include <iostream>  
 
 template<typename Real>
 __global__
@@ -30,11 +34,12 @@ void PoissonKernel(
 
     if (i >= ni || j >= nj || k >= nk) return;
 
-    const int sx = 1;
-    const int sy = ni;
-    const int sz = ni * nj;
+    // Strides follow NumPy C-order flattening: k fastest, then j, then i.
+    const int sx = nj * nk; // stride when moving in i-direction
+    const int sy = nk;      // stride when moving in j-direction
+    const int sz = 1;       // stride when moving in k-direction
 
-    int idx = i + ni * (j + nj * k);
+    int idx = (i * nj + j) * nk + k;
 
     // Boundary check 
     Real phiC = phi_old[idx];
@@ -103,7 +108,12 @@ void solvePoissonGPU(const Grid3DDevice &g,
             sys.su, sys.ap,
             ni, nj, nk
         );
-        cudaGetLastError();
+        cudaError_t err = cudaGetLastError();
+        if (err != cudaSuccess) {
+            std::cerr << "PoissonKernel launch failed at iter " << it
+                      << ": " << cudaGetErrorString(err) << "\n";
+            break;
+        }
 
         std::swap(d_phi_old, d_phi_new);
     }
@@ -128,4 +138,3 @@ void solvePoissonGPU(const Grid3DDevice &g,
 
 template void solvePoissonGPU<float>(const Grid3DDevice&, float*, int);
 template void solvePoissonGPU<double>(const Grid3DDevice&, double*, int);
-
