@@ -1,0 +1,32 @@
+[
+{
+  "directory": "/home/edoar/Chalmers/TRA220/build",
+  "command": "/opt/cuda/bin/nvcc -forward-unknown-to-host-compiler  --options-file CMakeFiles/run.dir/includes_CUDA.rsp -std=c++17 -arch=native -x cu -rdc=true -c /home/edoar/Chalmers/TRA220/src/main.cu -o CMakeFiles/run.dir/src/main.cu.o",
+  "file": "/home/edoar/Chalmers/TRA220/src/main.cu",
+  "output": "CMakeFiles/run.dir/src/main.cu.o"
+},
+{
+  "directory": "/home/edoar/Chalmers/TRA220/build",
+  "command": "/opt/cuda/bin/nvcc -forward-unknown-to-host-compiler  --options-file CMakeFiles/run.dir/includes_CUDA.rsp -std=c++17 -arch=native -x cu -rdc=true -c /home/edoar/Chalmers/TRA220/src/grid3d.cu -o CMakeFiles/run.dir/src/grid3d.cu.o",
+  "file": "/home/edoar/Chalmers/TRA220/src/grid3d.cu",
+  "output": "CMakeFiles/run.dir/src/grid3d.cu.o"
+},
+{
+  "directory": "/home/edoar/Chalmers/TRA220/build",
+  "command": "/opt/cuda/bin/nvcc -forward-unknown-to-host-compiler  --options-file CMakeFiles/run.dir/includes_CUDA.rsp -std=c++17 -arch=native -x cu -rdc=true -c /home/edoar/Chalmers/TRA220/src/poisson_system.cu -o CMakeFiles/run.dir/src/poisson_system.cu.o",
+  "file": "/home/edoar/Chalmers/TRA220/src/poisson_system.cu",
+  "output": "CMakeFiles/run.dir/src/poisson_system.cu.o"
+},
+{
+  "directory": "/home/edoar/Chalmers/TRA220/build",
+  "command": "/opt/cuda/bin/nvcc -forward-unknown-to-host-compiler  --options-file CMakeFiles/run.dir/includes_CUDA.rsp -std=c++17 -arch=native -x cu -rdc=true -c /home/edoar/Chalmers/TRA220/src/poisson_init.cu -o CMakeFiles/run.dir/src/poisson_init.cu.o",
+  "file": "/home/edoar/Chalmers/TRA220/src/poisson_init.cu",
+  "output": "CMakeFiles/run.dir/src/poisson_init.cu.o"
+},
+{
+  "directory": "/home/edoar/Chalmers/TRA220/build",
+  "command": "/opt/cuda/bin/nvcc -forward-unknown-to-host-compiler  --options-file CMakeFiles/run.dir/includes_CUDA.rsp -std=c++17 -arch=native -x cu -rdc=true -c /home/edoar/Chalmers/TRA220/src/poisson_solver.cu -o CMakeFiles/run.dir/src/poisson_solver.cu.o",
+  "file": "/home/edoar/Chalmers/TRA220/src/poisson_solver.cu",
+  "output": "CMakeFiles/run.dir/src/poisson_solver.cu.o"
+}
+]

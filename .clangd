@@ -1,0 +1,13 @@
+CompileFlags:
+  Remove:
+    - -rdc=true
+    - -forward-unknown-to-host-compiler
+    - -x
+    - cu
+    - -arch=native
+    - --options-file
+  Add:
+    - -x
+    - cuda
+    - --cuda-path=/opt/cuda
+    - -I/home/edoar/Chalmers/TRA220/include

@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 # a 3D Poisson solver for Cartesion grids. It can be downloaded at
 #
 # https://www.tfd.chalmers.se/~lada/
@@ -9,28 +11,36 @@ import numpy as np
 from scipy import sparse
 import sys
 import time
+import argparse
 import pyamg
 import matplotlib.pyplot as plt
-from scipy.sparse import spdiags,linalg,eye
+from scipy.sparse import spdiags, linalg, eye
 import socket
+from pathlib import Path
 
 def solve_gs(phi3d,aw3d,ae3d,as3d,an3d,al3d,ah3d,su3d,ap3d,tol_conv,nmax):
-   
-   acrank_conv = 1.0 # ? 
-   
-   print('solve_3d gs called,nmax=',nmax)
-   for n in range(0,nmax):
-      phi3d=((ae3d*np.roll(phi3d,-1,axis=0)+aw3d*np.roll(phi3d,1,axis=0) \
-      +an3d*np.roll(phi3d,-1,axis=1)+as3d*np.roll(phi3d,1,axis=1) \
-      +ah3d*np.roll(phi3d,-1,axis=2)+al3d*np.roll(phi3d,1,axis=2))*acrank_conv+su3d)/ap3d
-
-   res= ap3d*phi3d-\
-     ((ae3d*np.roll(phi3d,-1,axis=0)+aw3d*np.roll(phi3d,1,axis=0) \
-      +an3d*np.roll(phi3d,-1,axis=1)+as3d*np.roll(phi3d,1,axis=1) \
-      +ah3d*np.roll(phi3d,-1,axis=2)+al3d*np.roll(phi3d,1,axis=2))*acrank_conv+su3d)
-
-   resid=np.sum(np.abs(res.flatten()))
-   return resid,phi3d
+    acrank_conv = 1.0  # ?
+    print('solve_3d gs called,nmax=', nmax)
+    for n in range(0, nmax):
+        phi3d = (
+            (ae3d*np.roll(phi3d, -1, axis=0) + aw3d*np.roll(phi3d, 1, axis=0)
+             + an3d*np.roll(phi3d, -1, axis=1) + as3d*np.roll(phi3d, 1, axis=1)
+             + ah3d*np.roll(phi3d, -1, axis=2) + al3d*np.roll(phi3d, 1, axis=2)
+             )*acrank_conv + su3d
+        )/ap3d
+        # check convergence periodically (cheap for small grids)
+        if (n + 1) % 10 == 0 or n == nmax - 1:
+            res = ap3d*phi3d - (
+                ae3d*np.roll(phi3d, -1, axis=0) + aw3d*np.roll(phi3d, 1, axis=0)
+                + an3d*np.roll(phi3d, -1, axis=1) + as3d*np.roll(phi3d, 1, axis=1)
+                + ah3d*np.roll(phi3d, -1, axis=2) + al3d*np.roll(phi3d, 1, axis=2)
+            )*acrank_conv - su3d
+            resid = np.sum(np.abs(res.flatten()))
+            if resid < tol_conv:
+                print(f"GS converged at iter {n+1} with residual {resid:.3e}")
+                return resid, phi3d
+    # not converged within nmax
+    return resid, phi3d
 
 def solve_pyamg(phi3d,aw3d,ae3d,as3d,an3d,al3d,ah3d,su3d,ap3d,tol_conv):
 
@@ -70,27 +80,19 @@ def solve_pyamg(phi3d,aw3d,ae3d,as3d,an3d,al3d,ah3d,su3d,ap3d,tol_conv):
 
    return phi3d,resid
 
-def poisson(solver,niter,convergence_limit):
-
-   global ni,nj,nk,x,y,z,p3d
+def poisson(solver, niter, convergence_limit, ni=10, nj=10, nk=10, xmax=1.0, ymax=1.0, zmax=1.0):
    print('\nhostname: ',socket.gethostname())
    print('\nsolver,convergence_limit,niter',solver,convergence_limit,niter)
 
 # set grid x
-   xmax=1
-   ni=10
    dx=xmax/ni
    x = np.linspace(0, xmax, ni)
 
 # set grid y
-   ymax=1
-   nj=10
    dy=ymax/nj
    y = np.linspace(0, ymax, nj)
 
 # set grid z
-   zmax=1
-   nk=10
    dz=zmax/nk
    z = np.linspace(0, zmax, nk)
 
@@ -147,29 +149,53 @@ def poisson(solver,niter,convergence_limit):
 
 # call solver
    if solver== 'gs':
-      p3d,residual=solve_gs(p3d,aw3d,ae3d,as3d,an3d,al3d,ah3d,su3d,ap3d,convergence_limit,niter)
+      residual,p3d=solve_gs(p3d,aw3d,ae3d,as3d,an3d,al3d,ah3d,su3d,ap3d,convergence_limit,niter)
    elif solver=='pyamg':
       p3d,residual=solve_pyamg(p3d,aw3d,ae3d,as3d,an3d,al3d,ah3d,su3d,ap3d,convergence_limit)
 
-
-# The main programme starts here
-# choose solver
-solver='gs'
-solver='pyamg'
-
-# number of iterations in GS solver
-niter=100
-
-# convergence limit
-convergence_limit=1e-7
-
-poisson(solver,niter,convergence_limit)
+   return p3d, x, y, z, ni, nj, nk
 
 
+def parse_args():
+   ap = argparse.ArgumentParser()
+   ap.add_argument("--solver", default="gs", choices=["gs", "pyamg"])
+   ap.add_argument("--niter", type=int, default=10000)
+   ap.add_argument("--convergence_limit", type=float, default=0.0)
+   ap.add_argument("--ni", type=int, default=10)
+   ap.add_argument("--nj", type=int, default=10)
+   ap.add_argument("--nk", type=int, default=10)
+   ap.add_argument("--xmax", type=float, default=1.0)
+   ap.add_argument("--ymax", type=float, default=1.0)
+   ap.add_argument("--zmax", type=float, default=1.0)
+   return ap.parse_args()
+
+
+if __name__ == "__main__":
+   args = parse_args()
+   p3d, x, y, z, ni, nj, nk = poisson(
+      solver=args.solver,
+      niter=args.niter,
+      convergence_limit=args.convergence_limit,
+      ni=args.ni,
+      nj=args.nj,
+      nk=args.nk,
+      xmax=args.xmax,
+      ymax=args.ymax,
+      zmax=args.zmax,
+   )
+
+###### ADDED 
 plt.close('all')
 plt.interactive(True)
 plt.rcParams.update({'font.size': 22})
 
+# output directory (project root)
+outdir = Path(__file__).resolve().parent / "output"
+outdir.mkdir(parents=True, exist_ok=True)
+
+# dump binary for bitwise comparison with C++ output
+np.ravel(p3d, order='C').astype(np.float64).tofile(outdir / 'phi_py.bin')
+###### ADDED
 
 ############# plot results
 fig1,ax1 = plt.subplots()
@@ -182,7 +208,7 @@ plt.ylabel('$y$')
 plt.xlabel('$x$')
 plt.title(r'$\phi$ in plane $z=z_{max}/2$')
 plt.colorbar();
-plt.savefig('poisson-p3d.png',bbox_inches='tight')
+plt.savefig(outdir / 'poisson-p3d.png',bbox_inches='tight')
 
 
 
@@ -208,7 +234,7 @@ ax.set_zlabel('z')
 fig.colorbar(sc, ax=ax, label='Temperature')
 
 plt.tight_layout()
-plt.savefig('poisson_3d_scatter.png', bbox_inches='tight')
+plt.savefig(outdir / 'poisson_3d_scatter.png', bbox_inches='tight')
 plt.show()
 
 
@@ -245,5 +271,3 @@ plt.show()
 #plt.tight_layout()
 #plt.savefig('poisson_isosurface.png', bbox_inches='tight')
 #plt.show()
-
-
