@@ -10,10 +10,25 @@ import shlex
 import subprocess
 import sys
 import time
+import socket
+import platform
 from datetime import datetime, timezone
 from pathlib import Path
 
 import numpy as np
+
+# Define batch cases here
+GRID_SIZES = [16, 32, 64, 128]
+NITER_VALUES = [50, 100, 500, 1000, 5000, 10000, 50000, 100000]
+#NITER_VALUES = [100, 200, 300, 400, 500, 600, 700]
+CPP_TYPES = ["half", "float", "double"]
+
+DEFAULT_BATCH_CASES = [
+    {"nijk": n, "niter": it, "cpp_type": t}
+    for n in GRID_SIZES
+    for it in NITER_VALUES
+    for t in CPP_TYPES
+]
 
 
 # Helpers
@@ -114,29 +129,68 @@ def parse_args():
     ap.add_argument("--py", default=str(base_out / "phi_py.bin"))
     ap.add_argument("--cupy", default=str(base_out / "phi_cupy.bin"))
     ap.add_argument("--cpp", default=str(base_out / "phi_cpp.bin"))
-    
-    ap.add_argument("--cpp-type", default="half", choices=["half", "float16", "float", "float32", "double"])
-    ap.add_argument("--dtype-cpp", default=None)
 
-    ap.add_argument("--nijk", type=int, help="set ni=nj=nk to this value")
+    # These are overridden per batch case
+    ap.add_argument("--cpp-type", default="double", choices=["half", "float16", "float", "float32", "double"])
+    ap.add_argument("--dtype-cpp", default=None)
+    ap.add_argument("--nijk", type=int)
     ap.add_argument("--ni", type=int)
     ap.add_argument("--nj", type=int)
     ap.add_argument("--nk", type=int)
-    
-    ap.add_argument("--run-py", default="python sample.py")
-    ap.add_argument("--run-cupy", default="python sample_cuPy.py")
+    ap.add_argument("--niter", type=int)
+
+    ap.add_argument("--run-py", default="python ref_NumPy.py")
+    ap.add_argument("--run-cupy", default="python ref_CuPy.py")
     ap.add_argument("--run-cpp", default="build/run")
-    
+
     ap.add_argument("--tag", default=None)
     ap.add_argument("--notes", default="")
-    ap.add_argument("--niter", type=int)
     ap.add_argument("--write-log", action="store_true")
     ap.add_argument("--log-path", default=str(base_out / "benchmarks.jsonl"))
     return ap.parse_args()
 
 
-def main():
-    args = parse_args()
+def gather_hw_info():
+    """Collect basic host/hardware info for logging."""
+    info = {
+        "hostname": socket.gethostname(),
+        "platform": platform.platform(),
+    }
+    cpu_basic = platform.processor()
+    if cpu_basic:
+        info["cpu"] = cpu_basic
+    else:
+        try:
+            res = subprocess.run(["lscpu"], capture_output=True, text=True)
+            if res.returncode == 0:
+                for line in res.stdout.splitlines():
+                    if "Model name" in line:
+                        info["cpu"] = line.split(":", 1)[1].strip()
+                    elif "CPU(s)" in line and "NUMA" not in line:
+                        info.setdefault("cpu_logical_cores", line.split(":", 1)[1].strip())
+                    elif "Core(s) per socket" in line:
+                        info.setdefault("cpu_cores_per_socket", line.split(":", 1)[1].strip())
+                    elif "Socket(s)" in line:
+                        info.setdefault("cpu_sockets", line.split(":", 1)[1].strip())
+        except FileNotFoundError:
+            pass
+    try:
+        res = subprocess.run(
+            ["nvidia-smi", "--query-gpu=name,driver_version,memory.total", "--format=csv,noheader"],
+            capture_output=True,
+            text=True,
+        )
+        if res.returncode == 0:
+            gpus = [ln.strip() for ln in res.stdout.splitlines() if ln.strip()]
+            if gpus:
+                info["gpus"] = gpus
+    except FileNotFoundError:
+        pass
+    return info
+
+
+def run_single(args):
+    args = argparse.Namespace(**vars(args))
     # Collapse nijk into ni/nj/nk if provided
     if args.nijk:
         args.ni = args.nj = args.nk = args.nijk
@@ -251,32 +305,84 @@ def main():
         sys.exit("Do better...\n")
     '''
 
-    # Logging
-    if args.write_log:
-        entry = {
+    # Build entry payload (no host; aggregated at batch level)
+    entry = {
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "tag": args.tag,
+        "notes": args.notes,
+        "grid": {"ni": py.shape[0], "nj": py.shape[1], "nk": py.shape[2]},
+        "niter": args.niter,
+        "cpp_type": args.cpp_type,
+        "cpp_dtype": args.dtype_cpp,
+        "runs": runs,
+        "accuracy": {
+            "cpp_vs_py": cpp_stats,
+            "cupy_vs_py": cupy_stats,
+        },
+        "residuals": resid_stats,
+        "paths": {
+            "py": str(Path(args.py)),
+            "cupy": str(Path(args.cupy)),
+            "cpp": str(Path(args.cpp)),
+        },
+    }
+
+    return entry
+
+
+def main():
+    args = parse_args()
+
+    host_info = gather_hw_info()
+    print()
+    print(f"Host: {host_info.get('hostname', 'unknown')}")
+    print(f"Platform: {host_info.get('platform', 'unknown')}")
+    if host_info.get("cpu"):
+        print(f"CPU:")
+        print(f"    {host_info['cpu']}")
+    if host_info.get("gpus"):
+        print("GPUs:")
+        for g in host_info["gpus"]:
+            print(f"    {g}")
+
+    print()
+    print("Running batch cases...")
+
+    total = len(DEFAULT_BATCH_CASES)
+    batch_entries = []
+    for idx, case in enumerate(DEFAULT_BATCH_CASES, start=1):
+        case_args = argparse.Namespace(**vars(args))
+        for key, value in case.items():
+            setattr(case_args, key, value)
+
+        if not case_args.tag:
+            case_args.tag = f"batch-{idx}"
+        auto_note = (
+            f"batch {idx}/{total}: ni={case_args.ni or case_args.nijk}, "
+            f"nj={case_args.nj or case_args.nijk}, nk={case_args.nk or case_args.nijk}, "
+            f"niter={case_args.niter}, cpp_type={case_args.cpp_type}"
+        )
+        if not case_args.notes:
+            case_args.notes = auto_note
+
+        print()
+        print(f" > Batch {idx}/{total} < ")
+        entry = run_single(case_args)
+        batch_entries.append(entry)
+
+    if args.write_log and batch_entries:
+        batch_log = {
             "timestamp": datetime.now(timezone.utc).isoformat(),
-            "tag": args.tag,
+            "tag": args.tag or "batch",
             "notes": args.notes,
-            "grid": {"ni": py.shape[0], "nj": py.shape[1], "nk": py.shape[2]},
-            "niter": args.niter,
-            "cpp_dtype": args.dtype_cpp,
-            "runs": runs,
-            "accuracy": {
-                "cpp_vs_py": cpp_stats,
-                "cupy_vs_py": cupy_stats,
-            },
-            "residuals": resid_stats,
-            "paths": {
-                "py": str(Path(args.py)),
-                "cupy": str(Path(args.cupy)),
-                "cpp": str(Path(args.cpp)),
-            },
+            "host": host_info,
+            "cases": batch_entries,
         }
         log_path = Path(args.log_path)
         log_path.parent.mkdir(parents=True, exist_ok=True)
         with log_path.open("a") as f:
-            f.write(json.dumps(entry) + "\n")
-        print(f"Appended benchmark entry to {log_path}")
+            f.write(json.dumps(batch_log) + "\n")
+        print(f"Wrote batch entry with {len(batch_entries)} cases to {log_path}")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,9 @@
+build/
+output/
+Vera/
+
+*.nsys-rep
+*.qdrep
+*.ncu-rep
+
+.cache/
