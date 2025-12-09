@@ -2,8 +2,9 @@ build/
 output/
 Vera/
 
+.cache/
+
 *.nsys-rep
 *.qdrep
 *.ncu-rep
-
-.cache/
+.clangd
