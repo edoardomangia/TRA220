@@ -8,3 +8,5 @@ Vera/
 *.qdrep
 *.ncu-rep
 .clangd
+compile_commands.json
+build/compile_commands.json
