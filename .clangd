@@ -10,4 +10,4 @@ CompileFlags:
     - -x
     - cuda
     - --cuda-path=/opt/cuda
-    - -I/home/edoar/Chalmers/TRA220/include
+    - -Iinclude
