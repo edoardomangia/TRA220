@@ -2,8 +2,12 @@ build/
 output/
 Vera/
 
+.cache/
+
 *.nsys-rep
 *.qdrep
 *.ncu-rep
+.clangd
+compile_commands.json
+build/compile_commands.json
 
-.cache/
